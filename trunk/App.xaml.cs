@@ -28,7 +28,7 @@ namespace BlackJack {
 		/// <param name="e">Startup Arguments</param>
 		protected override void OnStartup(StartupEventArgs e) {
 			base.OnStartup(e);
-			MainWindow MainWindow = new MainWindow(new MasterViewModel());
+			MainWindow MainWindow = new MainWindow(new TableViewModel());
 			MainWindow.Show();
 		}
 	}

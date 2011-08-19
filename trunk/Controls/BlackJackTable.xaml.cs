@@ -29,7 +29,7 @@ namespace BlackJack.Controls {
 	/// Interaction logic for BlackJackTable.xaml
 	/// </summary>
 	public partial class BlackJackTable : UserControl {
-		private MasterViewModel MasterViewModel;
+		private TableViewModel MasterViewModel;
 
 		/// <summary>
 		/// Initializes a new instance of the BlackJackTable class.
@@ -39,7 +39,7 @@ namespace BlackJack.Controls {
 		}
 
 		private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-			MasterViewModel = (MasterViewModel)DataContext;
+			MasterViewModel = (TableViewModel)DataContext;
 			Player1Seat.DataContext = MasterViewModel.PlayerVM[0];
 			Player2Seat.DataContext = MasterViewModel.PlayerVM[1];
 			Player3Seat.DataContext = MasterViewModel.PlayerVM[2];

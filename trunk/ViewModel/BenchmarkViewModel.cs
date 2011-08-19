@@ -26,7 +26,7 @@ namespace BlackJack.ViewModel {
 	public class BenchmarkViewModel : ViewModelBase {
 		#region Private Fields
 		private BenchmarkModel m_BenchmarkModel;
-		private MasterViewModel m_Parent;
+		private TableViewModel m_Parent;
 		private string m_RunType;
 		private string m_RunSubType;
 		private int m_SecondsPerBenchmark;
@@ -109,7 +109,7 @@ namespace BlackJack.ViewModel {
 		/// Initializes a new instance of the BenchmarkViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
-		public BenchmarkViewModel(MasterViewModel Parent) {
+		public BenchmarkViewModel(TableViewModel Parent) {
 			m_Parent = Parent;
 			m_BenchmarkModel = new BenchmarkModel();
 			SecondsPerBenchmark = 3;
@@ -140,7 +140,7 @@ namespace BlackJack.ViewModel {
 			CanStartBenchmark = false;
 			BenchmarkResults Results = new BenchmarkResults();
 			DateTime StartTime, EndTime;
-			MasterViewModel tempMasterViewModel = new MasterViewModel();
+			TableViewModel tempMasterViewModel = new TableViewModel();
 			#region Temp MasterViewModel Settings
 			tempMasterViewModel.HouseRulesVM.DecksInShoe = 7;
 			tempMasterViewModel.HouseRulesVM.ShoePenetration = 0.75;

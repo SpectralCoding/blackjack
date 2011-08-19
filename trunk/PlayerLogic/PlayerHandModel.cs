@@ -26,6 +26,7 @@ namespace BlackJack.PlayerLogic {
 		public decimal Bet { get; set; } 
 		public HandMode HandMode { get; set; }
 		public int Count { get; set; }
+		public bool IsActive { get; set; }
 		
 		/// <summary>
 		/// Initializes a new instance of the PlayerHandModel class.
@@ -34,6 +35,7 @@ namespace BlackJack.PlayerLogic {
 			Hand = new ObservableCollection<CardInHand>();
 			Count = 0;
 			HandMode = HandMode.Normal;
+			IsActive = false;
 		}
 	}
 }

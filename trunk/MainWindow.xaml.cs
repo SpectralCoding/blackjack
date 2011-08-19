@@ -26,7 +26,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using BlackJack.CardLogic;
-using BlackJack.GameLogic;
+using BlackJack.TableLogic;
 using BlackJack.HouseLogic;
 using BlackJack.Utilities;
 using BlackJack.ViewModel;
@@ -36,7 +36,7 @@ namespace BlackJack {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window {
-		private MasterViewModel MasterViewModel;
+		private TableViewModel MasterViewModel;
 
 		#region Delegates
 		#endregion
@@ -44,9 +44,9 @@ namespace BlackJack {
 		/// <summary>
 		/// Initializes a new instance of the MainWindow class.
 		/// </summary>
-		/// <param name="MVM">Parent MasterViewModel object.</param>
-		public MainWindow(MasterViewModel MVM) {
-			MasterViewModel = MVM;
+		/// <param name="ParentTVM">Parent TableViewModel object.</param>
+		public MainWindow(TableViewModel ParentTVM) {
+			MasterViewModel = ParentTVM;
 			DataContext = MasterViewModel;
 			InitializeComponent();
 			BlackJackTable.DataContext = MasterViewModel;

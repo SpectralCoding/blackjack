@@ -113,8 +113,8 @@
     </Compile>
     <Compile Include="CardLogic\Card.cs" />
     <Compile Include="CardLogic\Deck.cs" />
-    <Compile Include="GameLogic\GameModel.cs" />
-    <Compile Include="ViewModel\MasterViewModel.cs" />
+    <Compile Include="TableLogic\TableModel.cs" />
+    <Compile Include="ViewModel\TableViewModel.cs" />
     <Compile Include="HouseLogic\Dealer.cs" />
     <Compile Include="PlayerLogic\PlayerModel.cs" />
     <Compile Include="Statistics\PlayerStatisticsModel.cs" />
@@ -166,6 +166,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

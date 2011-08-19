@@ -24,5 +24,13 @@ namespace BlackJack.PlayerLogic {
 		public string Name { get; set; }
 		public decimal Cash { get; set; }
 		public PlayerMode PlayerMode { get; set; }
+		public bool IsActive { get; set; }
+
+		public PlayerModel() {
+			Name = "Unknown Player";
+			Cash = 0;
+			PlayerMode = PlayerMode.NotPlaying;
+			IsActive = false;
+		}
 	}
 }

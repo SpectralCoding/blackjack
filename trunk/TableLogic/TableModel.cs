@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DealerViewModel.cs" company="SpectralCoding">
+// <copyright file="TableModel.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -11,22 +11,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using BlackJack.CardLogic;
+using BlackJack.HouseLogic;
+using BlackJack.PlayerLogic;
+using BlackJack.Statistics;
+using BlackJack.Utilities;
 
-namespace BlackJack.ViewModel {
+namespace BlackJack.TableLogic {
 	/// <summary>
-	/// Provides logic for a Dealer.
+	/// Represents the current status of the Game.
 	/// </summary>
-	public class DealerViewModel : ViewModelBase {
-		private TableViewModel m_Parent;
-
-		/// <summary>
-		/// Initializes a new instance of the DealerViewModel class.
-		/// </summary>
-		/// <param name="Parent">Placeholder for parent object.</param>
-		public DealerViewModel(TableViewModel Parent) {
-			m_Parent = Parent;
-		}
+	public sealed class TableModel {
+		////public int CurrentPlayer { get; set; }
+		////public int CurrentHand { get; set; }
 	}
 }

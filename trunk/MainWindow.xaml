@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:BlackJack"
 	xmlns:utilities="clr-namespace:BlackJack.Utilities"
-	xmlns:gamelogic="clr-namespace:BlackJack.GameLogic"
+	xmlns:gamelogic="clr-namespace:BlackJack.TableLogic"
 	xmlns:viewmodel="clr-namespace:BlackJack.ViewModel"
 	xmlns:my="clr-namespace:BlackJack.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -31,7 +31,18 @@
     	</TabControl>
     	<TabControl x:Name="PlayerTabControl" Height="110" VerticalAlignment="Bottom" Margin="8,0,0,8" TabStripPlacement="Left" Width="494" HorizontalAlignment="Left">
     		<TabItem x:Name="PlayerControlsTabItem" Header="Player Controls">
-    			<Grid Background="White"/>
+    			<Grid Background="White">
+    				<Button x:Name="PlayerStandBtn" Content="Stand" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top"/>
+    				<Button x:Name="PlayerHitBtn" Content="Hit" Height="48" VerticalAlignment="Top" Margin="98,0,0,0" HorizontalAlignment="Left" Width="94"/>
+    				<Button x:Name="PlayerDoubleBtn" Content="Double" Margin="196,0,0,0" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top"/>
+    				<Button x:Name="PlayerDoubleForLessBtn" Content="Double For Less" Margin="196,52,0,0" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top"/>
+    				<Button x:Name="PlayerSplitBtn" Content="Split" Margin="294.203,0,0,0" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height"/>
+    				<Button x:Name="PlayerSurrenderBtn" Content="Surrender" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height" Margin="294.203,52,0,0"/>
+    				<TextBox x:Name="PlayerBetTxt" HorizontalAlignment="Left" Height="22" Margin="0,52,0,0" TextWrapping="Wrap" Text="Bet" VerticalAlignment="Top" Width="94" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    				<Button x:Name="PlayerIncreaseBetBtn" Content="+" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom"/>
+    				<Button x:Name="PlayerDecreaseBetBtn" Content="-" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom" Margin="49,0,0,0"/>
+    				<Button x:Name="PlayerPlayStrategyBtn" Content="Play Strategy" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Margin="98,52,0,0" d:LayoutOverrides="HorizontalAlignment, Height"/>
+    			</Grid>
 			</TabItem>
     		<TabItem x:Name="PlayerStrategyTabItem" Header="Player Strategy">
     			<Grid Background="White"/>
@@ -43,10 +54,10 @@
     	<TabControl x:Name="DealerTabControl" Height="110" VerticalAlignment="Bottom" Margin="506,0,8,8" TabStripPlacement="Right" Width="494">
     		<TabItem x:Name="DealerControlsTabItem" Header="Dealer Controls">
     			<Grid Background="White">
-					<Button Content="Start Game" Height="23" HorizontalAlignment="Left" Name="StartGameBtn" VerticalAlignment="Top" Width="75" Click="StartGameBtn_Click" />
-					<Button Content="Deal Cards" Height="23" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="75" Margin="81,0,0,0" Click="DealCardsBtn_Click" />
-					<Button Content="Shuffle Shoe" Height="23" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="75" Click="ShuffleShoeBtn_Click" Margin="311.04,0,0,0" />
-					<Button Content="Clear Table" Height="23" HorizontalAlignment="Left" Margin="162,0,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="75" Click="ClearTableBtn_Click" />
+					<Button Content="Start Game" HorizontalAlignment="Left" Name="StartGameBtn" Width="94" Click="StartGameBtn_Click" Margin="0" Height="48" VerticalAlignment="Top" />
+					<Button Content="Deal Cards" Height="48" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="94" Margin="98,0,0,0" Click="DealCardsBtn_Click" />
+					<Button Content="Shuffle Shoe" Height="48" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="93" Click="ShuffleShoeBtn_Click" Margin="293.04,0,0,0" />
+					<Button Content="Clear Table" Height="48" HorizontalAlignment="Left" Margin="196.04,0,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="93" Click="ClearTableBtn_Click" />
 				</Grid>
 			</TabItem>
     		<TabItem x:Name="HouseRulesTabItem" Header="House Rules">

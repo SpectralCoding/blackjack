@@ -19,13 +19,13 @@ namespace BlackJack.ViewModel {
 	/// Provides logic for Game Statistics.
 	/// </summary>
 	public class GameStatisticsViewModel : ViewModelBase {
-		private MasterViewModel m_Parent;
+		private TableViewModel m_Parent;
 
 		/// <summary>
 		/// Initializes a new instance of the GameStatisticsViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
-		public GameStatisticsViewModel(MasterViewModel Parent) {
+		public GameStatisticsViewModel(TableViewModel Parent) {
 			m_Parent = Parent;
 		}
 	}

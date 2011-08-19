@@ -21,7 +21,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerStatisticsViewModel : ViewModelBase {
 		#region Private Fields
-		private MasterViewModel m_Parent;
+		private TableViewModel m_Parent;
 		private PlayerStatisticsModel m_PlayerStatisticsModel;
 		#endregion
 
@@ -30,7 +30,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
 		/// <param name="PlayerNum">Indicates which player number this is.</param>
-		public PlayerStatisticsViewModel(MasterViewModel Parent, int PlayerNum) {
+		public PlayerStatisticsViewModel(TableViewModel Parent, int PlayerNum) {
 			m_Parent = Parent;
 			m_PlayerStatisticsModel = new PlayerStatisticsModel();
 			m_PlayerStatisticsModel.Name = String.Format("Player {0}", PlayerNum);

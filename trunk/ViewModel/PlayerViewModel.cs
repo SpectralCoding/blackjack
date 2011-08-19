@@ -24,7 +24,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerViewModel : ViewModelBase {
 		#region Private Fields
-		private MasterViewModel m_Parent;
+		private TableViewModel m_Parent;
 		private PlayerModel m_PlayerModel;
 		private PlayerHandViewModel[] m_PlayerHandViewModel;
 		#endregion
@@ -59,6 +59,15 @@ namespace BlackJack.ViewModel {
 				OnPropertyChanged("PlayerMode");
 			}
 		}
+		public bool IsActive {
+			get {
+				return m_PlayerModel.IsActive;
+			}
+			set {
+				m_PlayerModel.IsActive = value;
+				OnPropertyChanged("IsActive");
+			}
+		}
 		#endregion
 
 		/// <summary>
@@ -66,7 +75,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
 		/// <param name="PlayerNum">Indicates the player number.</param>
-		public PlayerViewModel(MasterViewModel Parent, int PlayerNum) {
+		public PlayerViewModel(TableViewModel Parent, int PlayerNum) {
 			m_Parent = Parent;
 			m_PlayerModel = new PlayerModel();
 			PlayerHandVM = new PlayerHandViewModel[4];
@@ -81,15 +90,13 @@ namespace BlackJack.ViewModel {
 		/// Resets a player's hands.
 		/// </summary>
 		public void ResetHands() {
-			PlayerMode = PlayerMode.SplitThrice;
-			m_PlayerHandViewModel[0].ClearHand();
-			m_PlayerHandViewModel[1].ClearHand();
-			m_PlayerHandViewModel[2].ClearHand();
-			m_PlayerHandViewModel[3].ClearHand();
-			m_PlayerHandViewModel[0].HandMode = HandMode.DoubleDown;
-			m_PlayerHandViewModel[1].HandMode = HandMode.DoubleDown;
-			m_PlayerHandViewModel[2].HandMode = HandMode.DoubleDown;
-			m_PlayerHandViewModel[3].HandMode = HandMode.DoubleDown;
+			IsActive = false;
+			PlayerMode = PlayerMode.Normal;
+			m_PlayerHandViewModel[0].ResetHand();
+			m_PlayerHandViewModel[1].ResetHand();
+			m_PlayerHandViewModel[2].ResetHand();
+			m_PlayerHandViewModel[3].ResetHand();
+			m_PlayerHandViewModel[0].HandMode = HandMode.Normal;
 		}
 	}
 }

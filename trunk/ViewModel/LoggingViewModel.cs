@@ -22,7 +22,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class LoggingViewModel : ViewModelBase {
 		private LoggingModel m_LoggingModel;
-		private MasterViewModel m_ParentMasterViewModel;
+		private TableViewModel m_ParentMasterViewModel;
 
 		#region Public Properties
 		/// <summary>
@@ -57,7 +57,7 @@ namespace BlackJack.ViewModel {
 		/// Initializes a new instance of the LoggingViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
-		public LoggingViewModel(MasterViewModel Parent) {
+		public LoggingViewModel(TableViewModel Parent) {
 			m_ParentMasterViewModel = Parent;
 			m_LoggingModel = new LoggingModel();
 		}

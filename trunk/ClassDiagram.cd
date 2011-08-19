@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BlackJack.ViewModel.BenchmarkViewModel">
+    <Position X="18.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAEgAABQEAAAAAAAAASQAAQAAAAoAAEACAAAgAAIAA=</HashCode>
+      <FileName>ViewModel\BenchmarkViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.ViewModelBase">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAAAAAIAAAAQAQgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BlackJack.ViewModel.DealerViewModel">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\DealerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.GameStatisticsViewModel">
+    <Position X="16.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\GameStatisticsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.HouseRulesViewModel">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAYIAAEAABQQAAoABAAAAAAAAAAAQAAAABAABAAAAAA=</HashCode>
+      <FileName>ViewModel\HouseRulesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.LoggingViewModel">
+    <Position X="20.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAEAAAAgAgABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\LoggingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.TableViewModel">
+    <Position X="1" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QKAABCIAAAAAAAAAAgAEIAAogAAgAAAABQEQIABACAQ=</HashCode>
+      <FileName>ViewModel\TableViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.PlayerHandViewModel">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EGIggAAAADABAAACAAIABAQIgAAAAgAAAAAAgAAACAA=</HashCode>
+      <FileName>ViewModel\PlayerHandViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.PlayerStatisticsViewModel">
+    <Position X="15" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PlayerStatisticsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.PlayerStrategyViewModel">
+    <Position X="13.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\PlayerStrategyViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.PlayerViewModel">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAQAAACAIAAACCAAAAAAAEA=</HashCode>
+      <FileName>ViewModel\PlayerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.ViewModel.ShoeViewModel">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAYAAQAAAAAAACAgAAAAgAAAEAAAAEACAAAAAABAEAg=</HashCode>
+      <FileName>ViewModel\ShoeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.Utilities.BenchmarkModel">
+    <Position X="18.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Utilities\BenchmarkModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.Utilities.LoggingModel">
+    <Position X="20.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\LoggingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.Statistics.GameStatistics">
+    <Position X="16.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statistics\GameStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.Statistics.PlayerStatisticsModel">
+    <Position X="15" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Statistics\PlayerStatisticsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.PlayerLogic.PlayerHandModel">
+    <Position X="9.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAACAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerLogic\PlayerHandModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.PlayerLogic.PlayerStrategyModel">
+    <Position X="13.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerLogic\PlayerStrategyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.PlayerLogic.PlayerModel">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>PlayerLogic\PlayerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.HouseLogic.Dealer">
+    <Position X="6.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HouseLogic\Dealer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.HouseLogic.HouseRulesModel">
+    <Position X="2.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAABQQAAAABAAAAAAAAAAAQAAAABAABAAAAAA=</HashCode>
+      <FileName>HouseLogic\HouseRulesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.GameLogic.GameModel">
+    <Position X="1" Y="8.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameLogic\GameModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.CardLogic.Card">
+    <Position X="4.5" Y="11.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAJABAAAAIAEQAAAAAUAAAAAAAAAAAAQAAAAAAgAA=</HashCode>
+      <FileName>CardLogic\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.CardLogic.ShoeModel">
+    <Position X="4.5" Y="8" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CardLogic\ShoeModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.CardLogic.CardInHand">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABCIAAAACAAAKAgEAIAAAAAAAAAIgAIAAAAAAEIAAI=</HashCode>
+      <FileName>CardLogic\CardInHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackJack.CardLogic.Deck">
+    <Position X="4.5" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>CardLogic\Deck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="BlackJack.Utilities.BenchmarkResults">
+    <Position X="18.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAA4AAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="BlackJack.Utilities.LogItem">
+    <Position X="20.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAQA=</HashCode>
+      <FileName>Utilities\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="BlackJack.Utilities.HandMode">
+    <Position X="9.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.SplitAcesLimit">
+    <Position X="2.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.DealerHitMode">
+    <Position X="1" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAg=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.PlayerMode">
+    <Position X="8" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAEAAAEAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.LogActionType">
+    <Position X="20.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAACQAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.BenchmarkType">
+    <Position X="16.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.CardSuit">
+    <Position X="6.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACAACA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.CardType">
+    <Position X="6.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAggAAAEAAEAIAAAAAFBEAAAAgAAAgAAEE=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BlackJack.Utilities.ShuffleMode">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Enumerations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

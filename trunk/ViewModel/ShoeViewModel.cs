@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using BlackJack.Utilities;
 using BlackJack.HouseLogic;
-using BlackJack.GameLogic;
+using BlackJack.TableLogic;
 using BlackJack.CardLogic;
 
 namespace BlackJack.ViewModel {
@@ -18,7 +18,7 @@ namespace BlackJack.ViewModel {
 
 		#region Private Fields
 		private ShoeModel m_ShoeModel;
-		private MasterViewModel m_ParentMasterViewModel;
+		private TableViewModel m_ParentMasterViewModel;
 		private bool m_IsBenchmark = false;
 		#endregion
 
@@ -58,7 +58,7 @@ namespace BlackJack.ViewModel {
 		/// <summary>
 		/// Initializes a new instance of the Shoe class.
 		/// </summary>
-		public ShoeViewModel(MasterViewModel Parent, bool IsBenchmark = false) {
+		public ShoeViewModel(TableViewModel Parent, bool IsBenchmark = false) {
 			m_ParentMasterViewModel = Parent;
 			m_ShoeModel = new ShoeModel();
 			m_IsBenchmark = IsBenchmark;

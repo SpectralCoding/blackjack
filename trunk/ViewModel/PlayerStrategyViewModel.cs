@@ -21,14 +21,14 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerStrategyViewModel : ViewModelBase {
 		#region Private Fields
-		private MasterViewModel m_Parent;
+		private TableViewModel m_Parent;
 		#endregion
 
 		/// <summary>
 		/// Initializes a new instance of the PlayerStrategyViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
-		public PlayerStrategyViewModel(MasterViewModel Parent) {
+		public PlayerStrategyViewModel(TableViewModel Parent) {
 			m_Parent = Parent;
 		}
 	}

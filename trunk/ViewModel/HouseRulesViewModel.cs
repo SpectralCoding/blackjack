@@ -22,7 +22,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class HouseRulesViewModel : ViewModelBase {
 		private HouseRulesModel m_HouseRulesModel;
-		private MasterViewModel m_ParentMasterViewModel;
+		private TableViewModel m_ParentMasterViewModel;
 
 		#region Public Properties
 		/// <summary>
@@ -188,7 +188,7 @@ namespace BlackJack.ViewModel {
 		/// Initializes a new instance of the HouseRulesViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
-		public HouseRulesViewModel(MasterViewModel Parent) {
+		public HouseRulesViewModel(TableViewModel Parent) {
 			m_ParentMasterViewModel = Parent;
 			m_HouseRulesModel = new HouseRulesModel();
 		}

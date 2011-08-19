@@ -17,25 +17,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using BlackJack.CardLogic;
-using BlackJack.GameLogic;
+using BlackJack.TableLogic;
 using BlackJack.Utilities;
 
 namespace BlackJack.ViewModel {
 	/// <summary>
 	/// Provides logic for the entire application.
 	/// </summary>
-	public class MasterViewModel : ViewModelBase {
+	public class TableViewModel : ViewModelBase {
 		#region Private ViewModel Fields
+		private TableModel m_TableModel;
 		private BenchmarkViewModel m_BenchmarkViewModel;
 		private DealerViewModel m_DealerViewModel;
-		private GameModel m_GameModel;
 		private GameStatisticsViewModel m_GameStatisticsViewModel;
 		private HouseRulesViewModel m_HouseRulesViewModel;
 		private LoggingViewModel m_LoggingViewModel;
 		private ObservableCollection<PlayerViewModel> m_PlayerViewModel;
-		////private PlayerViewModel[] m_PlayerViewModel;
 		private ObservableCollection<PlayerStatisticsViewModel> m_PlayerStatisticsViewModel;
-		////private PlayerStatisticsViewModel[] m_PlayerStatisticsViewModel;
 		private PlayerStrategyViewModel m_PlayerStrategyViewModel;
 		private ShoeViewModel m_ShoeViewModel;
 		#endregion
@@ -127,7 +125,7 @@ namespace BlackJack.ViewModel {
 		/// <summary>
 		/// Initializes a new instance of the MasterViewModel class.
 		/// </summary>
-		public MasterViewModel() {
+		public TableViewModel() {
 			#region Member Instantiation
 			m_BenchmarkViewModel = new BenchmarkViewModel(this);
 			m_DealerViewModel = new DealerViewModel(this);

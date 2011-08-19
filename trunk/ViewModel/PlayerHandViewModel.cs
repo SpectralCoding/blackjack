@@ -26,7 +26,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerHandViewModel : ViewModelBase {
 		#region Private Fields
-		private MasterViewModel m_ParentMasterViewModel;
+		private TableViewModel m_ParentMasterViewModel;
 		private PlayerViewModel m_ParentPlayerViewModel;
 		private PlayerHandModel m_PlayerHandModel;
 		#endregion
@@ -132,16 +132,25 @@ namespace BlackJack.ViewModel {
 				}
 			}
 		}
+		public bool IsActive {
+			get {
+				return m_PlayerHandModel.IsActive;
+			}
+			set {
+				m_PlayerHandModel.IsActive = value;
+				OnPropertyChanged("IsActive");
+			}
+		}
 		#endregion
 
 		#region Constructor
 		/// <summary>
 		/// Initializes a new instance of the PlayerHandViewModel class.
 		/// </summary>
-		/// <param name="ParentMVM">Placeholder for the parent MasterViewModel.</param>
+		/// <param name="ParentTVM">Placeholder for the parent MasterViewModel.</param>
 		/// <param name="ParentPVM">Placeholder for the parent PlayerViewModel.</param>
-		public PlayerHandViewModel(MasterViewModel ParentMVM, PlayerViewModel ParentPVM) {
-			m_ParentMasterViewModel = ParentMVM;
+		public PlayerHandViewModel(TableViewModel ParentTVM, PlayerViewModel ParentPVM) {
+			m_ParentMasterViewModel = ParentTVM;
 			m_ParentPlayerViewModel = ParentPVM;
 			m_PlayerHandModel = new PlayerHandModel();
 		}
@@ -218,8 +227,8 @@ namespace BlackJack.ViewModel {
 						return true;
 					} else {
 						// Hand is a double down with less than 21
-						if (Hand.Count == 2) {
-							// If two cards
+						if (Hand.Count <= 2) {
+							// If less than or two cards
 							return true;
 						} else {
 							// If three cards
@@ -259,7 +268,8 @@ namespace BlackJack.ViewModel {
 		/// <summary>
 		/// Clears and resets the hand.
 		/// </summary>
-		public void ClearHand() {
+		public void ResetHand() {
+			IsActive = false;
 			HandMode = HandMode.NotPlaying;
 			Hand.Clear();
 			CalculateCount();
