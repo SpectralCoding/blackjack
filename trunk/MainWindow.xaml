@@ -1,0 +1,139 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:BlackJack"
+	xmlns:utilities="clr-namespace:BlackJack.Utilities"
+	xmlns:gamelogic="clr-namespace:BlackJack.GameLogic"
+	xmlns:viewmodel="clr-namespace:BlackJack.ViewModel"
+	xmlns:my="clr-namespace:BlackJack.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="BlackJack.MainWindow"
+    Title="MainWindow"
+	Width="1024"
+	Height="768"
+	Icon="Resources/HeartIcon.ico"
+	WindowStartupLocation="CenterScreen"
+	>
+    <Grid>
+    	<Grid.Background>
+    		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+    	</Grid.Background>
+    	<my:BlackJackTable Margin="8,8,200,122" UseLayoutRounding="True" x:Name="BlackJackTable" />
+    	<TabControl x:Name="StatsTabControl" HorizontalAlignment="Right" Margin="0,8,8,122" Width="188">
+    		<TabItem x:Name="HouseStatsTabItem" Header="House Stats">
+    			<Grid Background="White"></Grid>
+			</TabItem>
+    		<TabItem x:Name="PlayerStatsTabItem" Header="Player Stats">
+    			<Grid Background="White"/>
+    		</TabItem>
+    	</TabControl>
+    	<TabControl x:Name="PlayerTabControl" Height="110" VerticalAlignment="Bottom" Margin="8,0,0,8" TabStripPlacement="Left" Width="494" HorizontalAlignment="Left">
+    		<TabItem x:Name="PlayerControlsTabItem" Header="Player Controls">
+    			<Grid Background="White"/>
+			</TabItem>
+    		<TabItem x:Name="PlayerStrategyTabItem" Header="Player Strategy">
+    			<Grid Background="White"/>
+    		</TabItem>
+    		<TabItem x:Name="PlayerHistoryTabItem" Header="Player History">
+    			<Grid Background="White"/>
+    		</TabItem>
+    	</TabControl>
+    	<TabControl x:Name="DealerTabControl" Height="110" VerticalAlignment="Bottom" Margin="506,0,8,8" TabStripPlacement="Right" Width="494">
+    		<TabItem x:Name="DealerControlsTabItem" Header="Dealer Controls">
+    			<Grid Background="White">
+					<Button Content="Start Game" Height="23" HorizontalAlignment="Left" Name="StartGameBtn" VerticalAlignment="Top" Width="75" Click="StartGameBtn_Click" />
+					<Button Content="Deal Cards" Height="23" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="75" Margin="81,0,0,0" Click="DealCardsBtn_Click" />
+					<Button Content="Shuffle Shoe" Height="23" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="75" Click="ShuffleShoeBtn_Click" Margin="311.04,0,0,0" />
+					<Button Content="Clear Table" Height="23" HorizontalAlignment="Left" Margin="162,0,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="75" Click="ClearTableBtn_Click" />
+				</Grid>
+			</TabItem>
+    		<TabItem x:Name="HouseRulesTabItem" Header="House Rules">
+    			<Grid Background="White">
+    				<Label Content="Decks in Shoe:" HorizontalAlignment="Right" Margin="0,0,60.04,0" Width="79" HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Height="23" VerticalAlignment="Top" />
+					<local:NumericUpDown
+						HorizontalAlignment="Right"
+						Width="54.303"
+						Height="23"
+						VerticalAlignment="Top"
+						x:Name="DecksInShoeUpDown"
+						d:LayoutOverrides="HorizontalAlignment, VerticalAlignment"
+						Max="{Binding MaxDecksInShoe, Mode=TwoWay}"
+						Min="{Binding MinDecksInShoe, Mode=TwoWay}"
+						Value="{Binding DecksInShoe, Mode=TwoWay}"
+					/>
+					<ComboBox
+						HorizontalAlignment="Right"
+						Margin="0,1,223,0"
+						Name="DealerHitsOnCmb"
+						SelectedIndex="0"
+						Text="{Binding DealerHitMode, Mode=TwoWay}"
+						VerticalAlignment="Top"
+						Width="70"
+					>
+						<ComboBoxItem Content="16" />
+						<ComboBoxItem Content="Soft 17" />
+					</ComboBox>
+					<Label Content="Dealer Hits On:" Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,0,0,77" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Width="88" />
+					<ComboBox
+						HorizontalAlignment="Right"
+						Margin="0,29,205,0"
+						Name="comboBox1"
+						SelectedIndex="0"
+						Text="{Binding SplitAcesLimit, Mode=TwoWay}"
+						VerticalAlignment="Top"
+						Width="88"
+					>
+						<ComboBoxItem Content="One Time" />
+						<ComboBoxItem Content="Two Times" />
+					</ComboBox>
+					<Label Content="Split Aces:" Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,0,0,49" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Width="88" />
+					<Label Content="BlackJack Pays" Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="12,0,0,22" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+					<TextBox Height="23" HorizontalAlignment="Left" Margin="94,56,0,0" Name="BlackJackPaysNumerator" VerticalAlignment="Top" Width="19" HorizontalContentAlignment="Center" Text="{Binding BlackJackPayNumerator, Mode=TwoWay}" />
+					<Label Content="to" Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="119,0,0,22" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+					<TextBox Height="23" HorizontalAlignment="Left" Margin="136,56,0,0" Name="BlackJackPaysDenominator" VerticalAlignment="Top" Width="19" HorizontalContentAlignment="Center" Text="{Binding BlackJackPayDenominator, Mode=TwoWay}" />
+					<Label Content="." Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="161,0,0,22" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" />
+				</Grid>
+    		</TabItem>
+    		<TabItem x:Name="ShoeContentsTabItem" Header="Shoe Contents">
+    			<Grid Background="White">
+					<local:ShoeViewer x:Name="ShoeViewer" ShoeBitmapSource="{Binding ShoeBitmapSource}" ShoeBitmapWidth="{Binding ShoeBitmapWidth}"/>
+    			</Grid>
+    		</TabItem>
+    		<TabItem x:Name="DebugLogTabItem" Header="Debug Log">
+    			<Grid Background="White">
+					<TextBox Height="100" HorizontalAlignment="Left" x:Name="DebugTxt" VerticalAlignment="Top" Width="387.04" IsReadOnly="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" TextChanged="DebugTxt_TextChanged" Text="{Binding Log}" />
+				</Grid>
+			</TabItem>
+    		<TabItem x:Name="BenchmarkTabItem" Header="Benchmark">
+    			<Grid Background="White" Height="100" Width="387.04" Margin="0,0,-1,0">
+    				<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="121.04" SelectedIndex="0" Name="BenchmarkTypeCmb" Text="{Binding RunType}">
+    					<ComboBoxItem Content="Create Shoe"/>
+						<ComboBoxItem Content="Deal Hand" />
+					</ComboBox>
+					<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="121.04" SelectedIndex="0" x:Name="BenchmarkSubtypeCmb" Margin="0,25.96,0,0" Text="{Binding RunSubType}">
+						<ComboBoxItem Content="Fisher-Yates Shfle"/>
+						<ComboBoxItem Content="No Shuffle" />
+					</ComboBox>
+    				<Label Content="Seconds:" HorizontalAlignment="Left" Margin="0,0,0,25.96" Width="61" HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Height="23" VerticalAlignment="Bottom" />
+    				<local:NumericUpDown HorizontalAlignment="Right" Margin="0,51.04,266,0" Width="54.303" Height="23" VerticalAlignment="Top" Value="{Binding SecondsPerBenchmark, Mode=TwoWay}" x:Name="SecondsUpDown" Min="1" />
+					<Button Content="Run All" HorizontalAlignment="Left" Name="RunAllBenchmarksBtn" VerticalAlignment="Bottom" Width="59" Click="RunAllBenchmarksBtn_Click" IsEnabled="{Binding CanStartBenchmark}" />
+					<Button x:Name="RunBenchmarkBtn" Content="Run" Margin="0,0,266,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="58" Click="RunBenchmarkBtn_Click" RenderTransformOrigin="0.982,0.408" IsEnabled="{Binding CanStartBenchmark}" />
+					<DataGrid Margin="125.04,0,0,0" CanUserResizeColumns="False" CanUserReorderColumns="False" x:Name="BenchmarkDG" CanUserResizeRows="False" HeadersVisibility="Column" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding DataTable}" AutoGenerateColumns="False" >
+						<DataGrid.Columns>
+							<DataGridTextColumn Binding="{Binding Path=Benchmark}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Benchmark" Width="190" />
+							<DataGridTextColumn Binding="{Binding Path=Per Sec}" CanUserReorder="False" CanUserResize="False" CanUserSort="False" Header="Per Sec" Width="70" />
+						</DataGrid.Columns>
+						<DataGrid.VerticalGridLinesBrush>
+							<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+						</DataGrid.VerticalGridLinesBrush>
+						<DataGrid.HorizontalGridLinesBrush>
+							<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+						</DataGrid.HorizontalGridLinesBrush>
+					</DataGrid>
+				</Grid>
+    		</TabItem>
+    	</TabControl>
+	</Grid>
+</Window>

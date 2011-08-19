@@ -1,0 +1,4 @@
+﻿If needing to attached a control event to a non-Command event look below. It doesnt appear possible to bind to more than one event at a time though.
+http://marlongrech.wordpress.com/2008/12/04/attachedcommandbehavior-aka-acb/
+
+http://stackoverflow.com/questions/4919087/how-do-i-set-wpfs-itemscontrol-to-display-each-element-in-a-unique-location

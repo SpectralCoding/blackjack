@@ -1,0 +1,26 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="BlackJack.ShoeViewer"
+	x:Name="ShoeViewerUC" d:DesignHeight="56.333" Width="386" Height="100" SnapsToDevicePixels="True" UseLayoutRounding="True">
+
+	<Grid x:Name="LayoutRoot">
+		<ScrollViewer x:Name="ShoeScrollViewer" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+			<Grid x:Name="ShoeGrid" Height="100" Width="{Binding Path=ShoeBitmapWidth}" Margin="0,0,0,0">
+				<Label Content="No Shoe Loaded" Margin="0,0,0,17" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+				<Image
+					x:Name="ShoeImg"
+					Stretch="None"
+					HorizontalAlignment="Left"
+					Height="83"
+					VerticalAlignment="Top"
+					Width="{Binding Path=ShoeBitmapWidth}"
+					Source="{Binding Path=ShoeBitmapSource}"
+				/>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
+</UserControl>
