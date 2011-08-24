@@ -1,10 +1,18 @@
 ﻿Development Progression Plan:
-	Implement Player Controls
+	DONE: Implement Player Controls
 	Implement Dealer
-	Implement Realistic Gameplay
+		Will have to make adjustments to CardInHand to allow for Dealer's card placement.
+		Dealer strategy should be easy because there's no "thinking" involved.
+		Insurance will have to be implemented somewhere.
+	Implement Realistic Gameplay (Tough!)
 		Cards collected in which order
 		When the deck is shuffled
-		Etc
+		This will have to probably run in it's own thread or something.
+			Allowing timings and Thread.Sleep() locks up the UI thread.
+			This could be a pretty cool screensaver mode.
+	Implement Betting
+		Maybe add chip icons by the player graphical coolness.
+		Icons to bed in increments instead of +/- (Click to add, right click to remove)
 	Implement Automated Strategies
 		Basic Strategy
 		Custom Made Ones

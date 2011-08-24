@@ -44,7 +44,11 @@ namespace BlackJack.Utilities {
 		/// <summary>
 		/// Represents the rule that Aces can only be split twice.
 		/// </summary>
-		Twice
+		Twice,
+		/// <summary>
+		/// Represents the rule that Aces can only be split thrice.
+		/// </summary>
+		Thrice
 	}
 
 	/// <summary>

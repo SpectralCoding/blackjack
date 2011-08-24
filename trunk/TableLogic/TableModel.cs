@@ -19,13 +19,16 @@ using BlackJack.HouseLogic;
 using BlackJack.PlayerLogic;
 using BlackJack.Statistics;
 using BlackJack.Utilities;
+using BlackJack.ViewModel;
 
 namespace BlackJack.TableLogic {
 	/// <summary>
 	/// Represents the current status of the Game.
 	/// </summary>
 	public sealed class TableModel {
-		public int CurrentPlayer { get; set; }
-		public int CurrentHand { get; set; }
+		public bool CanDealCards { get; set; }
+		public bool CanStartGame { get; set; }
+		public PlayerViewModel CurrentPlayerVM { get; set; }
+		public PlayerHandViewModel CurrentPlayerHandVM { get; set; }
 	}
 }

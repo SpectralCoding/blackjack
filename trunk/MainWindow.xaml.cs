@@ -36,7 +36,7 @@ namespace BlackJack {
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window {
-		private TableViewModel MasterViewModel;
+		private TableViewModel TableViewModel;
 
 		#region Delegates
 		#endregion
@@ -47,24 +47,24 @@ namespace BlackJack {
 		/// <param name="ParentTVM">Parent TableViewModel object.</param>
 		public MainWindow(TableViewModel ParentTVM) {
 			InitializeComponent();
-			MasterViewModel = ParentTVM;
-			BlackJackTable.DataContext = MasterViewModel;
-			ShoeContentsTabItem.DataContext = MasterViewModel.ShoeVM;
-			DebugLogTabItem.DataContext = MasterViewModel.LoggingVM;
-			BenchmarkTabItem.DataContext = MasterViewModel.BenchmarkVM;
-			HouseRulesTabItem.DataContext = MasterViewModel.HouseRulesVM;
-			DataContext = MasterViewModel;
+			TableViewModel = ParentTVM;
+			BlackJackTable.DataContext = TableViewModel;
+			ShoeContentsTabItem.DataContext = TableViewModel.ShoeVM;
+			DebugLogTabItem.DataContext = TableViewModel.LoggingVM;
+			BenchmarkTabItem.DataContext = TableViewModel.BenchmarkVM;
+			HouseRulesTabItem.DataContext = TableViewModel.HouseRulesVM;
+			DataContext = TableViewModel;
 		}
 
 		private void RunBenchmarkBtn_Click(object sender, RoutedEventArgs e) {
 			Task Benchtask = Task.Factory.StartNew(
-				() => MasterViewModel.BenchmarkVM.RunBenchmark()
+				() => TableViewModel.BenchmarkVM.RunBenchmark()
 			);
 		}
 
 		private void RunAllBenchmarksBtn_Click(object sender, RoutedEventArgs e) {
 			Task Benchtask = Task.Factory.StartNew(
-				() => MasterViewModel.BenchmarkVM.RunAllBenchmarks()
+				() => TableViewModel.BenchmarkVM.RunAllBenchmarks()
 			);
 		}
 
@@ -73,23 +73,51 @@ namespace BlackJack {
 		}
 
 		private void StartGameBtn_Click(object sender, RoutedEventArgs e) {
-			MasterViewModel.StartGame();
+			TableViewModel.StartGame();
 		}
 
 		private void ShuffleShoeBtn_Click(object sender, RoutedEventArgs e) {
-			MasterViewModel.ShoeVM.ResetShoe();
+			TableViewModel.ShoeVM.ResetShoe();
 		}
 
 		private void DealCardsBtn_Click(object sender, RoutedEventArgs e) {
-			MasterViewModel.DealCards();
+			TableViewModel.DealCards();
 		}
 
 		private void ClearTableBtn_Click(object sender, RoutedEventArgs e) {
-			MasterViewModel.ClearTable();
+			TableViewModel.ClearTable();
 		}
 
 		private void Window_Loaded(object sender, RoutedEventArgs e) {
 
+		}
+
+		private void PlayerStandBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerStand();
+		}
+
+		private void PlayerHitBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerHit();
+		}
+
+		private void PlayerDoubleDownBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerDoubleDown();
+		}
+
+		private void PlayerSplitBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerSplit();
+		}
+
+		private void PlayerSurrenderBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerSurrender();
+		}
+
+		private void PlayerDoubleForLessBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerDoubleForLess();
+		}
+
+		private void PlayerPlayStrategyBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.PlayerPlayStrategy();
 		}
 	}
 }

@@ -27,6 +27,7 @@ namespace BlackJack.ViewModel {
 		private TableViewModel m_Parent;
 		private PlayerModel m_PlayerModel;
 		private PlayerHandViewModel[] m_PlayerHandViewModel;
+		private int AceSplitCount = 0;
 		#endregion
 
 		#region Public Properties
@@ -97,7 +98,49 @@ namespace BlackJack.ViewModel {
 			m_PlayerHandViewModel[2].ResetHand();
 			m_PlayerHandViewModel[3].ResetHand();
 			m_PlayerHandViewModel[0].HandMode = HandMode.Normal;
+			//m_PlayerHandViewModel[1].HandMode = HandMode.Normal;
+			//m_PlayerHandViewModel[2].HandMode = HandMode.Normal;
+			//m_PlayerHandViewModel[3].HandMode = HandMode.Normal;
 
+		}
+
+		public bool CanSplit(int CardNum) {
+			if (PlayerMode != PlayerMode.SplitThrice) {
+				if (CardNum == 0) {
+					if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Once) {
+						if (AceSplitCount == 0) { return true; } else { return false; }
+					} else if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Twice) {
+						if (AceSplitCount < 2) { return true; } else { return false; }
+					} else if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Thrice) {
+						if (AceSplitCount < 3) { return true; } else { return false; }
+					}
+				} else {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public void Split(int HandIndex) {
+			if (HandIndex != 3) {
+				if (PlayerMode == PlayerMode.Normal) {
+					PlayerMode = PlayerMode.SplitOnce;
+				} else if (PlayerMode == PlayerMode.SplitOnce) {
+					PlayerMode = PlayerMode.SplitTwice;
+				} else if (PlayerMode == PlayerMode.SplitTwice) {
+					PlayerMode = PlayerMode.SplitThrice;
+				}
+				for (int i = 0; i < 4; i++) {
+					if (PlayerHandVM[i].HandMode == HandMode.NotPlaying) {
+						PlayerHandVM[i].HandMode = HandMode.Normal;
+						PlayerHandVM[i].RecieveCard(PlayerHandVM[HandIndex].SplitHand());
+						PlayerHandVM[i].CanSurrender = false;
+						return;
+					}
+				}
+			} else {
+				throw new Exception("Can't split on the last hand. How did we get here?");
+			}
 		}
 	}
 }

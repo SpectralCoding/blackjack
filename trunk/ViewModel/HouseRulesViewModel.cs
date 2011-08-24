@@ -153,6 +153,8 @@ namespace BlackJack.ViewModel {
 					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Once;
 				} else if (value == "Two Times") {
 					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Twice;
+				} else if (value == "Three Times") {
+					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Thrice;
 				}
 				OnPropertyChanged("SplitAcesLimitEnum");
 				OnPropertyChanged("SplitAcesLimit");
@@ -180,6 +182,15 @@ namespace BlackJack.ViewModel {
 			set {
 				m_HouseRulesModel.BlackJackPayDenominator = value;
 				OnPropertyChanged("BlackJackPayDenominator");
+			}
+		}
+		public bool CasinoMode {
+			get {
+				return m_HouseRulesModel.CasinoMode;
+			}
+			set {
+				m_HouseRulesModel.CasinoMode = value;
+				OnPropertyChanged("CasinoMode");
 			}
 		}
 		#endregion

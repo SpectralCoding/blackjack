@@ -42,6 +42,6 @@
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
 		<Rectangle Style="{StaticResource CountRectangleStyle}" Height="24" Margin="20,0,20,8" RadiusY="4" RadiusX="4" Stroke="Black" VerticalAlignment="Bottom" StrokeThickness="{Binding Converter={StaticResource BoolToStrokeThickness}, Path=IsActive}" Fill="{Binding Converter={StaticResource CountToSolidColorBrush}, Path=Count}"/>
-		<Label x:Name="CountLabel" Content="{Binding Path=Count}" VerticalAlignment="Bottom" Padding="0,0,0,2" Margin="20,0,20,8" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" />
+		<Label x:Name="CountLabel" Content="{Binding Path=StringCount}" VerticalAlignment="Bottom" Padding="0,0,0,2" Margin="20,0,20,8" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" />
 	</Grid>
 </UserControl>

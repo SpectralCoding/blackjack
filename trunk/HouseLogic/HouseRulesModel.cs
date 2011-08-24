@@ -30,6 +30,7 @@ namespace BlackJack.HouseLogic {
 		public SplitAcesLimit SplitAcesLimit { get; set; }
 		public int BlackJackPayNumerator { get; set; }
 		public int BlackJackPayDenominator { get; set; }
+		public bool CasinoMode { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the HouseRulesModel class.
@@ -44,6 +45,7 @@ namespace BlackJack.HouseLogic {
 			SplitAcesLimit = SplitAcesLimit.Twice;
 			BlackJackPayNumerator = 3;
 			BlackJackPayDenominator = 2;
+			CasinoMode = false;
 		}
 	}
 }
