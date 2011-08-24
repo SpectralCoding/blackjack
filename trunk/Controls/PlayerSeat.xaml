@@ -14,40 +14,17 @@
 	DataContextChanged="PlayerSeat_DataContextChanged">
 	<UserControl.Resources>
 		<Style x:Key="CountRectangleStyle" TargetType="{x:Type Rectangle}">
-			<!--
-			<Style.Triggers>
-				<DataTrigger Binding="{Binding PlayerHandVM.StringCount}" Value="21"><Setter Property="Fill" Value="Red" /></DataTrigger>
-			</Style.Triggers>
-			-->
 			<Setter Property="Fill" Value="White" />
 		</Style>
 		<local:PointToMarginConverter x:Key="PointToMarginConverter" />
-		<Style x:Key="PlayerTableHandRenderTransform" TargetType="local:PlayerTableHand">
-			<Setter Property="RenderTransform">
-				<Setter.Value>
-					<TransformGroup>
-						<ScaleTransform ScaleX="{Binding Path=Scale}" ScaleY="{Binding Path=Scale}"/>
-						<SkewTransform/>
-						<RotateTransform/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Setter.Value>
-			</Setter>
-		</Style>
+		<local:DoubleToTransformGroup x:Key="DoubleToTransformGroup" />
+		<local:BoolToVisibility x:Key="BoolToVisibility" />
 	</UserControl.Resources>
     <Grid>
-    	<!--
-		<local:PlayerTableHand x:Name="PlayerTableHand1" Margin="{Binding Path=Position, Converter={StaticResource PointToMarginConverter}}" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0" Style="{StaticResource PlayerTableHandRenderTransform}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand2" Margin="{Binding Path=Position, Converter={StaticResource PointToMarginConverter}}" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0" Style="{StaticResource PlayerTableHandRenderTransform}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand3" Margin="{Binding Path=Position, Converter={StaticResource PointToMarginConverter}}" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0" Style="{StaticResource PlayerTableHandRenderTransform}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand4" Margin="{Binding Path=Position, Converter={StaticResource PointToMarginConverter}}" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0" Style="{StaticResource PlayerTableHandRenderTransform}" />
-		-->
-		<local:PlayerTableHand x:Name="PlayerTableHand1" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.05,1.025" Style="{StaticResource PlayerTableHandRenderTransform}" Visibility="{Binding Path=Visibility}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand2" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.95,1.025" Style="{StaticResource PlayerTableHandRenderTransform}" Visibility="{Binding Path=Visibility}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand3" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.05,-0.075" Style="{StaticResource PlayerTableHandRenderTransform}" Visibility="{Binding Path=Visibility}" />
-		<local:PlayerTableHand x:Name="PlayerTableHand4" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.95,-0.075" Style="{StaticResource PlayerTableHandRenderTransform}" Visibility="{Binding Path=Visibility}" />
-
-
+		<local:PlayerTableHand x:Name="PlayerTableHand1" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.05,1.025" RenderTransform="{Binding Converter={StaticResource DoubleToTransformGroup}, Path=Scale}" Visibility="{Binding Path=Visibility}" />
+		<local:PlayerTableHand x:Name="PlayerTableHand2" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.95,1.025" RenderTransform="{Binding Converter={StaticResource DoubleToTransformGroup}, Path=Scale}" Visibility="{Binding Path=Visibility}" />
+		<local:PlayerTableHand x:Name="PlayerTableHand3" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.05,-0.075" RenderTransform="{Binding Converter={StaticResource DoubleToTransformGroup}, Path=Scale}" Visibility="{Binding Path=Visibility}" />
+		<local:PlayerTableHand x:Name="PlayerTableHand4" Width="118" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.95,-0.075" RenderTransform="{Binding Converter={StaticResource DoubleToTransformGroup}, Path=Scale}" Visibility="{Binding Path=Visibility}" />
 		<Rectangle Margin="8,0,8,8" Stroke="Black" RadiusX="5" RadiusY="5" StrokeThickness="2" Height="91" VerticalAlignment="Bottom" Fill="White"/>
     	<Label x:Name="PlayerLabel" Content="{Binding Name}" Margin="8,0,8,75.667" Padding="0,1,0,0" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="0" FontSize="16" Background="{x:Null}" Height="23" VerticalAlignment="Bottom"/>
 		<Path Data="M20,228 L94.5,228" Height="1" Margin="8,0,8,73.667" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" StrokeThickness="2">
@@ -55,7 +32,7 @@
 				<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
 			</Path.Fill>
 		</Path>
-		
+		<Label x:Name="ActiveHighlightLabel" Content="" Height="22.344" Margin="10.016,0,10.021,74.667" VerticalAlignment="Bottom" Background="#3F000000" Visibility="{Binding Converter={StaticResource BoolToVisibility}, Path=IsActive}"/>
 	</Grid>
 </UserControl>
 

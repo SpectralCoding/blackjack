@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -23,6 +24,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BlackJack.ViewModel;
+using BlackJack.Utilities;
 
 namespace BlackJack.Controls {
 	/// <summary>
@@ -46,4 +48,43 @@ namespace BlackJack.Controls {
 			PlayerTableHand4.DataContext = m_PlayerViewModel.PlayerHandVM[3];
 		}
 	}
+
+	[ValueConversion(typeof(bool), typeof(Visibility))]
+	public class BoolToVisibility : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			if (value != null) {
+				bool IsActive = (bool)value;
+				if (IsActive) {
+					return Visibility.Visible;
+				}
+			}
+			return Visibility.Hidden;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			throw new Exception("The method or operation is not implemented.");
+		}
+	}
+
+	[ValueConversion(typeof(double), typeof(TransformGroup))]
+	public class DoubleToTransformGroup : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			TransformGroup returnTG = new TransformGroup();
+			////returnTG.Children.Add(new SkewTransform());
+			////returnTG.Children.Add(new RotateTransform());
+			////returnTG.Children.Add(new TranslateTransform());
+			if (value != null) {
+				double Scale = (double)value;
+				returnTG.Children.Add(new ScaleTransform(Scale, Scale));
+			} else {
+				returnTG.Children.Add(new ScaleTransform(1.0, 1.0));
+			}
+			return returnTG;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			throw new Exception("The method or operation is not implemented.");
+		}
+	}
+
 }

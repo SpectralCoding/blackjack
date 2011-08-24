@@ -97,6 +97,7 @@ namespace BlackJack.ViewModel {
 			m_PlayerHandViewModel[2].ResetHand();
 			m_PlayerHandViewModel[3].ResetHand();
 			m_PlayerHandViewModel[0].HandMode = HandMode.Normal;
+
 		}
 	}
 }

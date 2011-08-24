@@ -62,36 +62,6 @@ namespace BlackJack.ViewModel {
 			set {
 				m_PlayerHandModel.Count = value;
 				OnPropertyChanged("Count");
-				OnPropertyChanged("StringCount");
-				OnPropertyChanged("IndicatorColor");
-			}
-		}
-		/// <summary>
-		/// Gets a value indicating the string representation of the current count of the hand.
-		/// </summary>
-		public string StringCount {
-			get {
-				return m_PlayerHandModel.Count.ToString();
-			}
-		}
-		/// <summary>
-		/// Gets a value indicating the color of the hand count.
-		/// </summary>
-		public string IndicatorColor {
-			get {
-				if (Count == 0) {
-					return "#FFFFFF";		// White
-				} else if (Count < 14) {
-					return "#FF8080";		// Light Red
-				} else if (Count < 18) {
-					return "#FFD280";	// Light Orange
-				} else if (Count < 22) {
-					return "#90EE90";		// Light Green
-				} else if (Count > 21) {
-					return "#FF8080";		// Light Red
-				} else {
-					return "White";		// White
-				}
 			}
 		}
 		/// <summary>

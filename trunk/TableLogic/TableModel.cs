@@ -25,7 +25,7 @@ namespace BlackJack.TableLogic {
 	/// Represents the current status of the Game.
 	/// </summary>
 	public sealed class TableModel {
-		////public int CurrentPlayer { get; set; }
-		////public int CurrentHand { get; set; }
+		public int CurrentPlayer { get; set; }
+		public int CurrentHand { get; set; }
 	}
 }

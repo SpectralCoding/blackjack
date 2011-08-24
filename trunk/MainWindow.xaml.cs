@@ -46,14 +46,14 @@ namespace BlackJack {
 		/// </summary>
 		/// <param name="ParentTVM">Parent TableViewModel object.</param>
 		public MainWindow(TableViewModel ParentTVM) {
-			MasterViewModel = ParentTVM;
-			DataContext = MasterViewModel;
 			InitializeComponent();
+			MasterViewModel = ParentTVM;
 			BlackJackTable.DataContext = MasterViewModel;
 			ShoeContentsTabItem.DataContext = MasterViewModel.ShoeVM;
 			DebugLogTabItem.DataContext = MasterViewModel.LoggingVM;
 			BenchmarkTabItem.DataContext = MasterViewModel.BenchmarkVM;
 			HouseRulesTabItem.DataContext = MasterViewModel.HouseRulesVM;
+			DataContext = MasterViewModel;
 		}
 
 		private void RunBenchmarkBtn_Click(object sender, RoutedEventArgs e) {
@@ -86,6 +86,10 @@ namespace BlackJack {
 
 		private void ClearTableBtn_Click(object sender, RoutedEventArgs e) {
 			MasterViewModel.ClearTable();
+		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+
 		}
 	}
 }

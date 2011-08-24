@@ -14,8 +14,7 @@
 	Width="1024"
 	Height="768"
 	Icon="Resources/HeartIcon.ico"
-	WindowStartupLocation="CenterScreen"
-	>
+	WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
     	<Grid.Background>
     		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>

@@ -148,7 +148,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		public void StartGame() {
 			ClearTable();
-			Console.WriteLine("lolwut");
+			
 		}
 
 		/// <summary>

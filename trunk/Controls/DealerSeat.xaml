@@ -15,8 +15,8 @@
 		<Image x:Name="Card4Img" Margin="232,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="70.5" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" />
 		<Image x:Name="Card5Img" Margin="306.5,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="70.5" />
 		<Rectangle Height="24" Margin="154.5,110,0,0" RadiusY="4" RadiusX="4" Stroke="Black" VerticalAlignment="Top" StrokeThickness="2" Width="76" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment, Width" Fill="White"/>
-		<Label x:Name="CountLabel" Content="{Binding PlayerHandVM.StringCount}" VerticalAlignment="Top" Padding="0,0,0,2" Margin="154.5,110,0,0" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="76" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment, Width"/>
-		<ItemsControl x:Name="CardsItemsControl" ItemsSource="{Binding PlayerHandVM.Hand}" Margin="0,140,255,325">
+		<Label x:Name="CountLabel" Content="{Binding Count}" VerticalAlignment="Top" Padding="0,0,0,2" Margin="154.5,110,0,0" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="76" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment, Width"/>
+		<ItemsControl x:Name="CardsItemsControl" ItemsSource="{Binding Hand}" Margin="0,140,255,325">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<Canvas IsItemsHost="True" />

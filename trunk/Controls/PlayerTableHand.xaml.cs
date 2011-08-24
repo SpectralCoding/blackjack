@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -41,11 +42,31 @@ namespace BlackJack.Controls {
 		private void PlayerTableHandUC_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
 			m_PlayerHandViewModel = (PlayerHandViewModel)DataContext;
 		}
+
 	}
+
+	[ValueConversion(typeof(bool), typeof(int))]
+	public class BoolToStrokeThickness : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			if (value != null) {
+				bool IsActive = (bool)value;
+				if (IsActive) {
+					return 4;
+				}
+			}
+			return 2;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			throw new Exception("The method or operation is not implemented.");
+		}
+	}
+
 
 	/// <summary>
 	/// Class for converting a System.Drawing.Point to a Thickness for usage in a Margin property.
 	/// </summary>
+	[ValueConversion(typeof(Point), typeof(Thickness))]
 	public class PointToMarginConverter : IValueConverter {
 		#region IValueConverter Members
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
@@ -60,4 +81,30 @@ namespace BlackJack.Controls {
 
 		#endregion
 	}
+
+	[ValueConversion(typeof(int), typeof(SolidColorBrush))]
+	public class CountToSolidColorBrush : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			if (value != null) {
+				int Count = (int)value;
+				if (Count == 0) {
+					return new SolidColorBrush(Color.FromRgb(255, 255, 255));		// White
+				} else if (Count < 14) {
+					return new SolidColorBrush(Color.FromRgb(255, 128, 128));		// Light Red
+				} else if (Count < 18) {
+					return new SolidColorBrush(Color.FromRgb(255, 210, 128));		// Light Orange
+				} else if (Count < 22) {
+					return new SolidColorBrush(Color.FromRgb(144, 238, 144));		// Light Green
+				} else if (Count > 21) {
+					return new SolidColorBrush(Color.FromRgb(255, 128, 128));		// Light Red
+				}
+			}
+			return Color.FromRgb(255, 255, 255);		// White
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			throw new Exception("The method or operation is not implemented.");
+		}
+	}
+
 }

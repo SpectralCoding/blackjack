@@ -32,8 +32,8 @@ namespace BlackJack.PlayerLogic {
 		/// Initializes a new instance of the PlayerHandModel class.
 		/// </summary>
 		public PlayerHandModel() {
-			Hand = new ObservableCollection<CardInHand>();
 			Count = 0;
+			Hand = new ObservableCollection<CardInHand>();
 			HandMode = HandMode.Normal;
 			IsActive = false;
 		}
