@@ -339,6 +339,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		public void ResetHand() {
 			IsActive = false;
+			CanSurrender = false;
 			HandMode = HandMode.NotPlaying;
 			Hand.Clear();
 			CalculateCount();
@@ -358,6 +359,11 @@ namespace BlackJack.ViewModel {
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard) {
 			Hand.Add(new CardInHand(this, DealtCard));
+			if (Hand.Count == 2) {
+				CanSurrender = true;
+			} else {
+				CanSurrender = false;
+			}
 			CalculateCount();
 			SetCardPositions();
 		}

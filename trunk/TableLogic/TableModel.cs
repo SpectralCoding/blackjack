@@ -10,6 +10,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -26,9 +27,19 @@ namespace BlackJack.TableLogic {
 	/// Represents the current status of the Game.
 	/// </summary>
 	public sealed class TableModel {
-		public bool CanDealCards { get; set; }
-		public bool CanStartGame { get; set; }
+		public BenchmarkViewModel BenchmarkViewModel { get; set; }
+		public DealerViewModel DealerViewModel { get; set; }
+		public GameStatisticsViewModel GameStatisticsViewModel { get; set; }
+		public HouseRulesViewModel HouseRulesViewModel { get; set; }
+		public LoggingViewModel LoggingViewModel { get; set; }
+		public ObservableCollection<PlayerViewModel> PlayerViewModel { get; set; }
+		public ObservableCollection<PlayerStatisticsViewModel> PlayerStatisticsViewModel { get; set; }
+		public PlayerStrategyViewModel PlayerStrategyViewModel { get; set; }
+		public ShoeViewModel ShoeViewModel { get; set; }
 		public PlayerViewModel CurrentPlayerVM { get; set; }
 		public PlayerHandViewModel CurrentPlayerHandVM { get; set; }
+		public bool CanDealCards { get; set; }
+		public bool CanStartGame { get; set; }
+		public bool GameInProgress { get; set; }
 	}
 }

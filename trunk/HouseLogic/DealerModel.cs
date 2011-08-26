@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Dealer.cs" company="SpectralCoding">
+// <copyright file="DealerModel.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -18,6 +18,12 @@ namespace BlackJack.HouseLogic {
 	/// <summary>
 	/// Represents a Dealer.
 	/// </summary>
-	public class Dealer {
+	public class DealerModel {
+		public bool IsActive { get; set; }
+
+		public DealerModel() {
+
+		}
+
 	}
 }

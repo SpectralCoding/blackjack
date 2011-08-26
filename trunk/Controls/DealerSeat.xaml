@@ -3,20 +3,21 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:BlackJack.Controls"
 	mc:Ignorable="d"
 	x:Class="BlackJack.Controls.DealerSeat"
 	x:Name="DealerSeatUC"
-	d:DesignWidth="387" Width="385" Height="137.667">
-
-	<Grid x:Name="LayoutRoot">
-		<Image x:Name="Card1Img" Margin="8,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="71" d:LayoutOverrides="VerticalAlignment"/>
-		<Image x:Name="Card2Img" Margin="83,8,0,0" Stretch="Fill" HorizontalAlignment="Left" Width="70.5" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" d:LayoutOverrides="VerticalAlignment" />
-		<Image x:Name="Card3Img" Margin="157.5,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="70.5" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" />
-		<Image x:Name="Card4Img" Margin="232,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="70.5" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" />
-		<Image x:Name="Card5Img" Margin="306.5,8,0,0" Stretch="Fill" Height="96" VerticalAlignment="Top" Source="/BlackJack;component/Resources/CardImages/Card_2c.gif" HorizontalAlignment="Left" Width="70.5" />
-		<Rectangle Height="24" Margin="154.5,110,0,0" RadiusY="4" RadiusX="4" Stroke="Black" VerticalAlignment="Top" StrokeThickness="2" Width="76" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment, Width" Fill="White"/>
-		<Label x:Name="CountLabel" Content="{Binding Count}" VerticalAlignment="Top" Padding="0,0,0,2" Margin="154.5,110,0,0" Height="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="76" HorizontalAlignment="Left" d:LayoutOverrides="VerticalAlignment, Width"/>
-		<ItemsControl x:Name="CardsItemsControl" ItemsSource="{Binding Hand}" Margin="0,140,255,325">
+	d:DesignWidth="387"
+	Width="700"
+	Height="137.667"
+	DataContextChanged="DealerSeatUC_DataContextChanged">
+	<UserControl.Resources>
+		<local:CardsToVisibility x:Key="CardsToVisibility" />
+	</UserControl.Resources>
+	<Grid x:Name="LayoutRoot" DataContext="{Binding Path=DealerHandVM}">
+		<Rectangle Height="24" Margin="312.292,113.667,311.708,0" RadiusY="4" RadiusX="4" Stroke="Black" VerticalAlignment="Top" StrokeThickness="2" Fill="White" Visibility="{Binding Converter={StaticResource CardsToVisibility}, Path=Hand}" />
+		<Label x:Name="CountLabel" Content="{Binding Count}" Padding="0,0,0,2" Margin="312,114,312,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="76" Visibility="{Binding Converter={StaticResource CardsToVisibility}, Path=Hand}" Height="24" VerticalAlignment="Top" />
+		<ItemsControl x:Name="CardsItemsControl" HorizontalAlignment="Left" Width="700" Height="96" Margin="0,8,0,33.667" ItemsSource="{Binding Path=Hand}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<Canvas IsItemsHost="True" />
@@ -30,11 +31,7 @@
 			</ItemsControl.ItemContainerStyle>
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<Image Margin="0,0,0,0" Stretch="Fill" HorizontalAlignment="Left" Width="70.5" Height="96" VerticalAlignment="Bottom" Source="{Binding CardImage}" Visibility="{Binding Visible}">
-						<Image.LayoutTransform>
-							<RotateTransform Angle="{Binding Rotation}"/>
-						</Image.LayoutTransform>
-					</Image>
+					<Image Margin="0,0,0,0" Stretch="Fill" HorizontalAlignment="Left" Width="71" Height="96" VerticalAlignment="Bottom" Source="{Binding CardImage}" />
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>

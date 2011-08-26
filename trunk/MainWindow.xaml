@@ -53,10 +53,13 @@
     	<TabControl x:Name="DealerTabControl" Height="110" VerticalAlignment="Bottom" Margin="506,0,8,8" TabStripPlacement="Right" Width="494">
     		<TabItem x:Name="DealerControlsTabItem" Header="Dealer Controls">
     			<Grid Background="White">
-					<Button Content="Start Game" HorizontalAlignment="Left" Name="StartGameBtn" Width="94" Click="StartGameBtn_Click" Margin="0" Height="48" VerticalAlignment="Top"  IsEnabled="{Binding Path=CanStartGame}" />
-					<Button Content="Deal Cards" Height="48" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="94" Margin="98,0,0,0" Click="DealCardsBtn_Click" IsEnabled="{Binding Path=CanDealCards}" />
+					<Button Content="Start Game" HorizontalAlignment="Left" Name="StartGameBtn" Width="94" Click="StartGameBtn_Click" Margin="196,0,0,0" Height="48" VerticalAlignment="Top"  IsEnabled="{Binding Path=CanStartGame}" />
+					<Button Content="Deal Cards" Height="48" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="94" Margin="98,52,0,0" Click="DealCardsBtn_Click" IsEnabled="{Binding Path=CanDealCards}" />
 					<Button Content="Shuffle Shoe" Height="48" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="93" Click="ShuffleShoeBtn_Click" Margin="293.04,0,0,0" />
-					<Button Content="Clear Table" Height="48" HorizontalAlignment="Left" Margin="196.04,0,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="93" Click="ClearTableBtn_Click" />
+					<Button Content="Clear Table" Height="48" HorizontalAlignment="Left" Margin="196,52,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="93" Click="ClearTableBtn_Click" />
+					<Button Content="Next Step" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanStartGame}" Name="NextStepBtn" VerticalAlignment="Top" Width="94" Click="NextStepBtn_Click" />
+					<Button Content="Deal A Card" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanDealCards}" Margin="98,0,0,0" Name="DealACardBtn" VerticalAlignment="Top" Width="94" Click="DealACardBtn_Click" />
+					<Button Content="Play" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=DealerVM.IsActive}" Margin="0,52,0,0" Name="DealerPlayBtn" VerticalAlignment="Top" Width="94" Click="DealerPlayBtn_Click" />
 				</Grid>
 			</TabItem>
     		<TabItem x:Name="HouseRulesTabItem" Header="House Rules">

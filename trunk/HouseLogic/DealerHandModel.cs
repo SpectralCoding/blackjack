@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="PlayerHandModel.cs" company="SpectralCoding">
+// <copyright file="DealerHandModel.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -17,32 +17,27 @@ using System.Text;
 using BlackJack.CardLogic;
 using BlackJack.Utilities;
 
-namespace BlackJack.PlayerLogic {
+namespace BlackJack.HouseLogic {
 	/// <summary>
 	/// Represents a Player's Hand.
 	/// </summary>
-	public class PlayerHandModel {
-		public ObservableCollection<CardInHand> Hand { get; set; }
-		public decimal Bet { get; set; } 
-		public HandMode HandMode { get; set; }
+	public class DealerHandModel {
+		public ObservableCollection<DealerCardInHand> Hand { get; set; }
 		public int Count { get; set; }
 		public string StringCount { get; set; }
 		public bool IsActive { get; set; }
 		public bool HasAce { get; set; }
 		public bool IsBlackJack { get; set; }
-		public bool CanSurrender { get; set; }
 		
 		/// <summary>
-		/// Initializes a new instance of the PlayerHandModel class.
+		/// Initializes a new instance of the DealerHandModel class.
 		/// </summary>
-		public PlayerHandModel() {
+		public DealerHandModel() {
 			Count = 0;
-			Hand = new ObservableCollection<CardInHand>();
-			HandMode = HandMode.Normal;
+			Hand = new ObservableCollection<DealerCardInHand>();
 			IsActive = false;
 			HasAce = false;
 			IsBlackJack = false;
-			CanSurrender = false;
 		}
 	}
 }

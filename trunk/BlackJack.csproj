@@ -65,14 +65,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CardLogic\CardInHand.cs" />
+    <Compile Include="CardLogic\DealerCardInHand.cs" />
     <Compile Include="Controls\DealerSeat.xaml.cs">
       <DependentUpon>DealerSeat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PlayerTableHand.xaml.cs">
       <DependentUpon>PlayerTableHand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HouseLogic\DealerHandModel.cs" />
     <Compile Include="PlayerLogic\PlayerHandModel.cs" />
     <Compile Include="ViewModel\BenchmarkViewModel.cs" />
+    <Compile Include="ViewModel\DealerHandViewModel.cs" />
     <Compile Include="ViewModel\PlayerHandViewModel.cs" />
     <Compile Include="ViewModel\DealerViewModel.cs" />
     <Compile Include="ViewModel\GameStatisticsViewModel.cs" />
@@ -115,7 +118,7 @@
     <Compile Include="CardLogic\Deck.cs" />
     <Compile Include="TableLogic\TableModel.cs" />
     <Compile Include="ViewModel\TableViewModel.cs" />
-    <Compile Include="HouseLogic\Dealer.cs" />
+    <Compile Include="HouseLogic\DealerModel.cs" />
     <Compile Include="PlayerLogic\PlayerModel.cs" />
     <Compile Include="Statistics\PlayerStatisticsModel.cs" />
     <Compile Include="PlayerLogic\PlayerStrategyModel.cs" />

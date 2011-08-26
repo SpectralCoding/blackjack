@@ -40,6 +40,7 @@ namespace BlackJack.Controls {
 
 		private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
 			MasterViewModel = (TableViewModel)DataContext;
+			DealerSeat.DataContext = MasterViewModel.DealerVM;
 			Player1Seat.DataContext = MasterViewModel.PlayerVM[0];
 			Player2Seat.DataContext = MasterViewModel.PlayerVM[1];
 			Player3Seat.DataContext = MasterViewModel.PlayerVM[2];

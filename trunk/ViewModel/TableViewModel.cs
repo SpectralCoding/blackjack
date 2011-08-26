@@ -30,100 +30,90 @@ namespace BlackJack.ViewModel {
 	public class TableViewModel : ViewModelBase {
 		#region Private ViewModel Fields
 		private TableModel m_TableModel;
-		private BenchmarkViewModel m_BenchmarkViewModel;
-		private DealerViewModel m_DealerViewModel;
-		private GameStatisticsViewModel m_GameStatisticsViewModel;
-		private HouseRulesViewModel m_HouseRulesViewModel;
-		private LoggingViewModel m_LoggingViewModel;
-		private ObservableCollection<PlayerViewModel> m_PlayerViewModel;
-		private ObservableCollection<PlayerStatisticsViewModel> m_PlayerStatisticsViewModel;
-		private PlayerStrategyViewModel m_PlayerStrategyViewModel;
-		private ShoeViewModel m_ShoeViewModel;
 		#endregion
 
 		#region Public ViewModel Properties
 		public BenchmarkViewModel BenchmarkVM {
 			get {
-				return m_BenchmarkViewModel;
+				return m_TableModel.BenchmarkViewModel;
 			}
 			set {
-				m_BenchmarkViewModel = value;
+				m_TableModel.BenchmarkViewModel = value;
 				OnPropertyChanged("BenchmarkVM");
 			}
 		}
 		public DealerViewModel DealerVM {
 			get {
-				return m_DealerViewModel;
+				return m_TableModel.DealerViewModel;
 			}
 			set {
-				m_DealerViewModel = value;
+				m_TableModel.DealerViewModel = value;
 				OnPropertyChanged("DealerVM");
 			}
 		}
 		public GameStatisticsViewModel GameStatisticsVM {
 			get {
-				return m_GameStatisticsViewModel;
+				return m_TableModel.GameStatisticsViewModel;
 			}
 			set {
-				m_GameStatisticsViewModel = value;
+				m_TableModel.GameStatisticsViewModel = value;
 				OnPropertyChanged("GameStatisticsVM");
 			}
 		}
 		public HouseRulesViewModel HouseRulesVM {
 			get {
-				return m_HouseRulesViewModel;
+				return m_TableModel.HouseRulesViewModel;
 			}
 			set {
-				m_HouseRulesViewModel = value;
+				m_TableModel.HouseRulesViewModel = value;
 				OnPropertyChanged("HouseRulesVM");
 			}
 		}
 		public LoggingViewModel LoggingVM {
 			get {
-				return m_LoggingViewModel;
+				return m_TableModel.LoggingViewModel;
 			}
 			set {
-				m_LoggingViewModel = value;
+				m_TableModel.LoggingViewModel = value;
 				OnPropertyChanged("LoggingVM");
 			}
 		}
 		public ObservableCollection<PlayerViewModel> PlayerVM {
 			get {
-				return m_PlayerViewModel;
+				return m_TableModel.PlayerViewModel;
 			}
 			set {
-				m_PlayerViewModel = value;
+				m_TableModel.PlayerViewModel = value;
 				OnPropertyChanged("PlayerVM");
 			}
 		}
 		public ObservableCollection<PlayerStatisticsViewModel> PlayerStatisticsVM {
 			get {
-				return m_PlayerStatisticsViewModel;
+				return m_TableModel.PlayerStatisticsViewModel;
 			}
 			set {
-				m_PlayerStatisticsViewModel = value;
+				m_TableModel.PlayerStatisticsViewModel = value;
 				OnPropertyChanged("PlayerStatisticsVM");
 			}
 		}
 		public PlayerStrategyViewModel PlayerStrategyVM {
 			get {
-				return m_PlayerStrategyViewModel;
+				return m_TableModel.PlayerStrategyViewModel;
 			}
 			set {
-				m_PlayerStrategyViewModel = value;
+				m_TableModel.PlayerStrategyViewModel = value;
 				OnPropertyChanged("PlayerStrategyVM");
 			}
 		}
 		public ShoeViewModel ShoeVM {
 			get {
-				return m_ShoeViewModel;
+				return m_TableModel.ShoeViewModel;
 			}
 			set {
-				m_ShoeViewModel = value;
+				m_TableModel.ShoeViewModel = value;
 				OnPropertyChanged("ShoeVM");
 			}
 		}
-
 		public PlayerViewModel CurrentPlayerVM {
 			get {
 				return m_TableModel.CurrentPlayerVM;
@@ -158,6 +148,15 @@ namespace BlackJack.ViewModel {
 			set {
 				m_TableModel.CanStartGame = value;
 				OnPropertyChanged("CanStartGame");
+			}
+		}
+		public bool GameInProgress {
+			get {
+				return m_TableModel.GameInProgress;
+			}
+			set {
+				m_TableModel.GameInProgress = value;
+				OnPropertyChanged("GameInProgress");
 			}
 		}
 		#endregion
@@ -223,12 +222,12 @@ namespace BlackJack.ViewModel {
 				// This was the last hand of the round.
 				CurrentPlayerVM = new PlayerViewModel(this, -1);
 				CurrentPlayerHandVM = CurrentPlayerVM.PlayerHandVM[0];
-				System.Windows.MessageBox.Show("Round over. Start a new game.");
+				DealerVM.IsActive = true;
 			} else {
 				// This was the last hand of the round.
 				CurrentPlayerVM = new PlayerViewModel(this, -1);
 				CurrentPlayerHandVM = CurrentPlayerVM.PlayerHandVM[0];
-				System.Windows.MessageBox.Show("Round over. Start a new game.");
+				DealerVM.IsActive = true;
 			}
 		}
 		#endregion
@@ -240,19 +239,19 @@ namespace BlackJack.ViewModel {
 		public TableViewModel() {
 			#region Member Instantiation
 			m_TableModel = new TableModel();
-			m_BenchmarkViewModel = new BenchmarkViewModel(this);
-			m_DealerViewModel = new DealerViewModel(this);
-			m_GameStatisticsViewModel = new GameStatisticsViewModel(this);
-			m_HouseRulesViewModel = new HouseRulesViewModel(this);
-			m_LoggingViewModel = new LoggingViewModel(this);
-			m_PlayerViewModel = new ObservableCollection<PlayerViewModel>();
-			m_PlayerStatisticsViewModel = new ObservableCollection<PlayerStatisticsViewModel>();
+			m_TableModel.BenchmarkViewModel = new BenchmarkViewModel(this);
+			m_TableModel.DealerViewModel = new DealerViewModel(this);
+			m_TableModel.GameStatisticsViewModel = new GameStatisticsViewModel(this);
+			m_TableModel.HouseRulesViewModel = new HouseRulesViewModel(this);
+			m_TableModel.LoggingViewModel = new LoggingViewModel(this);
+			m_TableModel.PlayerViewModel = new ObservableCollection<PlayerViewModel>();
+			m_TableModel.PlayerStatisticsViewModel = new ObservableCollection<PlayerStatisticsViewModel>();
 			for (int i = 0; i < 7; i++) {
-				m_PlayerViewModel.Add(new PlayerViewModel(this, (i + 1)));
-				m_PlayerStatisticsViewModel.Add(new PlayerStatisticsViewModel(this, (i + 1)));
+				m_TableModel.PlayerViewModel.Add(new PlayerViewModel(this, (i + 1)));
+				m_TableModel.PlayerStatisticsViewModel.Add(new PlayerStatisticsViewModel(this, (i + 1)));
 			}
-			m_PlayerStrategyViewModel = new PlayerStrategyViewModel(this);
-			m_ShoeViewModel = new ShoeViewModel(this);
+			m_TableModel.PlayerStrategyViewModel = new PlayerStrategyViewModel(this);
+			m_TableModel.ShoeViewModel = new ShoeViewModel(this);
 			#endregion
 			CurrentPlayerVM = new PlayerViewModel(this, -1);
 			CurrentPlayerHandVM = CurrentPlayerVM.PlayerHandVM[0];
@@ -274,6 +273,7 @@ namespace BlackJack.ViewModel {
 			ShoeVM.ResetShoe();
 			ClearTable();
 			CanStartGame = true;
+			GameInProgress = true;
 		}
 
 		/// <summary>
@@ -283,6 +283,7 @@ namespace BlackJack.ViewModel {
 			for (int i = 0; i < 7; i++) {
 				PlayerVM[i].ResetHands();
 			}
+			DealerVM.Reset();
 			CanDealCards = true;
 		}
 	
@@ -294,17 +295,98 @@ namespace BlackJack.ViewModel {
 				PlayerVM[player].PlayerHandVM[0].RecieveCard(ShoeVM.DrawCard());
 				if (HouseRulesVM.CasinoMode) { Thread.Sleep(500); }
 			}
-			ShoeVM.DrawCard();		// Use this as the dealer's holecard
+			DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), false);
 			for (int player = 0; player < 7; player++) {
 				PlayerVM[player].PlayerHandVM[0].RecieveCard(ShoeVM.DrawCard());
 				if (HouseRulesVM.CasinoMode) { Thread.Sleep(500); }
 			}
-			ShoeVM.DrawCard();		// Use this as the dealer's upcard
+			DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), true);
 			CanDealCards = false;
 			PlayerVM[0].IsActive = true;
 			CurrentPlayerVM = PlayerVM[0];
 			PlayerVM[0].PlayerHandVM[0].IsActive = true;
 			CurrentPlayerHandVM = PlayerVM[0].PlayerHandVM[0];
+		}
+
+		public void DealACard() {
+			if (CanDealCards) {
+				for (int player = 0; player < 7; player++) {
+					if (PlayerVM[player].PlayerMode != PlayerMode.NotPlaying) {
+						for (int hand = 0; hand < 4; hand++) {
+							if (PlayerVM[player].PlayerHandVM[hand].HandMode != HandMode.NotPlaying) {
+								if (PlayerVM[player].PlayerHandVM[hand].Hand.Count < 2) {
+									PlayerVM[player].PlayerHandVM[hand].RecieveCard(ShoeVM.DrawCard());
+									return;
+								}
+							}
+						}
+					}
+				}
+				if (DealerVM.DealerHandVM.Hand.Count == 0) {
+					DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), false);
+					return;
+				} else if (DealerVM.DealerHandVM.Hand.Count == 1) {
+					DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), true);
+					return;
+				}
+				CanDealCards = false;
+				PlayerVM[0].IsActive = true;
+				CurrentPlayerVM = PlayerVM[0];
+				PlayerVM[0].PlayerHandVM[0].IsActive = true;
+				CurrentPlayerHandVM = PlayerVM[0].PlayerHandVM[0];
+				return;
+			}
+		}
+
+		public void NextStep() {
+			if (!GameInProgress) {
+				StartGame();
+				return;
+			} else {
+				if (CanDealCards) {
+					DealACard();
+					return;
+				} else {
+					for (int player = 0; player < 7; player++) {
+						if (PlayerVM[player].IsActive) {
+							PlayerPlayStrategy();
+							return;
+						}
+					}
+					if (DealerVM.IsActive) {
+						DealerPlay();
+						return;
+					} else {
+						int handsLeft;
+						int tempHand;
+						for (int player = 0; player < 7; player++) {
+							for (int hand = 0; hand < 3; hand++) {
+								if (PlayerVM[player].PlayerHandVM[hand].Hand.Count > 0) {
+									PlayerVM[player].PlayerHandVM[hand].ResetHand();
+									handsLeft = 3;
+									for (tempHand = 0; tempHand < 3; tempHand++) {
+										if (PlayerVM[player].PlayerHandVM[tempHand].Hand.Count == 0) {
+											handsLeft--;
+										}
+									}
+									if (handsLeft == 0) {
+										PlayerVM[player].ResetHands();
+									}
+									return;
+								}
+							}
+						}
+						DealerVM.Reset();
+						CanDealCards = true;
+						return;
+					}
+				}
+			}
+		}
+
+		public void DealerPlay() {
+			DealerVM.Play();
+			DealerVM.IsActive = false;
 		}
 		#endregion
 
@@ -353,7 +435,7 @@ namespace BlackJack.ViewModel {
 		}
 
 		public void PlayerPlayStrategy() {
-
+			PlayerStand();
 		}
 		#endregion
 		#endregion

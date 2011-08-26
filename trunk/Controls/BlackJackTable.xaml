@@ -8,6 +8,6 @@
     	<local:PlayerSeat x:Name="Player5Seat" HorizontalAlignment="Left" Margin="238,0,0,32" d:LayoutOverrides="Width, Height" VerticalAlignment="Bottom"/>
     	<local:PlayerSeat x:Name="Player6Seat" HorizontalAlignment="Left" Margin="124,0,0,56" d:LayoutOverrides="Width, Height" VerticalAlignment="Bottom"/>
     	<local:PlayerSeat x:Name="Player7Seat" HorizontalAlignment="Left" Margin="14,0,0,80" d:LayoutOverrides="Width, Height" VerticalAlignment="Bottom"/>
-    	<local:DealerSeat Margin="208,0,207,0" d:LayoutOverrides="Height" VerticalAlignment="Top"/>
+    	<local:DealerSeat x:Name="DealerSeat" Margin="50,0" d:LayoutOverrides="Height" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

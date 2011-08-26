@@ -119,5 +119,17 @@ namespace BlackJack {
 		private void PlayerPlayStrategyBtn_Click(object sender, RoutedEventArgs e) {
 			TableViewModel.PlayerPlayStrategy();
 		}
+
+		private void NextStepBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.NextStep();
+		}
+
+		private void DealACardBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.DealACard();
+		}
+
+		private void DealerPlayBtn_Click(object sender, RoutedEventArgs e) {
+			TableViewModel.DealerPlay();
+		}
 	}
 }
