@@ -9,8 +9,7 @@
              d:DesignHeight="240"
 			 d:DesignWidth="118"
 			 DataContextChanged="PlayerTableHandUC_DataContextChanged"
-			 Height="297"
-	>
+			 Height="297" TargetUpdated="PlayerTableHandUC_TargetUpdated" SourceUpdated="PlayerTableHandUC_SourceUpdated">
 	<UserControl.Resources>
 		<Style x:Key="CountRectangleStyle" TargetType="{x:Type Rectangle}">
 			<Setter Property="Fill" Value="White" />

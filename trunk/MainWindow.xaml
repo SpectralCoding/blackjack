@@ -15,7 +15,7 @@
 	Height="768"
 	Icon="Resources/HeartIcon.ico"
 	WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" FlowDirection="LeftToRight">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
     	<Grid.Background>
     		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
     	</Grid.Background>
@@ -28,7 +28,7 @@
     			<Grid Background="White"/>
     		</TabItem>
     	</TabControl>
-    	<TabControl x:Name="PlayerTabControl" Height="110" VerticalAlignment="Bottom" Margin="8,0,0,8" TabStripPlacement="Left" Width="494" HorizontalAlignment="Left">
+    	<TabControl x:Name="PlayerTabControl" Height="110" VerticalAlignment="Bottom" Margin="8,0,0,8" TabStripPlacement="Left" Width="494" HorizontalAlignment="Left" SelectionChanged="PlayerTabControl_SelectionChanged">
     		<TabItem x:Name="PlayerControlsTabItem" Header="Player Controls" DataContext="{Binding Path=CurrentPlayerHandVM}">
     			<Grid Background="White">
 					<Button x:Name="PlayerStandBtn" IsEnabled="{Binding Path=IsActive}" Content="Stand" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" Click="PlayerStandBtn_Click" />
@@ -60,6 +60,7 @@
 					<Button Content="Next Step" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanStartGame}" Name="NextStepBtn" VerticalAlignment="Top" Width="94" Click="NextStepBtn_Click" />
 					<Button Content="Deal A Card" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanDealCards}" Margin="98,0,0,0" Name="DealACardBtn" VerticalAlignment="Top" Width="94" Click="DealACardBtn_Click" />
 					<Button Content="Play" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=DealerVM.IsActive}" Margin="0,52,0,0" Name="DealerPlayBtn" VerticalAlignment="Top" Width="94" Click="DealerPlayBtn_Click" />
+					<Button Content="Start Auto Play" Height="48" HorizontalAlignment="Left" Margin="293,52,0,0" Name="AutoPlayToggle" VerticalAlignment="Top" Width="93" Click="AutoPlayToggle_Click" />
 				</Grid>
 			</TabItem>
     		<TabItem x:Name="HouseRulesTabItem" Header="House Rules">

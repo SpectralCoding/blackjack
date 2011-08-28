@@ -27,9 +27,9 @@ namespace BlackJack.CardLogic {
 	public class CardInHand : ViewModelBase {
 		#region Private Fields
 		private Card m_Card;
-		private BitmapSource m_CardImage;
 		private Point m_Position = new Point(0, 0);
 		private PlayerHandViewModel m_Parent;
+		private TableViewModel m_MasterParent;
 		private int m_Rotation = 0;
 		private double m_Scale = 1.0;
 		private Visibility m_Visible = Visibility.Visible;
@@ -91,11 +91,7 @@ namespace BlackJack.CardLogic {
 		/// </summary>
 		public BitmapSource CardImage {
 			get {
-				return m_CardImage;
-			}
-			private set {
-				m_CardImage = value;
-				OnPropertyChanged("CardImage");
+				return m_MasterParent.ResourcesVM.CardImages[m_Card.ShortTitle];
 			}
 		}
 		#endregion
@@ -106,29 +102,15 @@ namespace BlackJack.CardLogic {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the Parent object.</param>
 		/// <param name="BaseCard">The card in which to hold this class's data.</param>
-		public CardInHand(PlayerHandViewModel Parent, Card BaseCard) {
-			m_Card = BaseCard;
+		public CardInHand(PlayerHandViewModel Parent, TableViewModel MasterParent, Card BaseCard) {
 			m_Parent = Parent;
-			CardImage = GenerateCardImage();
+			m_MasterParent = MasterParent; 
+			m_Card = BaseCard;
+			OnPropertyChanged("CardImage");
 		}
 		#endregion
 
 		#region Private Methods
-		/// <summary>
-		/// Generates a card image based on the card's properties.
-		/// </summary>
-		/// <returns>A BitmapSource object containing the Bitmap representing the card.</returns>
-		private BitmapSource GenerateCardImage() {
-			Stream TempStream = this.GetType().Assembly.GetManifestResourceStream("BlackJack.Resources.CardImages.Card_" + m_Card.ShortTitle + ".gif");
-			System.Drawing.Bitmap sourceBMP = new System.Drawing.Bitmap(TempStream);
-			BitmapSource tempBitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-				sourceBMP.GetHbitmap(),
-				IntPtr.Zero,
-				System.Windows.Int32Rect.Empty,
-				BitmapSizeOptions.FromWidthAndHeight(sourceBMP.Width, sourceBMP.Height)
-			);
-			return tempBitmapSource;
-		}
 		#endregion
 
 		#region Public Methods

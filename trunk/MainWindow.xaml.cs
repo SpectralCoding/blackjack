@@ -37,6 +37,7 @@ namespace BlackJack {
 	/// </summary>
 	public partial class MainWindow : Window {
 		private TableViewModel TableViewModel;
+		private DispatcherTimer AutoPlayTimer = new DispatcherTimer();
 
 		#region Delegates
 		#endregion
@@ -54,6 +55,10 @@ namespace BlackJack {
 			BenchmarkTabItem.DataContext = TableViewModel.BenchmarkVM;
 			HouseRulesTabItem.DataContext = TableViewModel.HouseRulesVM;
 			DataContext = TableViewModel;
+			AutoPlayTimer.Interval = TimeSpan.FromTicks(1);
+			//AutoPlayTimer.Interval = TimeSpan.FromMilliseconds(500);
+			AutoPlayTimer.Tick += new EventHandler(Tick);
+
 		}
 
 		private void RunBenchmarkBtn_Click(object sender, RoutedEventArgs e) {
@@ -131,5 +136,28 @@ namespace BlackJack {
 		private void DealerPlayBtn_Click(object sender, RoutedEventArgs e) {
 			TableViewModel.DealerPlay();
 		}
+
+		private void PlayerTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+		}
+
+		private void Grid_Loaded(object sender, RoutedEventArgs e) {
+			
+		}
+
+		private void Tick(object sender, EventArgs e) {
+			TableViewModel.NextStep();
+		}
+
+		private void AutoPlayToggle_Click(object sender, RoutedEventArgs e) {
+			if ((string)AutoPlayToggle.Content == "Start Auto Play") {
+				AutoPlayToggle.Content = "Stop Auto Play";
+				AutoPlayTimer.Start();
+			} else {
+				AutoPlayToggle.Content = "Start Auto Play";
+				AutoPlayTimer.Stop();
+			}
+		}
 	}
 }
+

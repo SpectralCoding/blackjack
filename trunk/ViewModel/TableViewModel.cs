@@ -30,6 +30,7 @@ namespace BlackJack.ViewModel {
 	public class TableViewModel : ViewModelBase {
 		#region Private ViewModel Fields
 		private TableModel m_TableModel;
+		private long RoundCount = 0;
 		#endregion
 
 		#region Public ViewModel Properties
@@ -40,6 +41,15 @@ namespace BlackJack.ViewModel {
 			set {
 				m_TableModel.BenchmarkViewModel = value;
 				OnPropertyChanged("BenchmarkVM");
+			}
+		}
+		public ResourcesViewModel ResourcesVM {
+			get {
+				return m_TableModel.ResourcesViewModel;
+			}
+			set {
+				m_TableModel.ResourcesViewModel = value;
+				OnPropertyChanged("ResourcesViewModel");
 			}
 		}
 		public DealerViewModel DealerVM {
@@ -239,6 +249,7 @@ namespace BlackJack.ViewModel {
 		public TableViewModel() {
 			#region Member Instantiation
 			m_TableModel = new TableModel();
+			m_TableModel.ResourcesViewModel = new ResourcesViewModel(this);
 			m_TableModel.BenchmarkViewModel = new BenchmarkViewModel(this);
 			m_TableModel.DealerViewModel = new DealerViewModel(this);
 			m_TableModel.GameStatisticsViewModel = new GameStatisticsViewModel(this);
@@ -250,7 +261,6 @@ namespace BlackJack.ViewModel {
 				m_TableModel.PlayerViewModel.Add(new PlayerViewModel(this, (i + 1)));
 				m_TableModel.PlayerStatisticsViewModel.Add(new PlayerStatisticsViewModel(this, (i + 1)));
 			}
-			m_TableModel.PlayerStrategyViewModel = new PlayerStrategyViewModel(this);
 			m_TableModel.ShoeViewModel = new ShoeViewModel(this);
 			#endregion
 			CurrentPlayerVM = new PlayerViewModel(this, -1);
@@ -314,7 +324,7 @@ namespace BlackJack.ViewModel {
 					if (PlayerVM[player].PlayerMode != PlayerMode.NotPlaying) {
 						for (int hand = 0; hand < 4; hand++) {
 							if (PlayerVM[player].PlayerHandVM[hand].HandMode != HandMode.NotPlaying) {
-								if (PlayerVM[player].PlayerHandVM[hand].Hand.Count < 2) {
+								if (PlayerVM[player].PlayerHandVM[hand].Hand.Count == 0) {
 									PlayerVM[player].PlayerHandVM[hand].RecieveCard(ShoeVM.DrawCard());
 									return;
 								}
@@ -325,7 +335,20 @@ namespace BlackJack.ViewModel {
 				if (DealerVM.DealerHandVM.Hand.Count == 0) {
 					DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), false);
 					return;
-				} else if (DealerVM.DealerHandVM.Hand.Count == 1) {
+				}
+				for (int player = 0; player < 7; player++) {
+					if (PlayerVM[player].PlayerMode != PlayerMode.NotPlaying) {
+						for (int hand = 0; hand < 4; hand++) {
+							if (PlayerVM[player].PlayerHandVM[hand].HandMode != HandMode.NotPlaying) {
+								if (PlayerVM[player].PlayerHandVM[hand].Hand.Count == 1) {
+									PlayerVM[player].PlayerHandVM[hand].RecieveCard(ShoeVM.DrawCard());
+									return;
+								}
+							}
+						}
+					}
+				}
+				if (DealerVM.DealerHandVM.Hand.Count == 1) {
 					DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), true);
 					return;
 				}
@@ -378,6 +401,8 @@ namespace BlackJack.ViewModel {
 						}
 						DealerVM.Reset();
 						CanDealCards = true;
+						RoundCount++;
+						if (RoundCount % 10 == 0) { Console.WriteLine(RoundCount); }
 						return;
 					}
 				}
@@ -387,6 +412,9 @@ namespace BlackJack.ViewModel {
 		public void DealerPlay() {
 			DealerVM.Play();
 			DealerVM.IsActive = false;
+			if (ShoeVM.NeedToShuffle) {
+				ShoeVM.ResetShoe();
+			}
 		}
 		#endregion
 
@@ -435,7 +463,26 @@ namespace BlackJack.ViewModel {
 		}
 
 		public void PlayerPlayStrategy() {
-			PlayerStand();
+			switch (CurrentPlayerHandVM.GetSuggestedAction()) {
+				case PlayerAction.Stand:
+					PlayerStand();
+					break;
+				case PlayerAction.Surrender:
+					PlayerSurrender();
+					break;
+				case PlayerAction.Hit:
+					PlayerHit();
+					break;
+				case PlayerAction.DoubleDown:
+					PlayerDoubleDown();
+					break;
+				case PlayerAction.DoubleForLess:
+					PlayerDoubleForLess();
+					break;
+				case PlayerAction.Split:
+					PlayerSplit();
+					break;
+			}
 		}
 		#endregion
 		#endregion

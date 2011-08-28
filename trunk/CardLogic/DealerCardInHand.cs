@@ -27,9 +27,9 @@ namespace BlackJack.CardLogic {
 	public class DealerCardInHand : ViewModelBase {
 		#region Private Fields
 		private Card m_Card;
-		private BitmapSource m_CardImage;
 		private Point m_Position = new Point(0, 0);
 		private DealerHandViewModel m_Parent;
+		private TableViewModel m_MasterParent;
 		private bool m_IsShowing;
 		#endregion
 		
@@ -56,11 +56,11 @@ namespace BlackJack.CardLogic {
 		/// </summary>
 		public BitmapSource CardImage {
 			get {
-				return m_CardImage;
-			}
-			private set {
-				m_CardImage = value;
-				OnPropertyChanged("CardImage");
+				if (IsShowing) {
+					return m_MasterParent.ResourcesVM.CardImages[m_Card.ShortTitle];
+				} else {
+					return m_MasterParent.ResourcesVM.CardImages["Back_Red"];
+				}
 			}
 		}
 		public bool IsShowing {
@@ -70,7 +70,7 @@ namespace BlackJack.CardLogic {
 			set {
 				if (m_IsShowing != value) {
 					m_IsShowing = value;
-					CardImage = GenerateCardImage();
+					OnPropertyChanged("CardImage");
 					OnPropertyChanged("CardImage");
 					OnPropertyChanged("IsShowing");
 				}
@@ -84,34 +84,12 @@ namespace BlackJack.CardLogic {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the Parent object.</param>
 		/// <param name="BaseCard">The card in which to hold this class's data.</param>
-		public DealerCardInHand(DealerHandViewModel Parent, Card BaseCard, bool ShowCard) {
-			m_Card = BaseCard;
+		public DealerCardInHand(DealerHandViewModel Parent, TableViewModel MasterParent, Card BaseCard, bool ShowCard) {
+			m_MasterParent = MasterParent;
 			m_Parent = Parent;
+			m_Card = BaseCard;
 			m_IsShowing = ShowCard;
-			CardImage = GenerateCardImage();
-		}
-		#endregion
-
-		#region Private Methods
-		/// <summary>
-		/// Generates a card image based on the card's properties.
-		/// </summary>
-		/// <returns>A BitmapSource object containing the Bitmap representing the card.</returns>
-		private BitmapSource GenerateCardImage() {
-			Stream TempStream;
-			if (m_IsShowing) {
-				TempStream = this.GetType().Assembly.GetManifestResourceStream("BlackJack.Resources.CardImages.Card_" + m_Card.ShortTitle + ".gif");
-			} else {
-				TempStream = this.GetType().Assembly.GetManifestResourceStream("BlackJack.Resources.CardImages.Card_Back_Red.gif");
-			}
-			System.Drawing.Bitmap sourceBMP = new System.Drawing.Bitmap(TempStream);
-			BitmapSource tempBitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-				sourceBMP.GetHbitmap(),
-				IntPtr.Zero,
-				System.Windows.Int32Rect.Empty,
-				BitmapSizeOptions.FromWidthAndHeight(sourceBMP.Width, sourceBMP.Height)
-			);
-			return tempBitmapSource;
+			OnPropertyChanged("CardImage");
 		}
 		#endregion
 

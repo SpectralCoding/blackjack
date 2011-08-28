@@ -43,6 +43,14 @@ namespace BlackJack.Controls {
 			m_PlayerHandViewModel = (PlayerHandViewModel)DataContext;
 		}
 
+		private void PlayerTableHandUC_TargetUpdated(object sender, DataTransferEventArgs e) {
+			System.Windows.Forms.MessageBox.Show("lol");
+		}
+
+		private void PlayerTableHandUC_SourceUpdated(object sender, DataTransferEventArgs e) {
+			System.Windows.Forms.MessageBox.Show("lol");
+		}
+
 	}
 
 	[ValueConversion(typeof(bool), typeof(int))]

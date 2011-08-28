@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="HouseLogic\DealerHandModel.cs" />
     <Compile Include="PlayerLogic\PlayerHandModel.cs" />
+    <Compile Include="Utilities\ResourcesModel.cs" />
     <Compile Include="ViewModel\BenchmarkViewModel.cs" />
     <Compile Include="ViewModel\DealerHandViewModel.cs" />
     <Compile Include="ViewModel\PlayerHandViewModel.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="ViewModel\PlayerStatisticsViewModel.cs" />
     <Compile Include="ViewModel\PlayerStrategyViewModel.cs" />
     <Compile Include="ViewModel\PlayerViewModel.cs" />
+    <Compile Include="ViewModel\ResourcesViewModel.cs" />
     <Compile Include="ViewModel\ShoeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="Controls\BlackJackTable.xaml">

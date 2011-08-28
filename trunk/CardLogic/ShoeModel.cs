@@ -24,5 +24,7 @@ namespace BlackJack.CardLogic {
 		public Card[] ShoeContents;
 		public int ShoePosition { get; set; }
 		public BitmapSource ShoeBitmapSource { get; set; }
+		public bool NeedToShuffle { get; set; }
+		public bool IsBenchmark { get; set; }
 	}
 }

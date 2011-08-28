@@ -223,7 +223,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard, bool ShowCard) {
-			Hand.Add(new DealerCardInHand(this, DealtCard, ShowCard));
+			Hand.Add(new DealerCardInHand(this, m_ParentMasterViewModel, DealtCard, ShowCard));
 			CalculateCount();
 			SetCardPositions();
 		}

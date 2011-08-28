@@ -28,6 +28,7 @@ namespace BlackJack.TableLogic {
 	/// </summary>
 	public sealed class TableModel {
 		public BenchmarkViewModel BenchmarkViewModel { get; set; }
+		public ResourcesViewModel ResourcesViewModel { get; set; }
 		public DealerViewModel DealerViewModel { get; set; }
 		public GameStatisticsViewModel GameStatisticsViewModel { get; set; }
 		public HouseRulesViewModel HouseRulesViewModel { get; set; }

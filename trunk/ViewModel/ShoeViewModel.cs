@@ -19,7 +19,6 @@ namespace BlackJack.ViewModel {
 		#region Private Fields
 		private ShoeModel m_ShoeModel;
 		private TableViewModel m_ParentMasterViewModel;
-		private bool m_IsBenchmark = false;
 		#endregion
 
 		#region Public Properties
@@ -52,6 +51,26 @@ namespace BlackJack.ViewModel {
 		public int ShoeBitmapWidth {
 			get { return NumberOfCards * 15; }
 		}
+
+		public bool NeedToShuffle {
+			get {
+				return m_ShoeModel.NeedToShuffle;
+			}
+			set {
+				m_ShoeModel.NeedToShuffle = value;
+				OnPropertyChanged("NeedToShuffle");
+			}
+		}
+
+		public bool IsBenchmark {
+			get {
+				return m_ShoeModel.IsBenchmark;
+			}
+			set {
+				m_ShoeModel.IsBenchmark = value;
+				OnPropertyChanged("IsBenchmark");
+			}
+		}
 		#endregion
 
 		#region Constructors
@@ -61,7 +80,7 @@ namespace BlackJack.ViewModel {
 		public ShoeViewModel(TableViewModel Parent, bool IsBenchmark = false) {
 			m_ParentMasterViewModel = Parent;
 			m_ShoeModel = new ShoeModel();
-			m_IsBenchmark = IsBenchmark;
+			IsBenchmark = false;
 			ResetShoe();
 		}
 		#endregion
@@ -88,12 +107,14 @@ namespace BlackJack.ViewModel {
 				m_ShoeModel.ShoeContents[x] = m_ShoeModel.ShoeContents[x - 1];
 			}
 			m_ShoeModel.ShoeContents[CutCardPosition] = new Card(CardType.CutCard, CardSuit.Spade);
-			if (!m_IsBenchmark) {
-				GenerateShoeImage();
+			if (!IsBenchmark) {
+				//GenerateShoeImage();
 				m_ParentMasterViewModel.LoggingVM.AddItem(LogActionType.ShoeShuffle, this);
 				Position = 0;
+				NeedToShuffle = false;
 			}
 		}
+
 
 		/// <summary>
 		/// Draws a card from the shoe and advances the shoe position.
@@ -102,7 +123,8 @@ namespace BlackJack.ViewModel {
 		public Card DrawCard() {
 			Position++;
 			if (m_ShoeModel.ShoeContents[Position - 1].Type == CardType.CutCard) {
-				ResetShoe();
+				DrawCard();
+				NeedToShuffle = true;
 				return DrawCard();
 			} else {
 				return m_ShoeModel.ShoeContents[Position - 1];
@@ -113,16 +135,24 @@ namespace BlackJack.ViewModel {
 		#region Private Methods
 		private void GenerateShoeImage() {
 			Bitmap tempBMP = new Bitmap((NumberOfCards * 15), 83);
-			Bitmap sourceBMP;
 			Graphics gfx = Graphics.FromImage(tempBMP);
 			Rectangle sourceRect = new Rectangle(new Point(0, 0), new Size(15, 83));
 			int i = 0;
 			Stream TempStream;
 			foreach (Card CurrentCard in Contents) {
 				TempStream = this.GetType().Assembly.GetManifestResourceStream("BlackJack.Resources.CardImages.Card_" + CurrentCard.ShortTitle + ".gif");
-				sourceBMP = new Bitmap(TempStream);
-				gfx.DrawImage(sourceBMP, i, 0, sourceRect, GraphicsUnit.Pixel);
+				//sourceBMP = ;
+				Bitmap bitmap;
+				using (MemoryStream outStream = new MemoryStream()) {
+					BitmapEncoder enc = new BmpBitmapEncoder();
+					enc.Frames.Add(BitmapFrame.Create(m_ParentMasterViewModel.ResourcesVM.CardImages[CurrentCard.ShortTitle]));
+					enc.Save(outStream);
+					bitmap = new System.Drawing.Bitmap(outStream);
+				}
+				gfx.DrawImage(bitmap, i, 0, sourceRect, GraphicsUnit.Pixel);
 				i += 15;
+				DeleteObject(bitmap.GetHbitmap());
+				TempStream.Dispose();
 			}
 			gfx.DrawLine(new Pen(Color.Black), new Point(0, 82), new Point(tempBMP.Width - 1, 82));
 			gfx.DrawLine(new Pen(Color.Black), new Point(tempBMP.Width - 1, 0), new Point(tempBMP.Width - 1, 82));
@@ -135,7 +165,7 @@ namespace BlackJack.ViewModel {
 			);
 			OnPropertyChanged("ShoeBitmapSource");
 			OnPropertyChanged("ShoeBitmapWidth");
-			tempBMP.Dispose();
+			DeleteObject(tempBMP.GetHbitmap());
 		}
 
 		/// <summary>

@@ -21,6 +21,10 @@ namespace BlackJack.ViewModel {
 	/// Is a base class for other View Models.
 	/// </summary>
 	public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable {
+
+		[System.Runtime.InteropServices.DllImport("gdi32.dll")]
+		public static extern bool DeleteObject(IntPtr hObject);
+
 		#region Constructor
 		/// <summary>
 		/// Initializes a new instance of the ViewModelBase class.

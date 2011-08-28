@@ -16,16 +16,13 @@ using System.Text;
 
 namespace BlackJack.Utilities {
 
-	public enum CurrentPosition {
-		Player1,
-		Player2,
-		Player3,
-		Player4,
-		Player5,
-		Player6,
-		Player7,
-		Dealer,
-		None
+	public enum PlayerAction {
+		Stand,
+		Hit,
+		Split,
+		Surrender,
+		DoubleDown,
+		DoubleForLess
 	}
 
 	/// <summary>

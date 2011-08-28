@@ -29,6 +29,7 @@ namespace BlackJack.ViewModel {
 		private TableViewModel m_ParentMasterViewModel;
 		private PlayerViewModel m_ParentPlayerViewModel;
 		private PlayerHandModel m_PlayerHandModel;
+		private PlayerStrategyViewModel m_PlayerStrategyViewModel;
 		#endregion
 
 		#region Public Properties
@@ -242,6 +243,7 @@ namespace BlackJack.ViewModel {
 			m_ParentMasterViewModel = ParentTVM;
 			m_ParentPlayerViewModel = ParentPVM;
 			m_PlayerHandModel = new PlayerHandModel();
+			m_PlayerStrategyViewModel = new PlayerStrategyViewModel(m_ParentMasterViewModel, this);
 		}
 		#endregion
 
@@ -341,6 +343,9 @@ namespace BlackJack.ViewModel {
 			IsActive = false;
 			CanSurrender = false;
 			HandMode = HandMode.NotPlaying;
+			for (int i = 0; i < Hand.Count; i++) {
+				Hand[i] = null;
+			}
 			Hand.Clear();
 			CalculateCount();
 		}
@@ -358,7 +363,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard) {
-			Hand.Add(new CardInHand(this, DealtCard));
+			Hand.Add(new CardInHand(this, m_ParentMasterViewModel, DealtCard));
 			if (Hand.Count == 2) {
 				CanSurrender = true;
 			} else {
@@ -388,6 +393,11 @@ namespace BlackJack.ViewModel {
 			CalculateCount();
 			OnPropertyChanged("Scale");
 			return tempCard;
+		}
+
+		public PlayerAction GetSuggestedAction() {
+
+			return PlayerAction.Stand;
 		}
 		#endregion
 	}
