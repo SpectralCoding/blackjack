@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -38,6 +39,7 @@ namespace BlackJack {
 	public partial class MainWindow : Window {
 		private TableViewModel TableViewModel;
 		private DispatcherTimer AutoPlayTimer = new DispatcherTimer();
+		private TableViewModel BlankTVM = new TableViewModel();
 
 		#region Delegates
 		#endregion
@@ -150,14 +152,137 @@ namespace BlackJack {
 		}
 
 		private void AutoPlayToggle_Click(object sender, RoutedEventArgs e) {
+			if (FastModeChk.IsChecked == true) {
+				BlackJackTable.DataContext = BlankTVM;
+				DealerControlsTabItem.DataContext = BlankTVM;
+				PlayerControlsTabItem.DataContext = BlankTVM.CurrentPlayerHandVM;
+			} else {
+				BlackJackTable.DataContext = TableViewModel;
+				DealerControlsTabItem.DataContext = TableViewModel;
+				PlayerControlsTabItem.DataContext = TableViewModel.CurrentPlayerHandVM;
+			}
 			if ((string)AutoPlayToggle.Content == "Start Auto Play") {
 				AutoPlayToggle.Content = "Stop Auto Play";
+				if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.BlazingFast) {
+					AutoPlayTimer.Interval = TimeSpan.FromTicks(1);
+				} else if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.Fast) {
+					AutoPlayTimer.Interval = TimeSpan.FromMilliseconds(100);
+				} else if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.Medium) {
+					AutoPlayTimer.Interval = TimeSpan.FromMilliseconds(250);
+				} else if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.Screensaver) {
+					AutoPlayTimer.Interval = TimeSpan.FromMilliseconds(500);
+				}
 				AutoPlayTimer.Start();
 			} else {
 				AutoPlayToggle.Content = "Start Auto Play";
 				AutoPlayTimer.Stop();
 			}
 		}
+
+		private void FastModeChk_Checked(object sender, RoutedEventArgs e) {
+			if (TableViewModel.GameStatisticsVM.CardsDealt > 0) {
+				BlackJackTable.DataContext = BlankTVM;
+				DealerControlsTabItem.DataContext = BlankTVM;
+				PlayerControlsTabItem.DataContext = BlankTVM.CurrentPlayerHandVM;
+			}
+		}
+
+		private void FastModeChk_Unchecked(object sender, RoutedEventArgs e) {
+			BlackJackTable.DataContext = TableViewModel;
+			DealerControlsTabItem.DataContext = TableViewModel;
+			PlayerControlsTabItem.DataContext = TableViewModel.CurrentPlayerHandVM;
+		}
 	}
+
+	#region Converters
+	#region SplitAcesEnumToString
+	[ValueConversion(typeof(SplitAcesLimit), typeof(string))]
+	public class SplitAcesEnumToString : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			SplitAcesLimit SplitAcesLimitEnum = (SplitAcesLimit)value;
+			if (SplitAcesLimitEnum == SplitAcesLimit.Once) {
+				return "One Time";
+			} else if (SplitAcesLimitEnum == SplitAcesLimit.Twice) {
+				return "Two Times";
+			} else {
+				return null;
+			}
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			string SplitAcesLimitStr = (string)value;
+			if (SplitAcesLimitStr == "One Time") {
+				return SplitAcesLimit.Once;
+			} else if (SplitAcesLimitStr == "Two Times") {
+				return SplitAcesLimit.Twice;
+			} else if (SplitAcesLimitStr == "Three Times") {
+				return SplitAcesLimit.Thrice;
+			}
+			return null;
+		}
+	}
+	#endregion
+	#region DealerHitModeEnumToString
+	[ValueConversion(typeof(DealerHitMode), typeof(string))]
+	public class DealerHitModeEnumToString : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			DealerHitMode DealerHitModeEnum = (DealerHitMode)value;
+			if (DealerHitModeEnum == DealerHitMode.OnSixteen) {
+				return "16";
+			} else if (DealerHitModeEnum == DealerHitMode.OnSoftSeventeen) {
+				return "Soft 17";
+			} else {
+				return null;
+			}
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			string DealerHitModeStr = (string)value;
+			if (DealerHitModeStr == "16") {
+				return DealerHitMode.OnSixteen;
+			} else if (DealerHitModeStr == "Soft 17") {
+				return DealerHitMode.OnSoftSeventeen;
+			}
+			return null;
+		}
+	}
+	#endregion
+	#region AutoPlaySpeedToString
+	[ValueConversion(typeof(AutoPlaySpeed), typeof(string))]
+	public class AutoPlaySpeedToString : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			AutoPlaySpeed AutoPlaySpeedEnum = (AutoPlaySpeed)value;
+			if (AutoPlaySpeedEnum == AutoPlaySpeed.BlazingFast) {
+				return "Blazing Fast";
+			} else if (AutoPlaySpeedEnum == AutoPlaySpeed.Fast) {
+				return "Fast";
+			} else if (AutoPlaySpeedEnum == AutoPlaySpeed.Medium) {
+				return "Medium";
+			} else if (AutoPlaySpeedEnum == AutoPlaySpeed.Screensaver) {
+				return "Screensaver";
+			} else {
+				return null;
+			}
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			string AutoPlaySpeedStr = (string)value;
+			if (AutoPlaySpeedStr == "Blazing Fast") {
+				return AutoPlaySpeed.BlazingFast;
+			} else if (AutoPlaySpeedStr == "Fast") {
+				return AutoPlaySpeed.Fast;
+			} else if (AutoPlaySpeedStr == "Medium") {
+				return AutoPlaySpeed.Medium;
+			} else if (AutoPlaySpeedStr == "Screensaver") {
+				return AutoPlaySpeed.Screensaver;
+			} else {
+				return null;
+			}
+		}
+	}
+	#endregion
+	#endregion
+
+
 }
 

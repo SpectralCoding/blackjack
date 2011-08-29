@@ -107,11 +107,11 @@ namespace BlackJack.ViewModel {
 		public bool CanSplit(int CardNum) {
 			if (PlayerMode != PlayerMode.SplitThrice) {
 				if (CardNum == 0) {
-					if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Once) {
+					if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Once) {
 						if (AceSplitCount == 0) { return true; } else { return false; }
-					} else if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Twice) {
+					} else if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Twice) {
 						if (AceSplitCount < 2) { return true; } else { return false; }
-					} else if (m_Parent.HouseRulesVM.SplitAcesLimitEnum == SplitAcesLimit.Thrice) {
+					} else if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Thrice) {
 						if (AceSplitCount < 3) { return true; } else { return false; }
 					}
 				} else {

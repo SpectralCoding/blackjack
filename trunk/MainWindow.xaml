@@ -15,14 +15,32 @@
 	Height="768"
 	Icon="Resources/HeartIcon.ico"
 	WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" FlowDirection="LeftToRight">
-    <Grid Loaded="Grid_Loaded">
+	<Window.Resources>
+		<local:SplitAcesEnumToString x:Key="SplitAcesEnumToString" />
+		<local:DealerHitModeEnumToString x:Key="DealerHitModeEnumToString" />
+		<local:AutoPlaySpeedToString x:Key="AutoPlaySpeedToString" />
+	</Window.Resources>
+	<Grid Loaded="Grid_Loaded">
     	<Grid.Background>
     		<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
     	</Grid.Background>
     	<my:BlackJackTable Margin="8,8,200,122" UseLayoutRounding="True" x:Name="BlackJackTable" />
     	<TabControl x:Name="StatsTabControl" HorizontalAlignment="Right" Margin="0,8,8,122" Width="188">
-    		<TabItem x:Name="HouseStatsTabItem" Header="House Stats">
-    			<Grid Background="White"></Grid>
+    		<TabItem x:Name="HouseStatsTabItem" Header="House Stats" DataContext="{Binding Path=GameStatisticsVM}">
+    			<Grid Background="White">
+					<Label Content="Cards Dealt:" HorizontalAlignment="Left" Name="label1" VerticalAlignment="Top" Width="89" HorizontalContentAlignment="Right" Padding="0" Height="16" />
+					<Label Content="{Binding Path=CardsDealt}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,0,0,0" Name="HSCardsDealtLbl" VerticalAlignment="Top" Width="83" Padding="0" Height="16" />
+					<Label Content="{Binding Path=CardsDealtPerSec}" Height="16" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,19,0,0" Name="HSCardsDealtPerSecLbl" Padding="0" VerticalAlignment="Top" Width="83" />
+					<Label Content="Hands Played:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,38,0,0" Name="label3" Padding="0" VerticalAlignment="Top" Width="89" Height="16" />
+					<Label Content="{Binding Path=HandsPlayed}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,38,0,0" Name="HSHandsPlayedLbl" Padding="0" VerticalAlignment="Top" Width="83" Height="16" />
+					<Label Content="{Binding Path=HandsPlayedPerSec}" Height="16" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,57,0,0" Name="HSHandsPlayedPerSecLbl" Padding="0" VerticalAlignment="Top" Width="83" />
+					<Label Content="Rounds Played:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,76,0,0" Name="label5" Padding="0" VerticalAlignment="Top" Width="89" Height="16" />
+					<Label Content="{Binding Path=RoundsPlayed}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,76,0,0" Name="HSRoundsPlayedLbl" Padding="0" VerticalAlignment="Top" Width="83" Height="16" />
+					<Label Content="{Binding Path=RoundsPlayedPerSec}" Height="16" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,95,0,0" Name="HSRoundsPlayedPerSecLbl" Padding="0" VerticalAlignment="Top" Width="83" />
+					<Label Content="Shoes Shuffled:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,114,0,0" Name="label7" Padding="0" VerticalAlignment="Top" Width="89" Height="16" />
+					<Label Content="{Binding Path=ShoesShuffled}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,114,0,0" Name="HSShoesShuffledLbl" Padding="0" VerticalAlignment="Top" Width="83" Height="16" />
+					<Label Content="{Binding Path=ShoesShuffledPerSec}" Height="16" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,133,0,0" Name="HSShoesShuffledPerSecLbl" Padding="0" VerticalAlignment="Top" Width="83" />
+				</Grid>
 			</TabItem>
     		<TabItem x:Name="PlayerStatsTabItem" Header="Player Stats">
     			<Grid Background="White"/>
@@ -82,10 +100,9 @@
 						Margin="0,1,223,0"
 						Name="DealerHitsOnCmb"
 						SelectedIndex="0"
-						Text="{Binding DealerHitMode, Mode=TwoWay}"
+						Text="{Binding DealerHitMode, Mode=TwoWay, Converter={StaticResource DealerHitModeEnumToString}}"
 						VerticalAlignment="Top"
-						Width="70"
-					>
+						Width="70">
 						<ComboBoxItem Content="16" />
 						<ComboBoxItem Content="Soft 17" />
 					</ComboBox>
@@ -95,10 +112,9 @@
 						Margin="0,29,205,0"
 						Name="SpliceAcesLimitCmb"
 						SelectedIndex="0"
-						Text="{Binding SplitAcesLimit, Mode=TwoWay}"
+						Text="{Binding SplitAcesLimit, Mode=TwoWay, Converter={StaticResource SplitAcesEnumToString}}"
 						VerticalAlignment="Top"
-						Width="88"
-					>
+						Width="88">
 						<ComboBoxItem Content="One Time" />
 						<ComboBoxItem Content="Two Times" />
 						<ComboBoxItem Content="Three Times" />
@@ -118,6 +134,28 @@
 						VerticalAlignment="Top"
 						IsChecked="{Binding CasinoMode, Mode=TwoWay}"
 						/>
+					<ComboBox
+						HorizontalAlignment="Right" 
+						Margin="0,29,0,0" 
+						Name="AutoPlaySpeedCmb" 
+						SelectedIndex="0" 
+						Text="{Binding AutoPlaySpeed, Mode=TwoWay, Converter={StaticResource AutoPlaySpeedToString}}" 
+						VerticalAlignment="Top" 
+						Width="105">
+						<ComboBoxItem Content="Blazing Fast" />
+						<ComboBoxItem Content="Fast" />
+						<ComboBoxItem Content="Medium" />
+						<ComboBoxItem Content="Screensaver" />
+					</ComboBox>
+					<Label Content="AutoPlay Speed:" Height="23" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="188,0,0,49" Padding="0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Width="88" />
+					<CheckBox
+						Content="Fast Mode" 
+						Height="16" 
+						HorizontalAlignment="Left" 
+						IsChecked="{Binding FastMode, Mode=TwoWay}" 
+						Margin="300,68,0,0" 
+						Name="FastModeChk" 
+						VerticalAlignment="Top" Checked="FastModeChk_Checked" Unchecked="FastModeChk_Unchecked" />
 				</Grid>
     		</TabItem>
     		<TabItem x:Name="ShoeContentsTabItem" Header="Shoe Contents">

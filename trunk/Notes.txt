@@ -7,6 +7,7 @@
 	Implement Realistic Gameplay (Tough!)
 		Cards collected in which order
 		When the deck is shuffled
+		Need to still add dealer rules.
 		This will have to probably run in it's own thread or something.
 			Allowing timings and Thread.Sleep() locks up the UI thread.
 			This could be a pretty cool screensaver mode.

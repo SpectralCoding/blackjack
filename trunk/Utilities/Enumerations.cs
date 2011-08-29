@@ -15,6 +15,12 @@ using System.Linq;
 using System.Text;
 
 namespace BlackJack.Utilities {
+	public enum AutoPlaySpeed {
+		BlazingFast,
+		Fast,
+		Medium,
+		Screensaver
+	}
 
 	public enum PlayerAction {
 		Stand,

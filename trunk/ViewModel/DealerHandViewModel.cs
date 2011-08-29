@@ -206,6 +206,10 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		public void Reset() {
 			IsActive = false;
+			if (Hand.Count > 0) {
+				m_ParentMasterViewModel.GameStatisticsVM.HandsPlayed++;
+				m_ParentMasterViewModel.GameStatisticsVM.RoundsPlayed++;
+			}
 			Hand.Clear();
 			CalculateCount();
 		}
@@ -224,6 +228,7 @@ namespace BlackJack.ViewModel {
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard, bool ShowCard) {
 			Hand.Add(new DealerCardInHand(this, m_ParentMasterViewModel, DealtCard, ShowCard));
+			m_ParentMasterViewModel.GameStatisticsVM.CardsDealt++;
 			CalculateCount();
 			SetCardPositions();
 		}

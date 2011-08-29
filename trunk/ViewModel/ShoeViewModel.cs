@@ -107,6 +107,7 @@ namespace BlackJack.ViewModel {
 				m_ShoeModel.ShoeContents[x] = m_ShoeModel.ShoeContents[x - 1];
 			}
 			m_ShoeModel.ShoeContents[CutCardPosition] = new Card(CardType.CutCard, CardSuit.Spade);
+			m_ParentMasterViewModel.GameStatisticsVM.ShoesShuffled++;
 			if (!IsBenchmark) {
 				//GenerateShoeImage();
 				m_ParentMasterViewModel.LoggingVM.AddItem(LogActionType.ShoeShuffle, this);
@@ -138,11 +139,8 @@ namespace BlackJack.ViewModel {
 			Graphics gfx = Graphics.FromImage(tempBMP);
 			Rectangle sourceRect = new Rectangle(new Point(0, 0), new Size(15, 83));
 			int i = 0;
-			Stream TempStream;
+			Bitmap bitmap;
 			foreach (Card CurrentCard in Contents) {
-				TempStream = this.GetType().Assembly.GetManifestResourceStream("BlackJack.Resources.CardImages.Card_" + CurrentCard.ShortTitle + ".gif");
-				//sourceBMP = ;
-				Bitmap bitmap;
 				using (MemoryStream outStream = new MemoryStream()) {
 					BitmapEncoder enc = new BmpBitmapEncoder();
 					enc.Frames.Add(BitmapFrame.Create(m_ParentMasterViewModel.ResourcesVM.CardImages[CurrentCard.ShortTitle]));
@@ -151,8 +149,6 @@ namespace BlackJack.ViewModel {
 				}
 				gfx.DrawImage(bitmap, i, 0, sourceRect, GraphicsUnit.Pixel);
 				i += 15;
-				DeleteObject(bitmap.GetHbitmap());
-				TempStream.Dispose();
 			}
 			gfx.DrawLine(new Pen(Color.Black), new Point(0, 82), new Point(tempBMP.Width - 1, 82));
 			gfx.DrawLine(new Pen(Color.Black), new Point(tempBMP.Width - 1, 0), new Point(tempBMP.Width - 1, 82));

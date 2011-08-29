@@ -169,6 +169,15 @@ namespace BlackJack.ViewModel {
 				OnPropertyChanged("GameInProgress");
 			}
 		}
+		public DateTime StartTime {
+			get {
+				return m_TableModel.StartTime;
+			}
+			set {
+				m_TableModel.StartTime = value;
+				OnPropertyChanged("StartTime");
+			}
+		}
 		#endregion
 
 		#region Private Methods
@@ -252,9 +261,9 @@ namespace BlackJack.ViewModel {
 			m_TableModel.ResourcesViewModel = new ResourcesViewModel(this);
 			m_TableModel.BenchmarkViewModel = new BenchmarkViewModel(this);
 			m_TableModel.DealerViewModel = new DealerViewModel(this);
-			m_TableModel.GameStatisticsViewModel = new GameStatisticsViewModel(this);
 			m_TableModel.HouseRulesViewModel = new HouseRulesViewModel(this);
 			m_TableModel.LoggingViewModel = new LoggingViewModel(this);
+			m_TableModel.GameStatisticsViewModel = new GameStatisticsViewModel(this);
 			m_TableModel.PlayerViewModel = new ObservableCollection<PlayerViewModel>();
 			m_TableModel.PlayerStatisticsViewModel = new ObservableCollection<PlayerStatisticsViewModel>();
 			for (int i = 0; i < 7; i++) {
@@ -280,8 +289,10 @@ namespace BlackJack.ViewModel {
 			//		Everyone's Cash
 			//		etc...
 			CanStartGame = false;
-			ShoeVM.ResetShoe();
+			StartTime = DateTime.Now;
 			ClearTable();
+			GameStatisticsVM.Reset();
+			ShoeVM.ResetShoe();
 			CanStartGame = true;
 			GameInProgress = true;
 		}
@@ -402,7 +413,7 @@ namespace BlackJack.ViewModel {
 						DealerVM.Reset();
 						CanDealCards = true;
 						RoundCount++;
-						if (RoundCount % 10 == 0) { Console.WriteLine(RoundCount); }
+						//if (RoundCount % 10 == 0) { Console.WriteLine(RoundCount); }
 						return;
 					}
 				}

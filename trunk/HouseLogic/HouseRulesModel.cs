@@ -31,6 +31,8 @@ namespace BlackJack.HouseLogic {
 		public int BlackJackPayNumerator { get; set; }
 		public int BlackJackPayDenominator { get; set; }
 		public bool CasinoMode { get; set; }
+		public AutoPlaySpeed AutoPlaySpeed { get; set; }
+		public bool FastMode { get; set; }
 
 		/// <summary>
 		/// Initializes a new instance of the HouseRulesModel class.
@@ -42,10 +44,12 @@ namespace BlackJack.HouseLogic {
 			ShoePenetration = 0.75;
 			ShuffleMode = ShuffleMode.FisherYates;
 			DealerHitMode = DealerHitMode.OnSixteen;
-			SplitAcesLimit = SplitAcesLimit.Twice;
+			SplitAcesLimit = SplitAcesLimit.Thrice;
+			AutoPlaySpeed = AutoPlaySpeed.BlazingFast;
 			BlackJackPayNumerator = 3;
 			BlackJackPayDenominator = 2;
 			CasinoMode = false;
+			FastMode = false;
 		}
 	}
 }

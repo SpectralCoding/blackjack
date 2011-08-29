@@ -73,6 +73,7 @@
       <DependentUpon>PlayerTableHand.xaml</DependentUpon>
     </Compile>
     <Compile Include="HouseLogic\DealerHandModel.cs" />
+    <Compile Include="HouseLogic\GameStatisticsModel.cs" />
     <Compile Include="PlayerLogic\PlayerHandModel.cs" />
     <Compile Include="Utilities\ResourcesModel.cs" />
     <Compile Include="ViewModel\BenchmarkViewModel.cs" />

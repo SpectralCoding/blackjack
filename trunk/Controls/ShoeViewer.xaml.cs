@@ -58,7 +58,6 @@ namespace BlackJack
 		/// </summary>
 		public ShoeViewer() {
 			this.InitializeComponent();
-			Console.WriteLine(DataContext);
 		}
 
 		/// <summary>

@@ -343,8 +343,8 @@ namespace BlackJack.ViewModel {
 			IsActive = false;
 			CanSurrender = false;
 			HandMode = HandMode.NotPlaying;
-			for (int i = 0; i < Hand.Count; i++) {
-				Hand[i] = null;
+			if (Hand.Count > 0) {
+				m_ParentMasterViewModel.GameStatisticsVM.HandsPlayed++;
 			}
 			Hand.Clear();
 			CalculateCount();
@@ -364,6 +364,7 @@ namespace BlackJack.ViewModel {
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard) {
 			Hand.Add(new CardInHand(this, m_ParentMasterViewModel, DealtCard));
+			m_ParentMasterViewModel.GameStatisticsVM.CardsDealt++;
 			if (Hand.Count == 2) {
 				CanSurrender = true;
 			} else {

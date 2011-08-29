@@ -89,74 +89,24 @@ namespace BlackJack.ViewModel {
 		/// <summary>
 		/// Gets or sets a value indicating the dealer's hit mode
 		/// </summary>
-		public DealerHitMode DealerHitModeEnum {
+		public DealerHitMode DealerHitMode {
 			get {
 				return m_HouseRulesModel.DealerHitMode;
 			}
 			set {
 				m_HouseRulesModel.DealerHitMode = value;
-				OnPropertyChanged("DealerHitModeEnum");
-				OnPropertyChanged("DealerHitMode");
-			}
-		}
-		/// <summary>
-		/// Gets or sets a value indicating split limit for aces
-		/// </summary>
-		public SplitAcesLimit SplitAcesLimitEnum {
-			get {
-				return m_HouseRulesModel.SplitAcesLimit;
-			}
-			set {
-				m_HouseRulesModel.SplitAcesLimit = value;
-				OnPropertyChanged("SplitAcesLimitEnum");
-				OnPropertyChanged("SplitAcesLimit");
-			}
-		}
-		/// <summary>
-		/// Gets or sets a value indicating the string representation of the dealer's hit mode.
-		/// </summary>
-		public string DealerHitMode {
-			get {
-				if (m_HouseRulesModel.DealerHitMode == Utilities.DealerHitMode.OnSixteen) {
-					return "16";
-				} else if (m_HouseRulesModel.DealerHitMode == Utilities.DealerHitMode.OnSoftSeventeen) {
-					return "Soft 17";
-				} else {
-					return null;
-				}
-			}
-			set {
-				if (value == "16") {
-					m_HouseRulesModel.DealerHitMode = Utilities.DealerHitMode.OnSixteen;
-				} else if (value == "Soft 17") {
-					m_HouseRulesModel.DealerHitMode = Utilities.DealerHitMode.OnSoftSeventeen;
-				}
-				OnPropertyChanged("DealerHitModeEnum");
 				OnPropertyChanged("DealerHitMode");
 			}
 		}
 		/// <summary>
 		/// Gets or sets a value indicating the string representation of the split limit for aces.
 		/// </summary>
-		public string SplitAcesLimit {
+		public SplitAcesLimit SplitAcesLimit {
 			get {
-				if (m_HouseRulesModel.SplitAcesLimit == Utilities.SplitAcesLimit.Once) {
-					return "One Time";
-				} else if (m_HouseRulesModel.SplitAcesLimit == Utilities.SplitAcesLimit.Twice) {
-					return "Two Times";
-				} else {
-					return null;
-				}
+				return m_HouseRulesModel.SplitAcesLimit;
 			}
 			set {
-				if (value == "One Time") {
-					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Once;
-				} else if (value == "Two Times") {
-					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Twice;
-				} else if (value == "Three Times") {
-					m_HouseRulesModel.SplitAcesLimit = Utilities.SplitAcesLimit.Thrice;
-				}
-				OnPropertyChanged("SplitAcesLimitEnum");
+				m_HouseRulesModel.SplitAcesLimit = value;
 				OnPropertyChanged("SplitAcesLimit");
 			}
 		}
@@ -191,6 +141,24 @@ namespace BlackJack.ViewModel {
 			set {
 				m_HouseRulesModel.CasinoMode = value;
 				OnPropertyChanged("CasinoMode");
+			}
+		}
+		public AutoPlaySpeed AutoPlaySpeed {
+			get {
+				return m_HouseRulesModel.AutoPlaySpeed;
+			}
+			set {
+				m_HouseRulesModel.AutoPlaySpeed = value;
+				OnPropertyChanged("AutoPlaySpeed");
+			}
+		}
+		public bool FastMode {
+			get {
+				return m_HouseRulesModel.FastMode;
+			}
+			set {
+				m_HouseRulesModel.FastMode = value;
+				OnPropertyChanged("FastMode");
 			}
 		}
 		#endregion

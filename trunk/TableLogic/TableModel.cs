@@ -42,5 +42,6 @@ namespace BlackJack.TableLogic {
 		public bool CanDealCards { get; set; }
 		public bool CanStartGame { get; set; }
 		public bool GameInProgress { get; set; }
+		public DateTime StartTime { get; set; }
 	}
 }
