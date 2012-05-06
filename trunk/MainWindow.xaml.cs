@@ -152,15 +152,6 @@ namespace BlackJack {
 		}
 
 		private void AutoPlayToggle_Click(object sender, RoutedEventArgs e) {
-			if (FastModeChk.IsChecked == true) {
-				BlackJackTable.DataContext = BlankTVM;
-				DealerControlsTabItem.DataContext = BlankTVM;
-				PlayerControlsTabItem.DataContext = BlankTVM.CurrentPlayerHandVM;
-			} else {
-				BlackJackTable.DataContext = TableViewModel;
-				DealerControlsTabItem.DataContext = TableViewModel;
-				PlayerControlsTabItem.DataContext = TableViewModel.CurrentPlayerHandVM;
-			}
 			if ((string)AutoPlayToggle.Content == "Start Auto Play") {
 				AutoPlayToggle.Content = "Stop Auto Play";
 				if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.BlazingFast) {
@@ -188,10 +179,12 @@ namespace BlackJack {
 		}
 
 		private void FastModeChk_Unchecked(object sender, RoutedEventArgs e) {
+			// This is so fucked up. God damn it.
 			BlackJackTable.DataContext = TableViewModel;
 			DealerControlsTabItem.DataContext = TableViewModel;
 			PlayerControlsTabItem.DataContext = TableViewModel.CurrentPlayerHandVM;
 		}
+
 	}
 
 	#region Converters

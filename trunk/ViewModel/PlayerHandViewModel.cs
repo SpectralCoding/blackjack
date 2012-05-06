@@ -397,7 +397,6 @@ namespace BlackJack.ViewModel {
 		}
 
 		public PlayerAction GetSuggestedAction() {
-
 			return PlayerAction.Stand;
 		}
 		#endregion

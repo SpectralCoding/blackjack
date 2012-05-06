@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack", "BlackJack.csproj", "{448EE683-B8D2-4F92-8E64-368F86DEC657}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "110126 BlackJackModel", "{Misc\110126 BlackJackModel\110126 BlackJackModel.modelproj", "{33346E37-8990-4BC0-BBD2-425EBB69FCAF}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -27,6 +29,16 @@ Global
 		{448EE683-B8D2-4F92-8E64-368F86DEC657}.Release|Mixed Platforms.Build.0 = Release|x86
 		{448EE683-B8D2-4F92-8E64-368F86DEC657}.Release|x86.ActiveCfg = Release|x86
 		{448EE683-B8D2-4F92-8E64-368F86DEC657}.Release|x86.Build.0 = Release|x86
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{33346E37-8990-4BC0-BBD2-425EBB69FCAF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

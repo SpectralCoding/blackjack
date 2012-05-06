@@ -1,0 +1,1664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="fe3383c4-b06a-4282-93b0-4fb188be9f55"
+  name="PlayerLogic"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="a7f22ce1-a5c8-42b8-a33d-c898f8c36769"
+      handle="viewcode://./CodeSchema_Namespace?Namespace=BlackJack.PlayerLogic"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="19336eb8-91f7-4baa-8b14-7fa1bb81b008">
+      <profileInstance
+        Id="4a8a38d9-1624-4944-98ac-5cbe06bbb5f4"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="c13da4ae-7d6f-4541-9d9d-8a1e0fdd2a70"
+        name="PlayerHandModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="2c81d394-a802-41b4-8a2e-d94eb57bab0d"
+            handle="viewcode://./CodeSchema_Class?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9c28be67-fd89-4288-b526-e723a0583c84"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="58734fb0-a3d4-4fcd-ad1b-6ad92d25925b">
+                <propertyInstance
+                  Id="d11cc7af-2873-439b-9ccd-8b84cb6049a2"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7487c6c0-f993-4f51-92c5-3d9302ad2607">
+                <propertyInstance
+                  Id="a95dd502-7c44-47fb-8511-55650347bcf6"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ee53b7ca-6553-4061-9c19-f11ad0674462">
+                <propertyInstance
+                  Id="2e168b47-13c1-4ec4-a7fa-8dc87dfe72f3"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1b72c026-9aaa-4143-b6b4-9491453baf64">
+                <propertyInstance
+                  Id="8605361e-e3cc-47cf-aa96-ddb48fdf280a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="443edfcd-7d32-435f-988b-4277ab93ce16">
+                <propertyInstance
+                  Id="19ef47f0-43fd-4900-b3d5-0877859a5a9f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="85c3880d-5c7c-481d-9508-6cca9a87da60"
+            isDerived="false"
+            sourceEndRoleName="PlayerHandModel"
+            targetEndRoleName="Hand"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="0e0c786e-6af7-41e5-9146-a0593858e710"
+              LastKnownName="ObservableCollection&lt;CardInHand&gt;"
+              LastKnownLocation="Package8_2301.uml" />
+            <description>Property Hand references type ObservableCollection&lt;CardInHand&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="02d53768-5c73-4bb3-8471-8b2110e211eb"
+                  name="PlayerHandModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="1bb4e32f-dc04-47e6-82e3-c230d6e7bed5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="78d6a7cc-e523-4646-a33f-aa8c4db0b101"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="122685d2-9b91-4bc8-9151-96aafc8e74c7"
+                  name="Hand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="fc2f75a2-1006-4b5c-adaa-495770e42f81"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5c07ded7-3656-4364-a4cc-9d1173ca5726"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c7491ab9-2094-4ec8-911c-c4605a1a4b16"
+            isDerived="false"
+            sourceEndRoleName="PlayerHandModel"
+            targetEndRoleName="Bet"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="542c925f-b3af-428e-a56a-d0c08c009ee4"
+              LastKnownName="Decimal"
+              LastKnownLocation="Package3_2301.uml" />
+            <description>Property Bet references type Decimal.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8508bd16-2c0b-4e73-90e6-361e5acb5fa7"
+                  name="PlayerHandModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="19f19ada-4c30-4494-84c3-8f6d105a1027"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="eb905ff0-5247-4bb9-9157-617cc474b039"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e53eebc7-01b7-40a9-9bee-c7c62dab7eb5"
+                  name="Bet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d6b20dff-a78d-4ac8-a314-31582664a2b6"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e1e57e98-e24f-4555-b8c2-cd039b38c675"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7bac9d45-07e9-4cb7-bd53-36d1aa94deaa"
+            isDerived="false"
+            sourceEndRoleName="PlayerHandModel"
+            targetEndRoleName="HandMode"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="d7673a05-940a-4171-886d-510c49868366"
+              LastKnownName="HandMode"
+              LastKnownLocation="Package2_2301.uml" />
+            <description>Property HandMode references type HandMode.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="097b6e04-5fac-4a58-aa36-40e8e596de4d"
+                  name="PlayerHandModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c5b9bac2-14aa-4285-b1ca-d6e9fb60b7e1"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="aa3d69cd-37ae-4dfd-aed4-f53f8656d372"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="29e487f7-6a03-4c4f-95f1-089657288a37"
+                  name="HandMode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="377f13d1-092a-4f7d-8f92-5179b5cab4ba"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="526682a6-265c-4b98-94b1-ace359f1b4a5"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="c7f2cb8f-3c70-4d3a-a790-a10dddc6639b"
+            name="Count"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b2195a30-9b61-4ff8-9043-1e0787031b5d"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=Count"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="71df65e5-27fc-4a09-b32c-31f93cf0bed5"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49f4ec3d-9d9a-4f23-9acf-fcd6b8a2d8f8">
+                    <propertyInstance
+                      Id="9d40eddc-87eb-41fc-ab52-9791d5007d04"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5666ad17-bf89-426a-bfca-6f1084fa6bfa">
+                    <propertyInstance
+                      Id="55c2c4cc-57ab-46e8-9c04-7ff83b46f053"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c724ef3-fbd2-4fe3-ba12-409fb72efa59">
+                    <propertyInstance
+                      Id="bdb415ae-dcd6-469f-9b87-c5c778178df7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="40caafd9-c587-4e65-9ceb-5c5cac03fa0b">
+                    <propertyInstance
+                      Id="f4fd1126-13cf-4b99-b54a-ad876d88d42d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bde80948-95cf-4dd8-8e3b-77569e1436e6">
+                    <propertyInstance
+                      Id="8fd3dd16-9ee9-4172-9b35-f2d93db1dbdc"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4f5d293d-23ec-4090-8f1e-abb9e03ec4da">
+                    <propertyInstance
+                      Id="a8adb553-1992-4ec2-80f5-a4de2431bf54"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="835eccca-909c-4b74-9b84-40037ecc13a4"
+            name="Hand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6792044c-2a89-4486-acf1-dc9fee255d3a"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=Hand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c7ea8d58-252d-4685-84f1-e36eca0da23b"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c05b5e37-626b-4c2d-92a7-1e06b7f72d94">
+                    <propertyInstance
+                      Id="faacbe84-b177-48b0-8957-6836f5c30e83"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e7bc8f00-cfc6-41a2-867c-6753770eb65b">
+                    <propertyInstance
+                      Id="e642c34f-631f-4bf2-b2f5-8b1919afbe05"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2fd72c55-d277-410f-92e7-3fef1ee556c6">
+                    <propertyInstance
+                      Id="d4f943a4-570d-41e6-a741-10445f48d132"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="55542804-8871-400a-9bff-ec94483e06f6">
+                    <propertyInstance
+                      Id="408231bb-aea1-46e6-910f-4aee4ed3f59e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d0f9bce-dc41-44cb-818c-e1349dae0a98">
+                    <propertyInstance
+                      Id="d1d0350e-25cb-4da2-96c0-0e4a975b4655"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0eb8d8d5-45a2-476b-9c66-f2f58b750a3e">
+                    <propertyInstance
+                      Id="8189a6fd-ee61-4153-bc4c-441a3d34ba37"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="0e0c786e-6af7-41e5-9146-a0593858e710"
+                LastKnownName="ObservableCollection&lt;CardInHand&gt;"
+                LastKnownLocation="Package8_2301.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="579f00d1-7f1f-42e5-a742-adc4e1a8f850"
+            name="IsActive"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="15b4d353-9924-49dc-bffe-213eefe3274f"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=IsActive"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="afeeea11-1119-4a17-9565-e6ca22748a49"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2da0f1f-44ce-4203-8ad6-21dbff025241">
+                    <propertyInstance
+                      Id="382d63bc-2262-46a8-b3a3-6c6fbc9e98b6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d1bd465-03d6-4e66-afa9-4f695d6e4171">
+                    <propertyInstance
+                      Id="fbb692bd-7808-41d7-9039-5ca49b78be4f"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="390661df-effa-4f37-a8f1-11a9828ea8a5">
+                    <propertyInstance
+                      Id="a994e63a-7bba-4012-951a-968124226e04"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5911f9e-0234-43d4-bd1d-7711d8f2373f">
+                    <propertyInstance
+                      Id="fd9c2937-8afe-4b15-acef-90d83b96f537"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="842bec9b-6eca-43ea-a50b-708475e3d09e">
+                    <propertyInstance
+                      Id="93c428e8-6e4d-4146-81f4-bc89cf6a3665"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1be56f17-2ab7-43ae-8756-54adfeaf32d2">
+                    <propertyInstance
+                      Id="e4434fe7-3e99-471b-810c-3117a02b1e9d"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="24441266-f76b-467f-baab-7248a705106e"
+            name="IsBlackJack"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="20f3246d-c672-45e1-a86e-877622e93235"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=IsBlackJack"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="ba1d801c-00bd-4560-9d92-800565d2e111"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1b341626-2c24-4a90-852f-fa6b0cf69266">
+                    <propertyInstance
+                      Id="f8686c7e-c7d0-438b-979f-369fc6e5aa64"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01382c1d-2d61-44fa-bf26-5548740df780">
+                    <propertyInstance
+                      Id="7c9053ba-4928-4a95-be31-68dfecdf7ffd"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d118dfb1-188d-4962-a104-69026080f489">
+                    <propertyInstance
+                      Id="f317febe-bf8a-48ab-9fb9-8d9522e70da7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="66846df7-4401-47a9-94a3-366f364b436f">
+                    <propertyInstance
+                      Id="c8255dbe-15fc-4e0f-94b7-f9b9c631c1e2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a2773a3-e6e5-42ca-a060-8e8776f0f46f">
+                    <propertyInstance
+                      Id="9c642183-dd54-49e0-8331-35dedbf634ea"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16d1183d-7176-44bf-87bf-8730f2c3eb2e">
+                    <propertyInstance
+                      Id="2f7df0f8-9219-4b82-8618-e8e2db1062c7"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="4bc7db02-796f-4f66-94db-045f74a4e94a"
+            name="StringCount"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="1816bdba-ee77-4a4b-a734-47b260ffc33c"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=StringCount"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a8363f3c-8d5b-4b68-912b-af6c5569e601"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b833a74f-a4f3-46f6-9652-64b2109316d9">
+                    <propertyInstance
+                      Id="1c28cae6-4a2e-4687-b058-980a4885dd89"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2aa80928-e3d4-4541-89b4-0440c7014c72">
+                    <propertyInstance
+                      Id="e72f70fc-5710-4e44-9b00-6491a988c6c6"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa54bc7c-0ad3-44aa-96f9-e65037f702b4">
+                    <propertyInstance
+                      Id="1fee5e76-5550-424c-ab68-70435b9fed5f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8bdb4205-92d8-417d-8de6-b8aabf54c1cb">
+                    <propertyInstance
+                      Id="9b159e2d-b8e5-425f-b109-47da9e90518d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="65ace6a9-0f4d-497c-a037-832b3769293b">
+                    <propertyInstance
+                      Id="48d2f2b0-129f-47c3-ae54-5e7337053c48"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5fee9ef2-631e-43c2-8dba-41307c4cc0f3">
+                    <propertyInstance
+                      Id="ddb85ecd-b6ac-481c-b0f7-0936da4271c3"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6e66144c-980a-49dd-996e-9a97b9e5f5cf"
+            name="Bet"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e7ab1bf6-c0f1-4fea-9b48-65abb75f1ffd"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=Bet"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bf4db47f-e671-4e03-9560-08c0d56c1a6e"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd78e732-b257-40a1-9a35-1e13b11d3a10">
+                    <propertyInstance
+                      Id="c69a7a1f-24df-4664-882c-4aa29dddb04b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd57ea1c-9ae0-40ea-a3a1-4ce4914618fd">
+                    <propertyInstance
+                      Id="601e6fd4-42ef-4f04-80f0-dbde9be96612"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="59ebe3b4-cb60-42e0-875a-a14c3405a281">
+                    <propertyInstance
+                      Id="d6a06879-6f8d-4138-b8cb-6c609c0ebbea"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4247ecae-52cc-4238-a3b0-ecd3162ccc6d">
+                    <propertyInstance
+                      Id="ac6f421c-c70e-4053-b30f-436c72fb4ca6"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5d2f62d8-810a-4ec9-ad20-a21c356550c0">
+                    <propertyInstance
+                      Id="95d2babb-2f21-46c9-835f-f808a61bc978"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32f5944b-0392-40c6-ad3a-e3ef9f33cc8f">
+                    <propertyInstance
+                      Id="79919afa-c803-4cc9-9822-a8a67f7addcf"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="542c925f-b3af-428e-a56a-d0c08c009ee4"
+                LastKnownName="Decimal"
+                LastKnownLocation="Package3_2301.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ca47003f-5cd8-4bac-9f45-7099642a07f1"
+            name="CanSurrender"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="66957d44-b800-4be2-a85d-fa089c0aec41"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=CanSurrender"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a07d2844-bcd1-4a17-9a53-667cbf2b2bfc"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="55f62dd7-c766-44af-9991-81de185681c1">
+                    <propertyInstance
+                      Id="f514a95d-aa13-4438-9d0e-62e684d53389"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02d15f12-6cb6-49f0-8ce4-7da50ace7194">
+                    <propertyInstance
+                      Id="864d1c43-10d8-4deb-9068-170d83dd5185"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1842728-51d7-4f07-9ca6-9ff06a3be8b8">
+                    <propertyInstance
+                      Id="eae034a9-8830-4fc9-bdb7-2acf7e3e3ffa"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="67fd7ea0-be97-4b34-9b66-72314a81a1fd">
+                    <propertyInstance
+                      Id="3e8df440-3ee7-4824-ae30-d44e2a516bc4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="44ab08f5-4e92-4e98-9240-8d9de9b5d637">
+                    <propertyInstance
+                      Id="62d1400b-6906-4f63-bca3-6720bd2bf846"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="528d8818-8459-408d-ac91-f31141ab8303">
+                    <propertyInstance
+                      Id="7b745a73-d41d-4c63-9f7f-690387226245"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="636753b7-00b8-4045-8792-7a6fe9c3d0fe"
+            name="HandMode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="56fac615-05b7-44b3-a081-271723f0779c"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=HandMode"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4c81d03a-bb13-4e45-bd00-65bf78878905"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3d904d88-b45d-4b66-8426-7f357148ef55">
+                    <propertyInstance
+                      Id="1c74e573-0edf-4000-ad84-e034227d8d4f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96822a1c-9e0d-4322-a05a-693460247b0e">
+                    <propertyInstance
+                      Id="5cddf0b6-7660-41e3-a9c7-f140b6f87f9b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3dfb16a-66c4-4753-9bc8-d0a1aff78657">
+                    <propertyInstance
+                      Id="3c6a04ff-c4b8-497a-b5ba-918caa830e67"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c71748c8-1a40-4bb6-b962-49f1eed7c60a">
+                    <propertyInstance
+                      Id="af03d4d2-346e-415f-9ed3-685a1a93627d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2b9e0269-e6fe-47dd-8aec-894a7f830e9d">
+                    <propertyInstance
+                      Id="bf25c09d-1a5d-4241-8f3a-b89b56e3fecd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9fab557-07a3-40bc-b53c-f4dc68701000">
+                    <propertyInstance
+                      Id="d99b61fd-66e4-4b83-ae2d-7fc71326fed2"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="d7673a05-940a-4171-886d-510c49868366"
+                LastKnownName="HandMode"
+                LastKnownLocation="Package2_2301.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="83d27509-cbcb-4fd8-85f3-3685a4afc338"
+            name="HasAce"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="e0df0ab3-8ccb-41b6-941e-489e4a72d226"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=HasAce"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1b8e52ea-8d81-47a0-b8af-21fbd68f3dd7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aa703adc-e49e-48a5-8ecc-256f401fbdf9">
+                    <propertyInstance
+                      Id="7b962c40-d5af-4c63-9dfc-e0d0cf181b42"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f01fb62-4d4e-4395-a816-36455e4f90a1">
+                    <propertyInstance
+                      Id="036389cc-b5cf-47cc-a985-746ab8843622"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e61c6e3d-cc23-4d36-bba5-ce5f570e016b">
+                    <propertyInstance
+                      Id="b6edaf9e-5b97-4fbd-a6bf-3e0fdc112ca0"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a10decc-4b84-4279-b610-2f15f8ad3f0e">
+                    <propertyInstance
+                      Id="f6f49645-910e-4397-b63b-95df69661a53"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="124d244e-4b5a-49f9-ab4b-8b70947d02e4">
+                    <propertyInstance
+                      Id="65c3cb99-b3a5-4530-9321-deb83d81aa8f"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fe867a6-4900-4720-b8cd-8240891fa4da">
+                    <propertyInstance
+                      Id="5755f8c7-3689-41cb-8e65-08a4a835a904"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="671ecc78-418f-431f-8bc3-ab3956d16925"
+            name="PlayerHandModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3958ca7b-82f7-43d4-9c3c-79d4953997c0"
+                handle="viewcode://./CodeSchema_Method?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerHandModel Member=.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="75078c8c-472b-4070-9bd4-208eaab206f6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="158cc37d-b731-42f6-8bd7-0e785f639a87">
+                    <propertyInstance
+                      Id="acdacf5e-294f-4ad9-b634-d2733f698f53"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e33e4a89-85c0-447c-be77-0373fc1f8141">
+                    <propertyInstance
+                      Id="b12accf0-4013-4dd8-acb2-874349b5333b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5db4c8df-da4a-455b-809b-a4bf42431b36">
+                    <propertyInstance
+                      Id="5f8dc898-a7be-4ff3-ae41-befbdcea78c5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce6954cb-9f50-448b-98af-7881a2b46a54">
+                    <propertyInstance
+                      Id="8f08c880-aacc-4183-8c22-cf627c474e4e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef2872ba-0476-4e4c-a3fd-9077606aa17b">
+                    <propertyInstance
+                      Id="fec48257-6390-4ad4-bf0a-6ef3ef31a575"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fee365c3-705d-4bff-8514-790a5d531d5f"
+        name="PlayerStrategyModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="74b152a6-8457-4f01-aac1-554291185dd5"
+            handle="viewcode://./CodeSchema_Class?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerStrategyModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e34811ce-06f9-4585-8754-5e9e4dde416a"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5abccb75-9904-4155-a774-f222b33a140f">
+                <propertyInstance
+                  Id="c3a636a9-e25c-44cd-aba1-324ef6756b36"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cbdaebab-7a24-4434-ab52-ecad6350513e">
+                <propertyInstance
+                  Id="140ae9ed-491e-41fc-8412-607dd7d24c61"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="71a3ecc7-b4fe-4951-b529-2690a6927df3">
+                <propertyInstance
+                  Id="2f898170-e926-44b3-bd82-4875d8583c01"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a9b72573-3575-41d7-8038-6f68611716be">
+                <propertyInstance
+                  Id="1c3529e5-0e17-407c-92e3-05cdf7fda2af"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f05cbf80-f455-4ca9-8674-f05bb16447e5">
+                <propertyInstance
+                  Id="38317a72-cf11-4c94-8044-f31a014abe93"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="5992213e-a69d-4896-b251-5331119a5140"
+            name="PlayerStrategyModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="616f1abf-29d9-40bb-9c57-3a14cdea9523"
+                handle="viewcode://./CodeSchema_Method?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerStrategyModel Member=.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="6f1b6430-c922-477b-8536-e2ab85891907"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="61a13f73-dc13-436c-9afa-02b0822f866b">
+                    <propertyInstance
+                      Id="d087ca87-84eb-4684-84dc-275947ad8815"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8620c406-0e37-400e-b91a-77e521a3ffc3">
+                    <propertyInstance
+                      Id="49025d5b-cee6-4530-9894-d23555c5f9ec"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32836263-9163-4bdb-a6b7-033593448a08">
+                    <propertyInstance
+                      Id="1af5814b-3d4d-458b-8821-5b797c1cdc24"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f7fde57f-7334-4e67-9042-c383c0f27d0f">
+                    <propertyInstance
+                      Id="fa33167d-3044-46cd-8e4b-b6b794721468"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2b6fe17c-a1a8-4dcc-90d6-1b9f8d3e854e">
+                    <propertyInstance
+                      Id="91226aeb-e036-4bf8-b057-c2eedef44de9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b19eea0a-2e2d-4def-9b62-045f2857c372"
+        name="PlayerModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="f0e670fa-c42f-4cb5-bd7b-a9bf8b469ca4"
+            handle="viewcode://./CodeSchema_Class?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ce39c524-9660-43a3-aeee-1d65d2dd76b5"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="09647c77-3e47-4ce3-8cd4-82e12eba5f12">
+                <propertyInstance
+                  Id="affdaa29-5848-43c7-8057-ba5dc4cd8f53"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="68b4e3ca-ba81-4c06-b622-46f504c10067">
+                <propertyInstance
+                  Id="c5697796-0349-4b02-8af2-a8a16852252b"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="61cf398d-b6ae-46e0-8926-146c8b409104">
+                <propertyInstance
+                  Id="68420489-d465-4efd-a298-5a8b9bc8ffd4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bcef24a2-a059-4eaa-bec9-051f27119541">
+                <propertyInstance
+                  Id="930fb7c1-d145-424f-8884-e005472b7c13"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="81ce4c8c-d4f0-493c-bf7b-bddfd337cd03">
+                <propertyInstance
+                  Id="0e3af69e-be5e-445c-81a6-7d3ec90492cf"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="c2117c78-7296-4341-a04f-7ba9975d639a"
+            isDerived="false"
+            sourceEndRoleName="PlayerModel"
+            targetEndRoleName="Cash"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="542c925f-b3af-428e-a56a-d0c08c009ee4"
+              LastKnownName="Decimal"
+              LastKnownLocation="Package3_2301.uml" />
+            <description>Property Cash references type Decimal.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c4c0240b-8d94-4204-a1eb-7e070822efb2"
+                  name="PlayerModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="510bbbcd-0d59-424a-aaa4-76e48bff0f37"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ddf7ec4b-7b0c-4075-a9f7-b5b2d2041733"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2ccd0140-e848-47f2-a618-8d01e674914c"
+                  name="Cash"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0d6b3fe7-3ebf-4943-bce4-a9a519eb6ae3"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1b72e23e-df74-48b9-8b4e-1069c4959c9d"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f2ccf1a0-29b5-42e2-a347-8f319ce309fc"
+            isDerived="false"
+            sourceEndRoleName="PlayerModel"
+            targetEndRoleName="PlayerMode"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="dce5911b-2663-4cee-aa7c-a3bbb6c2a67e"
+              LastKnownName="PlayerMode"
+              LastKnownLocation="Package2_2301.uml" />
+            <description>Property PlayerMode references type PlayerMode.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c69e3b11-ce46-48a9-bf4c-cee6d1e0dd8d"
+                  name="PlayerModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c41b5e3b-80c7-493a-83e2-3034ccc86ef5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="f1838d10-36fb-404b-9f7e-17a3e7f8c276"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9971d784-eec6-44a0-a80a-ca362ab2ab1e"
+                  name="PlayerMode"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c3dad5ee-5d20-4fdb-b5d3-04cf25e8864e"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="cc491d51-48f1-4fa6-ba45-7f0e027d36d9"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="d9c300c3-7af6-4d9f-8535-409ae008c870"
+            name="IsActive"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c028292a-5ae4-43a6-8994-fc5a8b89ddaa"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel Member=IsActive"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3b4abcfe-596e-41b2-a213-806dae75a505"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39216fe4-7aeb-42c5-8a16-249d2502d4d1">
+                    <propertyInstance
+                      Id="fab3f68d-27eb-41ca-a044-b2cf0ea38c09"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca660654-414e-4b90-90d0-3bd78876c3be">
+                    <propertyInstance
+                      Id="2af8b4e6-2049-4d04-9edc-6ab125d287d5"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="13213960-9060-44fb-842b-9b83b0d1e787">
+                    <propertyInstance
+                      Id="fdb999a9-6850-47d4-be20-a94adef373a7"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6921fa9-7598-4d7f-bdcb-b1f30f54bd06">
+                    <propertyInstance
+                      Id="ca327b32-dea2-4cfa-9ebd-6b5f769e5e14"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0622e0c6-aad3-49a8-bbce-5c179db72175">
+                    <propertyInstance
+                      Id="a22aa1cb-9d41-4af5-82ec-b0b6d8adce53"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56cf0ece-8d2e-4d07-a3ae-9786aee10050">
+                    <propertyInstance
+                      Id="50be379c-05f4-4d8d-9a4d-09370472788a"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="109c623d-464e-4f75-9c47-5a6a7c123068"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0006b354-8476-4467-a490-d1e151e2f6e7"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel Member=Name"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8602f478-9d4e-4fcc-b90b-58dabd039e6b"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="edc867cf-83af-4485-902b-59a024ac2c58">
+                    <propertyInstance
+                      Id="058625da-ba36-44c2-902e-00cbe2c5f3dd"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47549dbb-ab70-4546-a735-fb95a55c30b4">
+                    <propertyInstance
+                      Id="87103323-8644-4cfd-be4d-9d6901684193"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a6f31227-8201-4d5e-bfa3-ef52f8347330">
+                    <propertyInstance
+                      Id="699119dd-fa55-4b9b-a30c-b18ed7f7b00f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ddddbd5-09ba-4f20-8ccf-8ed07fcd498b">
+                    <propertyInstance
+                      Id="af4fdcf0-c2aa-42ca-901d-1f793b5884dd"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ba8b7cb-61aa-4429-8cf9-ed4886f125f6">
+                    <propertyInstance
+                      Id="279389b5-7fc1-46d3-ac4f-409cc78556c2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1740b302-cb49-4395-af8b-9eb2a2c0e371">
+                    <propertyInstance
+                      Id="4edb4b5e-f24b-4ce2-b283-6bbd3f1e77c5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="110126 BlackJackModel.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="77555120-fd62-4a16-b087-7fa6289d558a"
+            name="Cash"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="bbfe6687-042a-49f5-a0cc-04e05538ba9f"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel Member=Cash"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1452a25c-819e-4aa8-b371-f54268487c28"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ad97fdf8-2f10-4586-9f7b-25b4632680e8">
+                    <propertyInstance
+                      Id="4ea2b39d-0628-421b-8511-6119f36e20f1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="301156e6-79dc-452f-a464-ed74c9058ffa">
+                    <propertyInstance
+                      Id="b39b9cc9-1457-45bf-a4a1-49332d48770b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4727e625-46ef-4c70-89c8-9fe14450ebca">
+                    <propertyInstance
+                      Id="03d46590-a1a4-4632-8b09-01f5d2be7c21"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1a2e93b8-4038-466c-885f-69ee094fcf5f">
+                    <propertyInstance
+                      Id="23bc17e8-3f41-4db7-83f3-9b93ffbce609"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe2e80cc-82da-4f8b-9a8a-db2c72f848dd">
+                    <propertyInstance
+                      Id="7f2e6647-b6b1-425f-ace6-ec6368bb786e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82fa033c-134c-415e-9eb6-5d7bb276c277">
+                    <propertyInstance
+                      Id="08ce96a8-5a28-4857-b07a-300bbbe040e0"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="542c925f-b3af-428e-a56a-d0c08c009ee4"
+                LastKnownName="Decimal"
+                LastKnownLocation="Package3_2301.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c57e7dc9-97e0-4aba-a5c3-b6d520affc71"
+            name="PlayerMode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="f670aef2-b153-404b-9c38-265921061bb7"
+                handle="viewcode://./CodeSchema_Property?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel Member=PlayerMode"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="72bd23d6-3498-4fb8-8b55-6701ae738f3c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf288aba-de67-4a65-8c93-a847fe897a38">
+                    <propertyInstance
+                      Id="0b6daa51-3d45-4c4f-8436-d503f2d5196c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2238019f-c44b-4af3-b5fc-8de1508f8afd">
+                    <propertyInstance
+                      Id="18f2d5d5-fea0-4377-9122-837409757b68"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fdc6efaf-aa63-4dd4-8e16-d03b84f2b790">
+                    <propertyInstance
+                      Id="52a548b7-f911-424d-97f8-c997cf422aec"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="83a62245-95c4-45f6-8ff7-b6dce774f929">
+                    <propertyInstance
+                      Id="b8c4ec20-8ac4-48b9-ad90-647cbe60b65e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d01231f2-c5a9-42e7-adee-531688409f78">
+                    <propertyInstance
+                      Id="8583c0cf-4415-45c9-93ee-0fd81ce63b6b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc48d0d5-09ef-48c8-abb0-c940491da92b">
+                    <propertyInstance
+                      Id="5768a776-8730-4332-853b-86c0ea242efb"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="dce5911b-2663-4cee-aa7c-a3bbb6c2a67e"
+                LastKnownName="PlayerMode"
+                LastKnownLocation="Package2_2301.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c4e68e03-3119-451e-b19e-d1a3d9687a19"
+            name="PlayerModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3ab25357-fd38-4333-9478-08d8537b6798"
+                handle="viewcode://./CodeSchema_Method?Assembly=&quot;file:///E:/Programming/C%2523/110126 BlackJack/bin/Debug/BlackJack.exe&quot; Namespace=BlackJack.PlayerLogic Type=PlayerModel Member=.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1ecc3ea9-d2f7-42e5-a76c-5982f646ea48"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a15947a0-9192-4b2f-bb50-a35f84c5be2c">
+                    <propertyInstance
+                      Id="444e177a-b994-43b6-8d23-69b253e902e2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8a7bcfb8-b50d-401e-b195-13584b33b9af">
+                    <propertyInstance
+                      Id="ceaeb3d7-0d6c-42bb-a5bd-b8c15405f819"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a3c77b25-e501-4540-baff-d110188d5b75">
+                    <propertyInstance
+                      Id="d57b7949-e77f-4ae2-b7ad-ff435ea3cf7f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="88ec4fb6-753e-4cc8-848b-d0abf21900fa">
+                    <propertyInstance
+                      Id="be9a2a55-3f80-4ee2-9088-3de97114eb01"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da0f8b62-a2a1-43c6-8b14-26ad7b53a477">
+                    <propertyInstance
+                      Id="309516f7-cf6c-4eca-92e2-8bd3be1038c2"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
