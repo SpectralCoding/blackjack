@@ -10,8 +10,8 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
 using System.Windows;
@@ -23,8 +23,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BlackJack.ViewModel;
 using BlackJack.CardLogic;
+using BlackJack.ViewModel;
 
 namespace BlackJack.Controls {
 	/// <summary>
@@ -66,5 +66,4 @@ namespace BlackJack.Controls {
 			throw new Exception("The method or operation is not implemented.");
 		}
 	}
-
 }

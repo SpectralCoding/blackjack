@@ -18,7 +18,7 @@
 		<local:BoolToStrokeThickness x:Key="BoolToStrokeThickness" />
 	</UserControl.Resources>
     <Grid>
-		<ItemsControl x:Name="CardsItemsControl" ItemsSource="{Binding Path=Hand}" Margin="0,0,0,41.5" d:LayoutOverrides="VerticalAlignment">
+		<ItemsControl x:Name="CardsItemsControl" ItemsSource="{Binding Path=VisibleHand}" Margin="0,0,0,41.5" d:LayoutOverrides="VerticalAlignment">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<Canvas IsItemsHost="True" />

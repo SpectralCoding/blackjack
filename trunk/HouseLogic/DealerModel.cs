@@ -21,9 +21,10 @@ namespace BlackJack.HouseLogic {
 	public class DealerModel {
 		public bool IsActive { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the DealerModel class.
+		/// </summary>
 		public DealerModel() {
-
 		}
-
 	}
 }

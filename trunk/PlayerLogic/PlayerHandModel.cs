@@ -23,6 +23,7 @@ namespace BlackJack.PlayerLogic {
 	/// </summary>
 	public class PlayerHandModel {
 		public ObservableCollection<CardInHand> Hand { get; set; }
+		public ObservableCollection<CardInHand> BlankHand { get; set; }
 		public decimal Bet { get; set; } 
 		public HandMode HandMode { get; set; }
 		public int Count { get; set; }
@@ -38,6 +39,7 @@ namespace BlackJack.PlayerLogic {
 		public PlayerHandModel() {
 			Count = 0;
 			Hand = new ObservableCollection<CardInHand>();
+			BlankHand = new ObservableCollection<CardInHand>();
 			HandMode = HandMode.Normal;
 			IsActive = false;
 			HasAce = false;

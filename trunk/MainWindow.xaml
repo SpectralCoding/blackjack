@@ -40,7 +40,7 @@
 					<Label Content="Shoes Shuffled:" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="0,114,0,0" Name="label7" Padding="0" VerticalAlignment="Top" Width="89" Height="16" />
 					<Label Content="{Binding Path=ShoesShuffled}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,114,0,0" Name="HSShoesShuffledLbl" Padding="0" VerticalAlignment="Top" Width="83" Height="16" />
 					<Label Content="{Binding Path=ShoesShuffledPerSec}" Height="16" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="95,133,0,0" Name="HSShoesShuffledPerSecLbl" Padding="0" VerticalAlignment="Top" Width="83" />
-				</Grid>
+                </Grid>
 			</TabItem>
 			<TabItem x:Name="PlayerStatsTabItem" Header="Player Stats">
 				<Grid Background="White"/>
@@ -49,16 +49,16 @@
 		<TabControl x:Name="PlayerTabControl" Height="110" VerticalAlignment="Bottom" Margin="8,0,0,8" TabStripPlacement="Left" Width="494" HorizontalAlignment="Left" SelectionChanged="PlayerTabControl_SelectionChanged">
 			<TabItem x:Name="PlayerControlsTabItem" Header="Player Controls" DataContext="{Binding Path=CurrentPlayerHandVM}">
 				<Grid Background="White">
-					<Button x:Name="PlayerStandBtn" IsEnabled="{Binding Path=IsActive}" Content="Stand" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" Click="PlayerStandBtn_Click" />
-					<Button x:Name="PlayerHitBtn" IsEnabled="{Binding Path=CanAcceptCard}" Content="Hit" Height="48" VerticalAlignment="Top" Margin="98,0,0,0" HorizontalAlignment="Left" Width="94" Click="PlayerHitBtn_Click" />
-					<Button x:Name="PlayerDoubleDownBtn" IsEnabled="{Binding Path=CanDoubleDown}" Content="Double Down" Margin="196,0,0,0" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" Click="PlayerDoubleDownBtn_Click" />
-					<Button x:Name="PlayerDoubleForLessBtn" IsEnabled="{Binding Path=CanDoubleDownForLess}" Content="Double For Less" Margin="196,52,0,0" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Click="PlayerDoubleForLessBtn_Click" />
-					<Button x:Name="PlayerSplitBtn" IsEnabled="{Binding Path=CanSplit}" Content="Split" HorizontalAlignment="Right" Width="94" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height" Click="PlayerSplitBtn_Click" />
-					<Button x:Name="PlayerSurrenderBtn" IsEnabled="{Binding Path=CanSurrender}" Content="Surrender" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height" Margin="294.203,52,0,0" Click="PlayerSurrenderBtn_Click" />
-					<TextBox x:Name="PlayerBetTxt" Text="{Binding Path=Bet}" IsEnabled="{Binding Path=IsActive}" HorizontalAlignment="Left" Height="22" Margin="0,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-					<Button x:Name="PlayerIncreaseBetBtn" IsEnabled="{Binding Path=IsActive}" Content="+" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom"/>
-					<Button x:Name="PlayerDecreaseBetBtn" IsEnabled="{Binding Path=IsActive}" Content="-" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom" Margin="49,0,0,0"/>
-					<Button x:Name="PlayerPlayStrategyBtn" IsEnabled="{Binding Path=IsActive}" Content="Play Strategy" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Margin="98,52,0,0" d:LayoutOverrides="HorizontalAlignment, Height" Click="PlayerPlayStrategyBtn_Click" />
+					<Button x:Name="PlayerStandBtn" IsEnabled="{Binding Path=IsActive}" Content="Stand" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" Click="PlayerStandBtn_Click" ToolTip="Player will stand." Visibility="Visible" />
+					<Button x:Name="PlayerHitBtn" IsEnabled="{Binding Path=CanAcceptCard}" Content="Hit" Height="48" VerticalAlignment="Top" Margin="98,0,0,0" HorizontalAlignment="Left" Width="94" Click="PlayerHitBtn_Click" ToolTip="Player will hit." />
+					<Button x:Name="PlayerDoubleDownBtn" IsEnabled="{Binding Path=CanDoubleDown}" Content="Double Down" Margin="196,0,0,0" HorizontalAlignment="Left" Width="94" Height="48" VerticalAlignment="Top" Click="PlayerDoubleDownBtn_Click" ToolTip="Player will double down." />
+					<Button x:Name="PlayerDoubleForLessBtn" IsEnabled="{Binding Path=CanDoubleDownForLess}" Content="Double For Less" Margin="196,52,0,0" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Click="PlayerDoubleForLessBtn_Click" ToolTip="Player will double down for less." />
+					<Button x:Name="PlayerSplitBtn" IsEnabled="{Binding Path=CanSplit}" Content="Split" HorizontalAlignment="Right" Width="94" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height" Click="PlayerSplitBtn_Click" ToolTip="Player will split." />
+					<Button x:Name="PlayerSurrenderBtn" IsEnabled="{Binding Path=CanSurrender}" Content="Surrender" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" d:LayoutOverrides="Height" Margin="294.203,52,0,0" Click="PlayerSurrenderBtn_Click" ToolTip="Player will surrender." />
+					<TextBox x:Name="PlayerBetTxt" Text="{Binding Path=Bet}" IsEnabled="{Binding Path=IsActive}" HorizontalAlignment="Left" Height="22" Margin="0,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTip="The player's current bet." />
+					<Button x:Name="PlayerIncreaseBetBtn" IsEnabled="{Binding Path=IsActive}" Content="+" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom" ToolTip="Increase bet." />
+					<Button x:Name="PlayerDecreaseBetBtn" IsEnabled="{Binding Path=IsActive}" Content="-" HorizontalAlignment="Left" Width="45" Height="22" VerticalAlignment="Bottom" Margin="49,0,0,0" ToolTip="Decrease bet." />
+					<Button x:Name="PlayerPlayStrategyBtn" IsEnabled="{Binding Path=IsActive}" Content="Play Strategy" Width="94" HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Margin="98,52,0,0" d:LayoutOverrides="HorizontalAlignment, Height" Click="PlayerPlayStrategyBtn_Click" ToolTip="Plays the default player strategy." />
 				</Grid>
 			</TabItem>
 			<TabItem x:Name="PlayerStrategyTabItem" Header="Player Strategy">
@@ -71,14 +71,14 @@
 		<TabControl x:Name="DealerTabControl" Height="110" VerticalAlignment="Bottom" Margin="506,0,8,8" TabStripPlacement="Right" Width="494">
 			<TabItem x:Name="DealerControlsTabItem" Header="Dealer Controls">
 				<Grid Background="White">
-					<Button Content="Start Game" HorizontalAlignment="Left" Name="StartGameBtn" Width="94" Click="StartGameBtn_Click" Margin="196,0,0,0" Height="48" VerticalAlignment="Top"  IsEnabled="{Binding Path=CanStartGame}" />
-					<Button Content="Deal Cards" Height="48" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="94" Margin="98,52,0,0" Click="DealCardsBtn_Click" IsEnabled="{Binding Path=CanDealCards}" />
-					<Button Content="Shuffle Shoe" Height="48" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="93" Click="ShuffleShoeBtn_Click" Margin="293.04,0,0,0" />
-					<Button Content="Clear Table" Height="48" HorizontalAlignment="Left" Margin="196,52,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="93" Click="ClearTableBtn_Click" />
-					<Button Content="Next Step" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanStartGame}" Name="NextStepBtn" VerticalAlignment="Top" Width="94" Click="NextStepBtn_Click" />
-					<Button Content="Deal A Card" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanDealCards}" Margin="98,0,0,0" Name="DealACardBtn" VerticalAlignment="Top" Width="94" Click="DealACardBtn_Click" />
-					<Button Content="Play" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=DealerVM.IsActive}" Margin="0,52,0,0" Name="DealerPlayBtn" VerticalAlignment="Top" Width="94" Click="DealerPlayBtn_Click" />
-					<Button Content="Start Auto Play" Height="48" HorizontalAlignment="Left" Margin="293,52,0,0" Name="AutoPlayToggle" VerticalAlignment="Top" Width="93" Click="AutoPlayToggle_Click" />
+					<Button Content="Start Game" HorizontalAlignment="Left" Name="StartGameBtn" Width="94" Click="StartGameBtn_Click" Margin="196,0,0,0" Height="48" VerticalAlignment="Top"  IsEnabled="{Binding Path=CanStartGame}" ToolTip="The dealer starts the game, resets stats, and shuffles the deck." />
+					<Button Content="Deal Cards" Height="48" HorizontalAlignment="Left" x:Name="DealCardsBtn" VerticalAlignment="Top" Width="94" Margin="98,52,0,0" Click="DealCardsBtn_Click" IsEnabled="{Binding Path=CanDealCards}" ToolTip="The dealer deals cards to all players." />
+					<Button Content="Shuffle Shoe" Height="48" HorizontalAlignment="Left" x:Name="ShuffleShoeBtn" VerticalAlignment="Top" Width="93" Click="ShuffleShoeBtn_Click" Margin="293.04,0,0,0" ToolTip="The dealer shuffles the shoe." />
+					<Button Content="Clear Table" Height="48" HorizontalAlignment="Left" Margin="196,52,0,0" Name="ClearTableBtn" VerticalAlignment="Top" Width="93" Click="ClearTableBtn_Click" ToolTip="The dealer clears all cards from the table." />
+					<Button Content="Next Step" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanStartGame}" Name="NextStepBtn" VerticalAlignment="Top" Width="94" Click="NextStepBtn_Click" ToolTip="The next step in the game is automatically run." />
+					<Button Content="Deal A Card" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=CanDealCards}" Margin="98,0,0,0" Name="DealACardBtn" VerticalAlignment="Top" Width="94" Click="DealACardBtn_Click" ToolTip="The dealer deals a card." />
+					<Button Content="Play" Height="48" HorizontalAlignment="Left" IsEnabled="{Binding Path=DealerVM.IsActive}" Margin="0,52,0,0" Name="DealerPlayBtn" VerticalAlignment="Top" Width="94" Click="DealerPlayBtn_Click" ToolTip="The dealer plays according to house rules." />
+					<Button Content="Start Auto Play" Height="48" HorizontalAlignment="Left" Margin="293,52,0,0" Name="AutoPlayToggle" VerticalAlignment="Top" Width="93" Click="AutoPlayToggle_Click" ToolTip="The game starts autoplaying." />
 				</Grid>
 			</TabItem>
 			<TabItem x:Name="HouseRulesTabItem" Header="House Rules">
@@ -155,7 +155,7 @@
 						IsChecked="{Binding FastMode, Mode=TwoWay}" 
 						Margin="300,68,0,0" 
 						Name="FastModeChk" 
-						VerticalAlignment="Top" Checked="FastModeChk_Checked" Unchecked="FastModeChk_Unchecked" />
+						VerticalAlignment="Top" />
 				</Grid>
 			</TabItem>
 			<TabItem x:Name="ShoeContentsTabItem" Header="Shoe Contents">

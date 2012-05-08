@@ -15,19 +15,55 @@ using System.Linq;
 using System.Text;
 
 namespace BlackJack.Utilities {
+	/// <summary>
+	/// Represents the speed at which the autoplay mode rotates.
+	/// </summary>
 	public enum AutoPlaySpeed {
+		/// <summary>
+		/// Represents constant motion (1 tick).
+		/// </summary>
 		BlazingFast,
+		/// <summary>
+		/// Represents fast motion (100ms).
+		/// </summary>
 		Fast,
+		/// <summary>
+		/// Represents medium speed motion (250ms).
+		/// </summary>
 		Medium,
+		/// <summary>
+		/// Represents slow motion (500ms).
+		/// </summary>
 		Screensaver
 	}
 
+	/// <summary>
+	/// Represents the options for a player.
+	/// </summary>
 	public enum PlayerAction {
+		/// <summary>
+		/// Represents the ability to stand.
+		/// </summary>
 		Stand,
+		/// <summary>
+		/// Represents the ability to hit.
+		/// </summary>
 		Hit,
+		/// <summary>
+		/// Represents the ability to split.
+		/// </summary>
 		Split,
+		/// <summary>
+		/// Represents the ability to surrender.
+		/// </summary>
 		Surrender,
+		/// <summary>
+		/// Represents the ability to double down.
+		/// </summary>
 		DoubleDown,
+		/// <summary>
+		/// Represents the ability to double down for less.
+		/// </summary>
 		DoubleForLess
 	}
 
@@ -116,29 +152,29 @@ namespace BlackJack.Utilities {
 	/// </summary>
 	public enum LogActionType {
 		/// <summary>
-		/// Represents an Information type of log item
+		/// Represents an Information type of log item.
 		/// </summary>
 		Information,
 
 		/// <summary>
-		/// Represents an DealCard type of log item
+		/// Represents an DealCard type of log item.
 		/// </summary>
 		DealCard,
 
 		/// <summary>
-		/// Represents an ShoeShuffle type of log item
+		/// Represents an ShoeShuffle type of log item.
 		/// </summary>
 		ShoeShuffle,
 
 		/// <summary>
-		/// Represents an PlayerAction type of log item
+		/// Represents an PlayerAction type of log item.
 		/// </summary>
 		PlayerAction,
 
 		/// <summary>
-		/// Represents an Benchmark type of log item
+		/// Represents an Benchmark type of log item.
 		/// </summary>
-		Benchmark
+		Benchmark,
 	}
 
 	/// <summary>

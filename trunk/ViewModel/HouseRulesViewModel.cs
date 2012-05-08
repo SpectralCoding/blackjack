@@ -22,7 +22,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class HouseRulesViewModel : ViewModelBase {
 		private HouseRulesModel m_HouseRulesModel;
-		private TableViewModel m_ParentMasterViewModel;
+		private TableViewModel m_MasterParent;
 
 		#region Public Properties
 		/// <summary>
@@ -35,7 +35,7 @@ namespace BlackJack.ViewModel {
 			set {
 				m_HouseRulesModel.DecksInShoe = value;
 				OnPropertyChanged("DecksInShoe");
-				m_ParentMasterViewModel.ShoeVM.ResetShoe();
+				m_MasterParent.ShoeVM.ResetShoe();
 			}
 		}
 		/// <summary>
@@ -134,15 +134,9 @@ namespace BlackJack.ViewModel {
 				OnPropertyChanged("BlackJackPayDenominator");
 			}
 		}
-		public bool CasinoMode {
-			get {
-				return m_HouseRulesModel.CasinoMode;
-			}
-			set {
-				m_HouseRulesModel.CasinoMode = value;
-				OnPropertyChanged("CasinoMode");
-			}
-		}
+		/// <summary>
+		/// Gets or sets a value indicating the play speed of an automatic game.
+		/// </summary>
 		public AutoPlaySpeed AutoPlaySpeed {
 			get {
 				return m_HouseRulesModel.AutoPlaySpeed;
@@ -152,12 +146,21 @@ namespace BlackJack.ViewModel {
 				OnPropertyChanged("AutoPlaySpeed");
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not table updates should happen. This speeds up processing time greatly.
+		/// </summary>
 		public bool FastMode {
 			get {
 				return m_HouseRulesModel.FastMode;
 			}
 			set {
 				m_HouseRulesModel.FastMode = value;
+				foreach (PlayerViewModel CurrentPVM in m_MasterParent.PlayerVM) {
+					foreach (PlayerHandViewModel CurrentPHVM in CurrentPVM.PlayerHandVM) {
+						CurrentPHVM.OnPropertyChanged("VisibleHand");
+					}
+				}
+				m_MasterParent.DealerVM.DealerHandVM.OnPropertyChanged("VisibleHand");
 				OnPropertyChanged("FastMode");
 			}
 		}
@@ -168,7 +171,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
 		public HouseRulesViewModel(TableViewModel Parent) {
-			m_ParentMasterViewModel = Parent;
+			m_MasterParent = Parent;
 			m_HouseRulesModel = new HouseRulesModel();
 		}
 	}

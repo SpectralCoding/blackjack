@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MasterViewModel.cs" company="SpectralCoding">
+// <copyright file="TableViewModel.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -15,13 +15,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Windows.Input;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using BlackJack.CardLogic;
 using BlackJack.TableLogic;
 using BlackJack.Utilities;
-using System.Windows;
 
 namespace BlackJack.ViewModel {
 	/// <summary>
@@ -40,7 +40,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.BenchmarkViewModel = value;
-				OnPropertyChanged("BenchmarkVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("BenchmarkVM"); }
 			}
 		}
 		public ResourcesViewModel ResourcesVM {
@@ -49,7 +49,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.ResourcesViewModel = value;
-				OnPropertyChanged("ResourcesViewModel");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("ResourcesViewModel"); }
 			}
 		}
 		public DealerViewModel DealerVM {
@@ -58,7 +58,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.DealerViewModel = value;
-				OnPropertyChanged("DealerVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("DealerVM"); }
 			}
 		}
 		public GameStatisticsViewModel GameStatisticsVM {
@@ -67,7 +67,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.GameStatisticsViewModel = value;
-				OnPropertyChanged("GameStatisticsVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("GameStatisticsVM"); }
 			}
 		}
 		public HouseRulesViewModel HouseRulesVM {
@@ -76,7 +76,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.HouseRulesViewModel = value;
-				OnPropertyChanged("HouseRulesVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("HouseRulesVM"); }
 			}
 		}
 		public LoggingViewModel LoggingVM {
@@ -85,7 +85,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.LoggingViewModel = value;
-				OnPropertyChanged("LoggingVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("LoggingVM"); }
 			}
 		}
 		public ObservableCollection<PlayerViewModel> PlayerVM {
@@ -94,7 +94,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.PlayerViewModel = value;
-				OnPropertyChanged("PlayerVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("PlayerVM"); }
 			}
 		}
 		public ObservableCollection<PlayerStatisticsViewModel> PlayerStatisticsVM {
@@ -103,7 +103,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.PlayerStatisticsViewModel = value;
-				OnPropertyChanged("PlayerStatisticsVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("PlayerStatisticsVM"); }
 			}
 		}
 		public PlayerStrategyViewModel PlayerStrategyVM {
@@ -112,7 +112,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.PlayerStrategyViewModel = value;
-				OnPropertyChanged("PlayerStrategyVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("PlayerStrategyVM"); }
 			}
 		}
 		public ShoeViewModel ShoeVM {
@@ -121,7 +121,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.ShoeViewModel = value;
-				OnPropertyChanged("ShoeVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("ShoeVM"); }
 			}
 		}
 		public PlayerViewModel CurrentPlayerVM {
@@ -130,7 +130,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.CurrentPlayerVM = value;
-				OnPropertyChanged("CurrentPlayerVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("CurrentPlayerVM"); }
 			}
 		}
 		public PlayerHandViewModel CurrentPlayerHandVM {
@@ -139,48 +139,63 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_TableModel.CurrentPlayerHandVM = value;
-				OnPropertyChanged("CurrentPlayerHandVM");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("CurrentPlayerHandVM"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not we can deal the cards.
+		/// </summary>
 		public bool CanDealCards {
 			get {
 				return m_TableModel.CanDealCards;
 			}
 			set {
 				m_TableModel.CanDealCards = value;
-				OnPropertyChanged("CanDealCards");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("CanDealCards"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not we can start a game.
+		/// </summary>
 		public bool CanStartGame {
 			get {
 				return m_TableModel.CanStartGame;
 			}
 			set {
 				m_TableModel.CanStartGame = value;
-				OnPropertyChanged("CanStartGame");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("CanStartGame"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not a game is currently in progress.
+		/// </summary>
 		public bool GameInProgress {
 			get {
 				return m_TableModel.GameInProgress;
 			}
 			set {
 				m_TableModel.GameInProgress = value;
-				OnPropertyChanged("GameInProgress");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("GameInProgress"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating when the current game was started.
+		/// </summary>
 		public DateTime StartTime {
 			get {
 				return m_TableModel.StartTime;
 			}
 			set {
 				m_TableModel.StartTime = value;
-				OnPropertyChanged("StartTime");
+				if (!HouseRulesVM.FastMode) { OnPropertyChanged("StartTime"); }
 			}
 		}
 		#endregion
 
 		#region Private Methods
+		/// <summary>
+		/// Advances play in whatever way play should be advances. This is basically the "dealer function" which directs automated play.
+		/// </summary>
 		private void AdvancePlay() {
 			for (int player = 0; player < PlayerVM.Count; player++) {
 				// For each player check if if they are playing
@@ -225,6 +240,11 @@ namespace BlackJack.ViewModel {
 			}
 			System.Windows.MessageBox.Show("No Player is currently active.");
 		}
+
+		/// <summary>
+		/// Advances play to the next player (or dealer).
+		/// </summary>
+		/// <param name="CurrentPlayer">The player currently active.</param>
 		private void AdvanceToNextPlayer(int CurrentPlayer) {
 			if (CurrentPlayer < 6) {
 				for (int tempplayer = CurrentPlayer + 1; tempplayer < PlayerVM.Count; tempplayer++) {
@@ -253,7 +273,7 @@ namespace BlackJack.ViewModel {
 
 		#region Public Methods
 		/// <summary>
-		/// Initializes a new instance of the MasterViewModel class.
+		/// Initializes a new instance of the TableViewModel class.
 		/// </summary>
 		public TableViewModel() {
 			#region Member Instantiation
@@ -295,6 +315,7 @@ namespace BlackJack.ViewModel {
 			ShoeVM.ResetShoe();
 			CanStartGame = true;
 			GameInProgress = true;
+			LoggingVM.AddItem(LogActionType.Information, "Game Started.");
 		}
 
 		/// <summary>
@@ -305,6 +326,7 @@ namespace BlackJack.ViewModel {
 				PlayerVM[i].ResetHands();
 			}
 			DealerVM.Reset();
+			LoggingVM.AddItem(LogActionType.Information, "Table Cleared.");
 			CanDealCards = true;
 		}
 	
@@ -314,12 +336,10 @@ namespace BlackJack.ViewModel {
 		public void DealCards() {
 			for (int player = 0; player < 7; player++) {
 				PlayerVM[player].PlayerHandVM[0].RecieveCard(ShoeVM.DrawCard());
-				if (HouseRulesVM.CasinoMode) { Thread.Sleep(500); }
 			}
 			DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), false);
 			for (int player = 0; player < 7; player++) {
 				PlayerVM[player].PlayerHandVM[0].RecieveCard(ShoeVM.DrawCard());
-				if (HouseRulesVM.CasinoMode) { Thread.Sleep(500); }
 			}
 			DealerVM.DealerHandVM.RecieveCard(ShoeVM.DrawCard(), true);
 			CanDealCards = false;
@@ -329,6 +349,9 @@ namespace BlackJack.ViewModel {
 			CurrentPlayerHandVM = PlayerVM[0].PlayerHandVM[0];
 		}
 
+		/// <summary>
+		/// Deals a card to the next player.
+		/// </summary>
 		public void DealACard() {
 			if (CanDealCards) {
 				for (int player = 0; player < 7; player++) {
@@ -372,6 +395,9 @@ namespace BlackJack.ViewModel {
 			}
 		}
 
+		/// <summary>
+		/// Determines what the next step of play should be and executes it.
+		/// </summary>
 		public void NextStep() {
 			if (!GameInProgress) {
 				StartGame();
@@ -413,13 +439,15 @@ namespace BlackJack.ViewModel {
 						DealerVM.Reset();
 						CanDealCards = true;
 						RoundCount++;
-						//if (RoundCount % 10 == 0) { Console.WriteLine(RoundCount); }
 						return;
 					}
 				}
 			}
 		}
 
+		/// <summary>
+		/// The dealer plays his hand.
+		/// </summary>
 		public void DealerPlay() {
 			DealerVM.Play();
 			DealerVM.IsActive = false;
@@ -430,18 +458,30 @@ namespace BlackJack.ViewModel {
 		#endregion
 
 		#region Player Controls
+		/// <summary>
+		/// Player stands so play moves on.
+		/// </summary>
 		public void PlayerStand() {
 			AdvancePlay();
 		}
 
+		/// <summary>
+		/// Player hits and receives a card. If they bust, have 21, or blackjack then advance play.
+		/// </summary>
 		public void PlayerHit() {
 			if (CurrentPlayerHandVM.CanAcceptCard) {
 				CurrentPlayerHandVM.Hit(ShoeVM.DrawCard());
+				if ((CurrentPlayerHandVM.Count >= 21) || (CurrentPlayerHandVM.IsBlackJack)) {
+					AdvancePlay();
+				}
 			} else {
 				MessageBox.Show("You cannot hit.");
 			}
 		}
 
+		/// <summary>
+		/// Player doubles down and draws a card.
+		/// </summary>
 		public void PlayerDoubleDown() {
 			// Don't forget to increase bet!
 			if (CurrentPlayerHandVM.CanDoubleDown) {
@@ -450,6 +490,9 @@ namespace BlackJack.ViewModel {
 			}
 		}
 
+		/// <summary>
+		/// Player doubles down for less and draws a card.
+		/// </summary>
 		public void PlayerDoubleForLess() {
 			// Don't forget to ask player how much they want to bet
 			if (CurrentPlayerHandVM.CanDoubleDown) {
@@ -458,6 +501,9 @@ namespace BlackJack.ViewModel {
 			}
 		}
 
+		/// <summary>
+		/// The players hand is split into two hands.
+		/// </summary>
 		public void PlayerSplit() {
 			// Don't forget to check if they have the cash to split.
 			for (int i = 0; i < 4; i++) {
@@ -468,11 +514,17 @@ namespace BlackJack.ViewModel {
 			}
 		}
 
+		/// <summary>
+		/// The player surrenders and recieves half his bet back.
+		/// </summary>
 		public void PlayerSurrender() {
 			// Give the Player half his bet back
 			AdvancePlay();
 		}
 
+		/// <summary>
+		/// The player gets his suggested action and executes it.
+		/// </summary>
 		public void PlayerPlayStrategy() {
 			switch (CurrentPlayerHandVM.GetSuggestedAction()) {
 				case PlayerAction.Stand:

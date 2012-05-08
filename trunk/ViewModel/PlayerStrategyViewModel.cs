@@ -13,9 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BlackJack.CardLogic;
 using BlackJack.PlayerLogic;
 using BlackJack.Utilities;
-using BlackJack.CardLogic;
 
 namespace BlackJack.ViewModel {
 	/// <summary>
@@ -32,12 +32,17 @@ namespace BlackJack.ViewModel {
 		/// Initializes a new instance of the PlayerStrategyViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
+		/// <param name="ParentPHVM">Placeholder for the parent player hand view model object.</param>
 		public PlayerStrategyViewModel(TableViewModel Parent, PlayerHandViewModel ParentPHVM) {
 			m_Parent = Parent;
 			m_ParentPlayerHandViewModel = ParentPHVM;
 			m_PlayerStrategyModel = new PlayerStrategyModel();
 		}
 
+		/// <summary>
+		/// Determines the player AI depending on the player strategy.
+		/// </summary>
+		/// <returns>An action describing how a pleyer should play the hand.</returns>
 		public PlayerAction GetSuggestedAction() {
 			return PlayerAction.Stand;
 			DealerCardInHand UpCard = m_Parent.DealerVM.DealerHandVM.Hand[1];

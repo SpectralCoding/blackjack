@@ -23,6 +23,7 @@ namespace BlackJack.HouseLogic {
 	/// </summary>
 	public class DealerHandModel {
 		public ObservableCollection<DealerCardInHand> Hand { get; set; }
+		public ObservableCollection<DealerCardInHand> BlankHand { get; set; }
 		public int Count { get; set; }
 		public string StringCount { get; set; }
 		public bool IsActive { get; set; }
@@ -35,6 +36,7 @@ namespace BlackJack.HouseLogic {
 		public DealerHandModel() {
 			Count = 0;
 			Hand = new ObservableCollection<DealerCardInHand>();
+			BlankHand = new ObservableCollection<DealerCardInHand>();
 			IsActive = false;
 			HasAce = false;
 			IsBlackJack = false;

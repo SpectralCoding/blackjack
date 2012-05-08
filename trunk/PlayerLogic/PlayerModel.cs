@@ -26,6 +26,9 @@ namespace BlackJack.PlayerLogic {
 		public PlayerMode PlayerMode { get; set; }
 		public bool IsActive { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the PlayerModel class.
+		/// </summary>
 		public PlayerModel() {
 			Name = "Unknown Player";
 			Cash = 0;

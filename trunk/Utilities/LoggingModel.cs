@@ -16,8 +16,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using BlackJack.CardLogic;
-using BlackJack.TableLogic;
 using BlackJack.HouseLogic;
+using BlackJack.TableLogic;
 
 namespace BlackJack.Utilities {
 	/// <summary>

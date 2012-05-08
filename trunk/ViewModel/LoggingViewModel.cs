@@ -22,7 +22,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class LoggingViewModel : ViewModelBase {
 		private LoggingModel m_LoggingModel;
-		private TableViewModel m_ParentMasterViewModel;
+		private TableViewModel m_MasterParent;
 
 		#region Public Properties
 		/// <summary>
@@ -34,7 +34,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_LoggingModel.LogItems = value;
-				OnPropertyChanged("Log");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Log"); }
 			}
 		}
 		/// <summary>
@@ -58,7 +58,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="Parent">Placeholder for the parent object.</param>
 		public LoggingViewModel(TableViewModel Parent) {
-			m_ParentMasterViewModel = Parent;
+			m_MasterParent = Parent;
 			m_LoggingModel = new LoggingModel();
 		}
 
@@ -78,7 +78,7 @@ namespace BlackJack.ViewModel {
 				case LogActionType.ShoeShuffle:
 					if (ParamObject[0].GetType() == typeof(ShoeViewModel)) {
 						ShoeViewModel tempShoe = (ShoeViewModel)ParamObject[0];
-						LogMessage = string.Format("Shuffled {0} deck shoe (Mode: {1}).", m_ParentMasterViewModel.HouseRulesVM.DecksInShoe, m_ParentMasterViewModel.HouseRulesVM.ShuffleMode.ToString());
+						LogMessage = string.Format("Shuffled {0} deck shoe (Mode: {1}).", m_MasterParent.HouseRulesVM.DecksInShoe, m_MasterParent.HouseRulesVM.ShuffleMode.ToString());
 					}
 					break;
 				case LogActionType.Benchmark:
@@ -93,7 +93,7 @@ namespace BlackJack.ViewModel {
 			tempLI.Message = LogMessage;
 			tempLI.Time = DateTime.Now;
 			LogItems.Add(tempLI);
-			OnPropertyChanged("Log");
+			if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Log"); }
 		}
 	}
 }

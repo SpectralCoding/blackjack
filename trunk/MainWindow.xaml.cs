@@ -27,8 +27,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using BlackJack.CardLogic;
-using BlackJack.TableLogic;
 using BlackJack.HouseLogic;
+using BlackJack.TableLogic;
 using BlackJack.Utilities;
 using BlackJack.ViewModel;
 
@@ -58,9 +58,7 @@ namespace BlackJack {
 			HouseRulesTabItem.DataContext = TableViewModel.HouseRulesVM;
 			DataContext = TableViewModel;
 			AutoPlayTimer.Interval = TimeSpan.FromTicks(1);
-			//AutoPlayTimer.Interval = TimeSpan.FromMilliseconds(500);
 			AutoPlayTimer.Tick += new EventHandler(Tick);
-
 		}
 
 		private void RunBenchmarkBtn_Click(object sender, RoutedEventArgs e) {
@@ -153,6 +151,12 @@ namespace BlackJack {
 
 		private void AutoPlayToggle_Click(object sender, RoutedEventArgs e) {
 			if ((string)AutoPlayToggle.Content == "Start Auto Play") {
+				MessageBoxResult MsgBoxResult = MessageBox.Show("Would you like to disable UI refreshes?\nThis will speed up execution speed GREATLY.", "Speed Up Execution Time?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+				if (MsgBoxResult == MessageBoxResult.Yes) {
+					TableViewModel.HouseRulesVM.FastMode = true;
+				} else if (MsgBoxResult == MessageBoxResult.Cancel) {
+					return;
+				}
 				AutoPlayToggle.Content = "Stop Auto Play";
 				if (TableViewModel.HouseRulesVM.AutoPlaySpeed == AutoPlaySpeed.BlazingFast) {
 					AutoPlayTimer.Interval = TimeSpan.FromTicks(1);
@@ -165,24 +169,10 @@ namespace BlackJack {
 				}
 				AutoPlayTimer.Start();
 			} else {
+				TableViewModel.HouseRulesVM.FastMode = false;
 				AutoPlayToggle.Content = "Start Auto Play";
 				AutoPlayTimer.Stop();
 			}
-		}
-
-		private void FastModeChk_Checked(object sender, RoutedEventArgs e) {
-			if (TableViewModel.GameStatisticsVM.CardsDealt > 0) {
-				BlackJackTable.DataContext = BlankTVM;
-				DealerControlsTabItem.DataContext = BlankTVM;
-				PlayerControlsTabItem.DataContext = BlankTVM.CurrentPlayerHandVM;
-			}
-		}
-
-		private void FastModeChk_Unchecked(object sender, RoutedEventArgs e) {
-			// This is so fucked up. God damn it.
-			BlackJackTable.DataContext = TableViewModel;
-			DealerControlsTabItem.DataContext = TableViewModel;
-			PlayerControlsTabItem.DataContext = TableViewModel.CurrentPlayerHandVM;
 		}
 
 	}

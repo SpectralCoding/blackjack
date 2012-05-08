@@ -10,8 +10,8 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -43,5 +43,6 @@ namespace BlackJack.TableLogic {
 		public bool CanStartGame { get; set; }
 		public bool GameInProgress { get; set; }
 		public DateTime StartTime { get; set; }
+		public bool FastMode { get; set; }
 	}
 }

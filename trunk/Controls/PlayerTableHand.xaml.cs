@@ -50,7 +50,6 @@ namespace BlackJack.Controls {
 		private void PlayerTableHandUC_SourceUpdated(object sender, DataTransferEventArgs e) {
 			System.Windows.Forms.MessageBox.Show("lol");
 		}
-
 	}
 
 	[ValueConversion(typeof(bool), typeof(int))]
@@ -69,7 +68,6 @@ namespace BlackJack.Controls {
 			throw new Exception("The method or operation is not implemented.");
 		}
 	}
-
 
 	/// <summary>
 	/// Class for converting a System.Drawing.Point to a Thickness for usage in a Margin property.

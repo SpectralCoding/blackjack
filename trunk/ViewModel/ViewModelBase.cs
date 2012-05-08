@@ -48,14 +48,14 @@ namespace BlackJack.ViewModel {
 		/// a public property with the specified name. This 
 		/// method does not exist in a Release build.
 		/// </summary>
-		/// <param name="propertyName">The name of the property being checked.</param>
+		/// <param name="PropertyName">The name of the property being checked.</param>
 		[Conditional("DEBUG")]
 		[DebuggerStepThrough]
-		public void VerifyPropertyName(string propertyName) {
+		public void VerifyPropertyName(string PropertyName) {
 			// Verify that the property name matches a real,  
 			// public, instance property on this object.
-			if (TypeDescriptor.GetProperties(this)[propertyName] == null) {
-				string msg = "Invalid property name: " + propertyName;
+			if (TypeDescriptor.GetProperties(this)[PropertyName] == null) {
+				string msg = "Invalid property name: " + PropertyName;
 
 				if (this.ThrowOnInvalidPropertyName) {
 					throw new Exception(msg);
@@ -82,9 +82,8 @@ namespace BlackJack.ViewModel {
 		/// <summary>
 		/// Raises this object's PropertyChanged event.
 		/// </summary>
-		/// <param name="propertyName">The property that has a new value.</param>
-		//protected virtual void OnPropertyChanged(string propertyName) {
-		public virtual void OnPropertyChanged(string propertyName) {
+		/// <param name="PropertyName">The property that has a new value.</param>
+		public virtual void OnPropertyChanged(string PropertyName) {
 			//this.VerifyPropertyName(propertyName);
 			//PropertyChangedEventHandler handler = this.PropertyChanged;
 			//if (handler != null) {
@@ -93,7 +92,7 @@ namespace BlackJack.ViewModel {
 			//}
 			PropertyChangedEventHandler handler = this.PropertyChanged;
 			if (handler != null) {
-				handler(this, new PropertyChangedEventArgs(propertyName));
+				handler(this, new PropertyChangedEventArgs(PropertyName));
 			}
 		}
 		#endregion

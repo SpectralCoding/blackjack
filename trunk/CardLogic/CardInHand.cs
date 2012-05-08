@@ -40,10 +40,12 @@ namespace BlackJack.CardLogic {
 		/// Gets a value indicating whether or not the the card is visible.
 		/// </summary>
 		public Visibility Visible {
-			get { return m_Visible; }
+			get {
+				return m_Visible;
+			}
 			private set {
 				m_Visible = value;
-				OnPropertyChanged("Visible");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Visible"); }
 			}
 		}
 		/// <summary>
@@ -53,7 +55,7 @@ namespace BlackJack.CardLogic {
 			get { return m_Position; }
 			private set {
 				m_Position = value;
-				OnPropertyChanged("Position");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Position"); }
 			}
 		}
 		/// <summary>
@@ -63,7 +65,7 @@ namespace BlackJack.CardLogic {
 			get { return m_Rotation; }
 			private set {
 				m_Rotation = value;
-				OnPropertyChanged("Rotation");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Rotation"); }
 			}
 		}
 		/// <summary>
@@ -73,7 +75,7 @@ namespace BlackJack.CardLogic {
 			get { return m_Scale; }
 			private set {
 				m_Scale = value;
-				OnPropertyChanged("Scale");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Scale"); }
 			}
 		}
 		/// <summary>
@@ -83,7 +85,7 @@ namespace BlackJack.CardLogic {
 			get { return m_Card; }
 			private set {
 				m_Card = value;
-				OnPropertyChanged("Card");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Card"); }
 			}
 		}
 		/// <summary>
@@ -97,16 +99,19 @@ namespace BlackJack.CardLogic {
 		#endregion
 
 		#region Constructor
+
+
 		/// <summary>
 		/// Initializes a new instance of the CardInHand class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the Parent object.</param>
+		/// <param name="MasterParent">Placeholder for the Master Parent object.</param>
 		/// <param name="BaseCard">The card in which to hold this class's data.</param>
 		public CardInHand(PlayerHandViewModel Parent, TableViewModel MasterParent, Card BaseCard) {
 			m_Parent = Parent;
 			m_MasterParent = MasterParent; 
 			m_Card = BaseCard;
-			OnPropertyChanged("CardImage");
+			if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("CardImage"); }
 		}
 		#endregion
 

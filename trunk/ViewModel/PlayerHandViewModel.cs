@@ -26,7 +26,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerHandViewModel : ViewModelBase {
 		#region Private Fields
-		private TableViewModel m_ParentMasterViewModel;
+		private TableViewModel m_MasterParent;
 		private PlayerViewModel m_ParentPlayerViewModel;
 		private PlayerHandModel m_PlayerHandModel;
 		private PlayerStrategyViewModel m_PlayerStrategyViewModel;
@@ -42,6 +42,18 @@ namespace BlackJack.ViewModel {
 			}
 		}
 		/// <summary>
+		/// Gets a value indicating the contents of the hand as displayed on the table.
+		/// </summary>
+		public ObservableCollection<CardInHand> VisibleHand {
+			get {
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					return m_PlayerHandModel.Hand;
+				} else {
+					return m_PlayerHandModel.BlankHand;
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets a value indicating the current bet of the hand.
 		/// </summary>
 		public decimal Bet {
@@ -50,7 +62,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_PlayerHandModel.Bet = value;
-				OnPropertyChanged("Bet");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Bet"); }
 			}
 		}
 		/// <summary>
@@ -62,9 +74,11 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_PlayerHandModel.Count = value;
-				OnPropertyChanged("Count");
-				OnPropertyChanged("CanAcceptCard");
-				OnPropertyChanged("CanSplit");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("Count");
+					OnPropertyChanged("CanAcceptCard");
+					OnPropertyChanged("CanSplit");
+				}
 			}
 		}
 		public string StringCount {
@@ -73,7 +87,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_PlayerHandModel.StringCount = value;
-				OnPropertyChanged("StringCount");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("StringCount"); }
 			}
 		}
 		/// <summary>
@@ -85,10 +99,12 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_PlayerHandModel.HandMode = value;
-				OnPropertyChanged("HandMode");
-				OnPropertyChanged("Visibility");
-				OnPropertyChanged("Scale");
-				OnPropertyChanged("CanAcceptCard");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("HandMode");
+					OnPropertyChanged("Visibility");
+					OnPropertyChanged("Scale");
+					OnPropertyChanged("CanAcceptCard");
+				}
 			}
 		}
 		/// <summary>
@@ -115,22 +131,27 @@ namespace BlackJack.ViewModel {
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not this player hand is active.
+		/// </summary>
 		public bool IsActive {
 			get {
 				return m_PlayerHandModel.IsActive;
 			}
 			set {
 				m_PlayerHandModel.IsActive = value;
-				OnPropertyChanged("IsActive");
-				OnPropertyChanged("CanAcceptCard");
-				OnPropertyChanged("CanDoubleDown");
-				OnPropertyChanged("CanDoubleDownForLess");
-				OnPropertyChanged("CanSplit");
-				OnPropertyChanged("CanSurrender");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("IsActive");
+					OnPropertyChanged("CanAcceptCard");
+					OnPropertyChanged("CanDoubleDown");
+					OnPropertyChanged("CanDoubleDownForLess");
+					OnPropertyChanged("CanSplit");
+					OnPropertyChanged("CanSurrender");
+				}
 			}
 		}
 		/// <summary>
-		/// Determines whether or not the player can legally accept a card.
+		/// Gets a value indicating whether or not the player can legally accept a card.
 		/// </summary>
 		/// <returns>A boolean indicated whether or not the player can legally accept a card.</returns>
 		public bool CanAcceptCard {
@@ -164,12 +185,18 @@ namespace BlackJack.ViewModel {
 				}
 			}
 		}
+		/// <summary>
+		/// Gets a value indicating whether or not the player hand can double down.
+		/// </summary>
 		public bool CanDoubleDown {
 			get {
 				// Will need to check if they have enough money.
 				return CanDoubleDownForLess;
 			}
 		}
+		/// <summary>
+		/// Gets a value indicating whether or not the player hand can double down for less.
+		/// </summary>
 		public bool CanDoubleDownForLess {
 			get {
 				// Will need to check if they have some amount of money.
@@ -183,6 +210,9 @@ namespace BlackJack.ViewModel {
 				return false;
 			}
 		}
+		/// <summary>
+		/// Gets a value indicating whether or not the player hand can split.
+		/// </summary>
 		public bool CanSplit {
 			get {
 				if (Hand.Count == 2) {
@@ -213,22 +243,30 @@ namespace BlackJack.ViewModel {
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not the player hand can surrender.
+		/// </summary>
 		public bool CanSurrender {
 			get {
 				return m_PlayerHandModel.CanSurrender;
 			}
 			set {
 				m_PlayerHandModel.CanSurrender = value;
-				OnPropertyChanged("CanSurrender");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("CanSurrender");
+				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not the player hand is blackjack.
+		/// </summary>
 		public bool IsBlackJack {
 			get {
 				return m_PlayerHandModel.IsBlackJack;
 			}
 			set {
 				m_PlayerHandModel.IsBlackJack = value;
-				OnPropertyChanged("IsBlackJack");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("IsBlackJack"); }
 			}
 		}
 		#endregion
@@ -240,10 +278,10 @@ namespace BlackJack.ViewModel {
 		/// <param name="ParentTVM">Placeholder for the parent MasterViewModel.</param>
 		/// <param name="ParentPVM">Placeholder for the parent PlayerViewModel.</param>
 		public PlayerHandViewModel(TableViewModel ParentTVM, PlayerViewModel ParentPVM) {
-			m_ParentMasterViewModel = ParentTVM;
+			m_MasterParent = ParentTVM;
 			m_ParentPlayerViewModel = ParentPVM;
 			m_PlayerHandModel = new PlayerHandModel();
-			m_PlayerStrategyViewModel = new PlayerStrategyViewModel(m_ParentMasterViewModel, this);
+			m_PlayerStrategyViewModel = new PlayerStrategyViewModel(m_MasterParent, this);
 		}
 		#endregion
 
@@ -307,8 +345,8 @@ namespace BlackJack.ViewModel {
 		/// <param name="CurrentCount">The current count of the card.</param>
 		/// <returns>A boolean indicating whether or not it is possible to get to 21.</returns>
 		private bool MakeAceHighIfPossible(int CurrentCount) {
-			bool HasLowAce = false;
 			// Determine if there is a low ace.
+			bool HasLowAce = false;
 			foreach (CardInHand CurrentCIH in Hand) {
 				if (CurrentCIH.Card.Type == CardType.Ace) {
 					if (!CurrentCIH.Card.IsHigh) {
@@ -318,7 +356,7 @@ namespace BlackJack.ViewModel {
 			}
 			if (HasLowAce) {
 				if (CurrentCount < 12) {
-					// If there is a low ace and having a high ace will not bust you (and therefor be advantageous)
+					// If there is a low ace and having a high ace will not bust you (and therefore be advantageous)
 					foreach (CardInHand CurrentCIH in Hand) {
 						if (CurrentCIH.Card.Type == CardType.Ace) {
 							if (!CurrentCIH.Card.IsHigh) {
@@ -344,7 +382,7 @@ namespace BlackJack.ViewModel {
 			CanSurrender = false;
 			HandMode = HandMode.NotPlaying;
 			if (Hand.Count > 0) {
-				m_ParentMasterViewModel.GameStatisticsVM.HandsPlayed++;
+				m_MasterParent.GameStatisticsVM.HandsPlayed++;
 			}
 			Hand.Clear();
 			CalculateCount();
@@ -363,8 +401,8 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void RecieveCard(Card DealtCard) {
-			Hand.Add(new CardInHand(this, m_ParentMasterViewModel, DealtCard));
-			m_ParentMasterViewModel.GameStatisticsVM.CardsDealt++;
+			Hand.Add(new CardInHand(this, m_MasterParent, DealtCard));
+			m_MasterParent.GameStatisticsVM.CardsDealt++;
 			if (Hand.Count == 2) {
 				CanSurrender = true;
 			} else {
@@ -374,17 +412,29 @@ namespace BlackJack.ViewModel {
 			SetCardPositions();
 		}
 
+		/// <summary>
+		/// A player hits and can no longer surrender.
+		/// </summary>
+		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void Hit(Card DealtCard) {
 			CanSurrender = false;
 			RecieveCard(DealtCard);
 		}
 
+		/// <summary>
+		/// A player doubles down. Changes the hand mode and the player can no longer surrender.
+		/// </summary>
+		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void DoubleDown(Card DealtCard) {
 			CanSurrender = false;
 			HandMode = HandMode.DoubleDown;
 			RecieveCard(DealtCard);
 		}
 
+		/// <summary>
+		/// Splits a hand. Disables player surrender.
+		/// </summary>
+		/// <returns>The card that was removed from the hand and should be added to a new hand</returns>
 		public Card SplitHand() {
 			// This should only be called from PlayerViewModel.
 			// This removes the second card from the hand and returns it.
@@ -392,10 +442,14 @@ namespace BlackJack.ViewModel {
 			Card tempCard = Hand[1].Card;
 			Hand.RemoveAt(1);
 			CalculateCount();
-			OnPropertyChanged("Scale");
+			if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Scale"); }
 			return tempCard;
 		}
 
+		/// <summary>
+		/// Provides all of the AI logic for how a player SHOULD play the hand.
+		/// </summary>
+		/// <returns>A player action describing the suggested action.</returns>
 		public PlayerAction GetSuggestedAction() {
 			return PlayerAction.Stand;
 		}

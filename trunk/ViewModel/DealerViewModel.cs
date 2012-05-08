@@ -20,7 +20,7 @@ namespace BlackJack.ViewModel {
 	/// Provides logic for a Dealer.
 	/// </summary>
 	public class DealerViewModel : ViewModelBase {
-		private TableViewModel m_Parent;
+		private TableViewModel m_MasterParent;
 		private DealerModel m_DealerModel;
 		private DealerHandViewModel m_DealerHandViewModel;
 
@@ -34,29 +34,31 @@ namespace BlackJack.ViewModel {
 			}
 			private set {
 				m_DealerHandViewModel = value;
-				OnPropertyChanged("PlayerHandVM");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("PlayerHandVM"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not the dealer is the currently active player.
+		/// </summary>
 		public bool IsActive {
 			get {
 				return m_DealerModel.IsActive;
 			}
 			set {
 				m_DealerModel.IsActive = value;
-				OnPropertyChanged("IsActive");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("IsActive"); }
 			}
 		}
 		#endregion
-
 
 		/// <summary>
 		/// Initializes a new instance of the DealerViewModel class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for parent object.</param>
 		public DealerViewModel(TableViewModel Parent) {
-			m_Parent = Parent;
+			m_MasterParent = Parent;
 			m_DealerModel = new DealerModel();
-			m_DealerHandViewModel = new DealerHandViewModel(m_Parent, this);
+			m_DealerHandViewModel = new DealerHandViewModel(m_MasterParent, this);
 		}
 
 		/// <summary>
@@ -67,10 +69,13 @@ namespace BlackJack.ViewModel {
 			m_DealerHandViewModel.Reset();
 		}
 
+		/// <summary>
+		/// The dealer shows cards and draws until he has 17+.
+		/// </summary>
 		public void Play() {
 			DealerHandVM.ShowAll();
 			while (DealerHandVM.Count < 17) {
-				DealerHandVM.RecieveCard(m_Parent.ShoeVM.DrawCard(), true);
+				DealerHandVM.RecieveCard(m_MasterParent.ShoeVM.DrawCard(), true);
 			}
 		}
 	}

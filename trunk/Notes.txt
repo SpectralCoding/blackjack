@@ -1,11 +1,11 @@
 ﻿Development Progression Plan:
 	DONE: Implement Player Controls
 	Implement Dealer
-		Will have to make adjustments to CardInHand to allow for Dealer's card placement.
-		Dealer strategy should be easy because there's no "thinking" involved.
+		Done? Will have to make adjustments to CardInHand to allow for Dealer's card placement.
+		Done? Dealer strategy should be easy because there's no "thinking" involved.
 		Insurance will have to be implemented somewhere.
 	Implement Realistic Gameplay (Tough!)
-		Cards collected in which order
+		N/A Cards collected in which order
 		When the deck is shuffled
 		Need to still add dealer rules.
 		This will have to probably run in it's own thread or something.
@@ -13,12 +13,20 @@
 			This could be a pretty cool screensaver mode.
 	Implement Betting
 		Maybe add chip icons by the player graphical coolness.
-		Icons to bed in increments instead of +/- (Click to add, right click to remove)
+		Icons to bet in increments instead of +/- (Click to add, right click to remove)
 	Implement Automated Strategies
 		Basic Strategy
 		Custom Made Ones
 		Popular Strategies
 		Maybe the ability to make a strategy on the fly
+
+Options for increasing speed:
+	Preshuffle thousands of decks so we don't have to shuffle during the game
+	Shuffle decks on a sperate thread so we can split processing time
+
+Bugs:
+	http://files.spectralcoding.com/files/screenshots/2012/05/20120506-151922_MainWindow.png
+	Fix Spliting on non-same cards
 
 If needing to attached a control event to a non-Command event look below. It doesnt appear possible to bind to more than one event at a time though.
 http://marlongrech.wordpress.com/2008/12/04/attachedcommandbehavior-aka-acb/

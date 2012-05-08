@@ -26,7 +26,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class DealerHandViewModel : ViewModelBase {
 		#region Private Fields
-		private TableViewModel m_ParentMasterViewModel;
+		private TableViewModel m_MasterParent;
 		private DealerViewModel m_ParentDealerViewModel;
 		private DealerHandModel m_DealerHandModel;
 		#endregion
@@ -41,6 +41,18 @@ namespace BlackJack.ViewModel {
 			}
 		}
 		/// <summary>
+		/// Gets a value containing information for displaying the hand on the table.
+		/// </summary>
+		public ObservableCollection<DealerCardInHand> VisibleHand {
+			get {
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					return m_DealerHandModel.Hand;
+				} else {
+					return m_DealerHandModel.BlankHand;
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets a value indicating the current count of the hand.
 		/// </summary>
 		public int Count {
@@ -49,8 +61,10 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_DealerHandModel.Count = value;
-				OnPropertyChanged("Count");
-				OnPropertyChanged("CanAcceptCard");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("Count");
+					OnPropertyChanged("CanAcceptCard");
+				}
 			}
 		}
 		public string StringCount {
@@ -59,11 +73,11 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_DealerHandModel.StringCount = value;
-				OnPropertyChanged("StringCount");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("StringCount"); }
 			}
 		}
 		/// <summary>
-		/// Gets or sets a value indicating the current mode that the hand is in.
+		/// Gets or sets a value indicating whether the current hand is active.
 		/// </summary>
 		public bool IsActive {
 			get {
@@ -71,12 +85,14 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_DealerHandModel.IsActive = value;
-				OnPropertyChanged("IsActive");
-				OnPropertyChanged("CanAcceptCard");
+				if (!m_MasterParent.HouseRulesVM.FastMode) {
+					OnPropertyChanged("IsActive");
+					OnPropertyChanged("CanAcceptCard");
+				}
 			}
 		}
 		/// <summary>
-		/// Determines whether or not the player can legally accept a card.
+		/// Gets a value indicating whether or not the player can legally accept a card.
 		/// </summary>
 		/// <returns>A boolean indicated whether or not the player can legally accept a card.</returns>
 		public bool CanAcceptCard {
@@ -93,25 +109,28 @@ namespace BlackJack.ViewModel {
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not the dealer has blackjack.
+		/// </summary>
 		public bool IsBlackJack {
 			get {
 				return m_DealerHandModel.IsBlackJack;
 			}
 			set {
 				m_DealerHandModel.IsBlackJack = value;
-				OnPropertyChanged("IsBlackJack");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("IsBlackJack"); }
 			}
 		}
 		#endregion
 
 		#region Constructor
 		/// <summary>
-		/// Initializes a new instance of the PlayerHandViewModel class.
+		/// Initializes a new instance of the DealerHandViewModel class.
 		/// </summary>
 		/// <param name="ParentTVM">Placeholder for the parent MasterViewModel.</param>
 		/// <param name="ParentDVM">Placeholder for the parent DealerViewModel.</param>
 		public DealerHandViewModel(TableViewModel ParentTVM, DealerViewModel ParentDVM) {
-			m_ParentMasterViewModel = ParentTVM;
+			m_MasterParent = ParentTVM;
 			m_ParentDealerViewModel = ParentDVM;
 			m_DealerHandModel = new DealerHandModel();
 		}
@@ -163,7 +182,9 @@ namespace BlackJack.ViewModel {
 			}
 			Count = tempCount;
 			StringCount = tempStrCount;
-			OnPropertyChanged("Hand");
+			if (!m_MasterParent.HouseRulesVM.FastMode) {
+				OnPropertyChanged("Hand");
+			}
 		}
 
 		/// <summary>
@@ -207,8 +228,8 @@ namespace BlackJack.ViewModel {
 		public void Reset() {
 			IsActive = false;
 			if (Hand.Count > 0) {
-				m_ParentMasterViewModel.GameStatisticsVM.HandsPlayed++;
-				m_ParentMasterViewModel.GameStatisticsVM.RoundsPlayed++;
+				m_MasterParent.GameStatisticsVM.HandsPlayed++;
+				m_MasterParent.GameStatisticsVM.RoundsPlayed++;
 			}
 			Hand.Clear();
 			CalculateCount();
@@ -226,24 +247,35 @@ namespace BlackJack.ViewModel {
 		/// Adds a card to the player's hand.
 		/// </summary>
 		/// <param name="DealtCard">The card that the player is dealt.</param>
+		/// <param name="ShowCard">Whether or not the card is shown initially.</param>
 		public void RecieveCard(Card DealtCard, bool ShowCard) {
-			Hand.Add(new DealerCardInHand(this, m_ParentMasterViewModel, DealtCard, ShowCard));
-			m_ParentMasterViewModel.GameStatisticsVM.CardsDealt++;
+			Hand.Add(new DealerCardInHand(this, m_MasterParent, DealtCard, ShowCard));
+			m_MasterParent.GameStatisticsVM.CardsDealt++;
 			CalculateCount();
 			SetCardPositions();
 		}
 
+		/// <summary>
+		/// Provides an abstraction for the RecieveCard method.
+		/// </summary>
+		/// <param name="DealtCard">The card that the player is dealt.</param>
 		public void Hit(Card DealtCard) {
 			RecieveCard(DealtCard, true);
 		}
 
+		/// <summary>
+		/// Changes all of the dealers cards to showing (face up).
+		/// </summary>
 		public void ShowAll() {
 			for (int i = 0; i < Hand.Count; i++) {
 				if (!Hand[i].IsShowing) {
 					Hand[i].IsShowing = true;
 				}
 			}
-			OnPropertyChanged("Hand");
+			if (!m_MasterParent.HouseRulesVM.FastMode) {
+				OnPropertyChanged("Hand");
+				OnPropertyChanged("VisibleHand");
+			}
 		}
 
 		#endregion

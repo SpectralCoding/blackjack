@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DealerModel.cs" company="SpectralCoding">
+// <copyright file="GameStatisticsModel.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -24,12 +24,14 @@ namespace BlackJack.HouseLogic {
 		public long RoundsPlayed { get; set; }
 		public long ShoesShuffled { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the GameStatisticsModel class.
+		/// </summary>
 		public GameStatisticsModel() {
 			CardsDealt = 0;
 			HandsPlayed = 0;
 			RoundsPlayed = 0;
 			ShoesShuffled = 0;
 		}
-
 	}
 }

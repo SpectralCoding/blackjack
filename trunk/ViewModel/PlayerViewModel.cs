@@ -24,7 +24,7 @@ namespace BlackJack.ViewModel {
 	/// </summary>
 	public class PlayerViewModel : ViewModelBase {
 		#region Private Fields
-		private TableViewModel m_Parent;
+		private TableViewModel m_MasterParent;
 		private PlayerModel m_PlayerModel;
 		private PlayerHandViewModel[] m_PlayerHandViewModel;
 		private int AceSplitCount = 0;
@@ -39,13 +39,16 @@ namespace BlackJack.ViewModel {
 				return m_PlayerModel.Name;
 			}
 		}
+		/// <summary>
+		/// Gets a value indicating the player hand view models.
+		/// </summary>
 		public PlayerHandViewModel[] PlayerHandVM {
 			get {
 				return m_PlayerHandViewModel;
 			}
 			private set {
 				m_PlayerHandViewModel = value;
-				OnPropertyChanged("PlayerHandVM");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("PlayerHandVM"); }
 			}
 		}
 		/// <summary>
@@ -57,16 +60,19 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_PlayerModel.PlayerMode = value;
-				OnPropertyChanged("PlayerMode");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("PlayerMode"); }
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not this player is active.
+		/// </summary>
 		public bool IsActive {
 			get {
 				return m_PlayerModel.IsActive;
 			}
 			set {
 				m_PlayerModel.IsActive = value;
-				OnPropertyChanged("IsActive");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("IsActive"); }
 			}
 		}
 		#endregion
@@ -77,13 +83,13 @@ namespace BlackJack.ViewModel {
 		/// <param name="Parent">Placeholder for the parent object.</param>
 		/// <param name="PlayerNum">Indicates the player number.</param>
 		public PlayerViewModel(TableViewModel Parent, int PlayerNum) {
-			m_Parent = Parent;
+			m_MasterParent = Parent;
 			m_PlayerModel = new PlayerModel();
 			PlayerHandVM = new PlayerHandViewModel[4];
-			PlayerHandVM[0] = new PlayerHandViewModel(m_Parent, this);
-			PlayerHandVM[1] = new PlayerHandViewModel(m_Parent, this);
-			PlayerHandVM[2] = new PlayerHandViewModel(m_Parent, this);
-			PlayerHandVM[3] = new PlayerHandViewModel(m_Parent, this);
+			PlayerHandVM[0] = new PlayerHandViewModel(m_MasterParent, this);
+			PlayerHandVM[1] = new PlayerHandViewModel(m_MasterParent, this);
+			PlayerHandVM[2] = new PlayerHandViewModel(m_MasterParent, this);
+			PlayerHandVM[3] = new PlayerHandViewModel(m_MasterParent, this);
 			m_PlayerModel.Name = String.Format("Player {0}", PlayerNum);
 		}
 
@@ -101,17 +107,21 @@ namespace BlackJack.ViewModel {
 			//m_PlayerHandViewModel[1].HandMode = HandMode.Normal;
 			//m_PlayerHandViewModel[2].HandMode = HandMode.Normal;
 			//m_PlayerHandViewModel[3].HandMode = HandMode.Normal;
-
 		}
 
+		/// <summary>
+		/// Determines whether or not a player can split.
+		/// </summary>
+		/// <param name="CardNum">The current number of cards a player has.</param>
+		/// <returns>A true if the player can split or a false if they cannot.</returns>
 		public bool CanSplit(int CardNum) {
 			if (PlayerMode != PlayerMode.SplitThrice) {
 				if (CardNum == 0) {
-					if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Once) {
+					if (m_MasterParent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Once) {
 						if (AceSplitCount == 0) { return true; } else { return false; }
-					} else if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Twice) {
+					} else if (m_MasterParent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Twice) {
 						if (AceSplitCount < 2) { return true; } else { return false; }
-					} else if (m_Parent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Thrice) {
+					} else if (m_MasterParent.HouseRulesVM.SplitAcesLimit == SplitAcesLimit.Thrice) {
 						if (AceSplitCount < 3) { return true; } else { return false; }
 					}
 				} else {
@@ -121,6 +131,10 @@ namespace BlackJack.ViewModel {
 			return false;
 		}
 
+		/// <summary>
+		/// Splits a hand by removed a card from the current hand, creating another, and adding the removed card to the new hand.
+		/// </summary>
+		/// <param name="HandIndex">The index of the hand being split.</param>
 		public void Split(int HandIndex) {
 			if (HandIndex != 3) {
 				if (PlayerMode == PlayerMode.Normal) {

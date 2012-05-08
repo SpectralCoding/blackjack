@@ -18,7 +18,7 @@ namespace BlackJack.ViewModel {
 
 		#region Private Fields
 		private ShoeModel m_ShoeModel;
-		private TableViewModel m_ParentMasterViewModel;
+		private TableViewModel m_MasterParent;
 		#endregion
 
 		#region Public Properties
@@ -36,7 +36,7 @@ namespace BlackJack.ViewModel {
 			get { return m_ShoeModel.ShoePosition; }
 			set {
 				m_ShoeModel.ShoePosition = value;
-				OnPropertyChanged("Position");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Position"); }
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_ShoeModel.NeedToShuffle = value;
-				OnPropertyChanged("NeedToShuffle");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("NeedToShuffle"); }
 			}
 		}
 
@@ -68,7 +68,7 @@ namespace BlackJack.ViewModel {
 			}
 			set {
 				m_ShoeModel.IsBenchmark = value;
-				OnPropertyChanged("IsBenchmark");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("IsBenchmark"); }
 			}
 		}
 		#endregion
@@ -78,7 +78,7 @@ namespace BlackJack.ViewModel {
 		/// Initializes a new instance of the Shoe class.
 		/// </summary>
 		public ShoeViewModel(TableViewModel Parent, bool IsBenchmark = false) {
-			m_ParentMasterViewModel = Parent;
+			m_MasterParent = Parent;
 			m_ShoeModel = new ShoeModel();
 			IsBenchmark = false;
 			ResetShoe();
@@ -90,12 +90,12 @@ namespace BlackJack.ViewModel {
 		/// Demolishes old shoe data, adds the decks, shuffles, and adds the cut card.
 		/// </summary>
 		public void ResetShoe() {
-			int TotalCards = m_ParentMasterViewModel.HouseRulesVM.DecksInShoe * 52;
-			int CutCardPosition = Convert.ToInt32(TotalCards * m_ParentMasterViewModel.HouseRulesVM.ShoePenetration);
+			int TotalCards = m_MasterParent.HouseRulesVM.DecksInShoe * 52;
+			int CutCardPosition = Convert.ToInt32(TotalCards * m_MasterParent.HouseRulesVM.ShoePenetration);
 			m_ShoeModel.ShoeContents = new Card[TotalCards + 1];
 			Deck DummyDeck = new Deck();
 			int i = 0;
-			for (int DeckNum = 0; DeckNum < m_ParentMasterViewModel.HouseRulesVM.DecksInShoe; DeckNum++) {
+			for (int DeckNum = 0; DeckNum < m_MasterParent.HouseRulesVM.DecksInShoe; DeckNum++) {
 				for (int CardNum = 0; CardNum < 52; CardNum++) {
 					m_ShoeModel.ShoeContents[i] = DummyDeck.Card(CardNum);
 					i++;
@@ -107,10 +107,10 @@ namespace BlackJack.ViewModel {
 				m_ShoeModel.ShoeContents[x] = m_ShoeModel.ShoeContents[x - 1];
 			}
 			m_ShoeModel.ShoeContents[CutCardPosition] = new Card(CardType.CutCard, CardSuit.Spade);
-			m_ParentMasterViewModel.GameStatisticsVM.ShoesShuffled++;
+			m_MasterParent.GameStatisticsVM.ShoesShuffled++;
 			if (!IsBenchmark) {
 				//GenerateShoeImage();
-				m_ParentMasterViewModel.LoggingVM.AddItem(LogActionType.ShoeShuffle, this);
+				m_MasterParent.LoggingVM.AddItem(LogActionType.ShoeShuffle, this);
 				Position = 0;
 				NeedToShuffle = false;
 			}
@@ -143,7 +143,7 @@ namespace BlackJack.ViewModel {
 			foreach (Card CurrentCard in Contents) {
 				using (MemoryStream outStream = new MemoryStream()) {
 					BitmapEncoder enc = new BmpBitmapEncoder();
-					enc.Frames.Add(BitmapFrame.Create(m_ParentMasterViewModel.ResourcesVM.CardImages[CurrentCard.ShortTitle]));
+					enc.Frames.Add(BitmapFrame.Create(m_MasterParent.ResourcesVM.CardImages[CurrentCard.ShortTitle]));
 					enc.Save(outStream);
 					bitmap = new System.Drawing.Bitmap(outStream);
 				}
@@ -159,8 +159,10 @@ namespace BlackJack.ViewModel {
 				System.Windows.Int32Rect.Empty,
 				BitmapSizeOptions.FromWidthAndHeight(tempBMP.Width, tempBMP.Height)
 			);
-			OnPropertyChanged("ShoeBitmapSource");
-			OnPropertyChanged("ShoeBitmapWidth");
+			if (!m_MasterParent.HouseRulesVM.FastMode) {
+				OnPropertyChanged("ShoeBitmapSource");
+				OnPropertyChanged("ShoeBitmapWidth");
+			}
 			DeleteObject(tempBMP.GetHbitmap());
 		}
 
@@ -169,7 +171,7 @@ namespace BlackJack.ViewModel {
 		/// </summary>
 		private void Shuffle() {
 			// http://en.wikipedia.org/wiki/Shuffling
-			if (m_ParentMasterViewModel.HouseRulesVM.ShuffleMode == ShuffleMode.FisherYates) {
+			if (m_MasterParent.HouseRulesVM.ShuffleMode == ShuffleMode.FisherYates) {
 				// http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
 				int RandomPosition;
 				MersenneTwister RandomMT = new MersenneTwister(Convert.ToUInt64(DateTime.Now.Ticks));
@@ -180,7 +182,7 @@ namespace BlackJack.ViewModel {
 					m_ShoeModel.ShoeContents[RandomPosition] = m_ShoeModel.ShoeContents[i];
 					m_ShoeModel.ShoeContents[i] = tempCard;
 				}
-			} else if (m_ParentMasterViewModel.HouseRulesVM.ShuffleMode == ShuffleMode.NoShuffle) {
+			} else if (m_MasterParent.HouseRulesVM.ShuffleMode == ShuffleMode.NoShuffle) {
 				// Do anything?
 			}
 		}

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CardInHand.cs" company="SpectralCoding">
+// <copyright file="DealerCardInHand.cs" company="SpectralCoding">
 //		Copyright (c) SpectralCoding. All rights reserved.
 //		Repeatedly violating our Copyright (c) will bring the full
 //		extent of the law, which may ultimately result in permanent
@@ -34,11 +34,14 @@ namespace BlackJack.CardLogic {
 		#endregion
 		
 		#region Public Properties
+		/// <summary>
+		/// Gets a value indicating the Point position of a card.
+		/// </summary>
 		public Point Position {
 			get { return m_Position; }
 			private set {
 				m_Position = value;
-				OnPropertyChanged("Position");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Position"); }
 			}
 		}
 		/// <summary>
@@ -48,7 +51,7 @@ namespace BlackJack.CardLogic {
 			get { return m_Card; }
 			private set {
 				m_Card = value;
-				OnPropertyChanged("Card");
+				if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("Card"); }
 			}
 		}
 		/// <summary>
@@ -63,6 +66,9 @@ namespace BlackJack.CardLogic {
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets a value indicating whether or not this card is showing.
+		/// </summary>
 		public bool IsShowing {
 			get {
 				return m_IsShowing;
@@ -70,9 +76,10 @@ namespace BlackJack.CardLogic {
 			set {
 				if (m_IsShowing != value) {
 					m_IsShowing = value;
-					OnPropertyChanged("CardImage");
-					OnPropertyChanged("CardImage");
-					OnPropertyChanged("IsShowing");
+					if (!m_MasterParent.HouseRulesVM.FastMode) {
+						OnPropertyChanged("CardImage");
+						OnPropertyChanged("IsShowing");
+					}
 				}
 			}
 		}
@@ -80,16 +87,18 @@ namespace BlackJack.CardLogic {
 
 		#region Constructor
 		/// <summary>
-		/// Initializes a new instance of the CardInHand class.
+		/// Initializes a new instance of the DealerCardInHand class.
 		/// </summary>
 		/// <param name="Parent">Placeholder for the Parent object.</param>
+		/// <param name="MasterParent">Placeholder for the Master Parent object.</param>
 		/// <param name="BaseCard">The card in which to hold this class's data.</param>
+		/// <param name="ShowCard">Whether or not the card is shown face up or face down.</param>
 		public DealerCardInHand(DealerHandViewModel Parent, TableViewModel MasterParent, Card BaseCard, bool ShowCard) {
 			m_MasterParent = MasterParent;
 			m_Parent = Parent;
 			m_Card = BaseCard;
 			m_IsShowing = ShowCard;
-			OnPropertyChanged("CardImage");
+			if (!m_MasterParent.HouseRulesVM.FastMode) { OnPropertyChanged("CardImage"); }
 		}
 		#endregion
 
@@ -98,6 +107,7 @@ namespace BlackJack.CardLogic {
 		/// Sets the Position property of the CardInHand class to the appropriate coordinates depending on what position the card is in.
 		/// </summary>
 		/// <param name="CardNumber">The position of the card in the hand.</param>
+		/// <param name="TotalCards">The total number of cards in the hand.</param>
 		public void SetPosition(int CardNumber, int TotalCards) {
 			Position = new Point(700 - ((80.0 * CardNumber) + 383.0 - ((TotalCards - 1) * 40)), 0.0);
 		}

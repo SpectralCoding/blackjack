@@ -17,7 +17,7 @@
 	<Grid x:Name="LayoutRoot" DataContext="{Binding Path=DealerHandVM}">
 		<Rectangle Height="24" Margin="312.292,113.667,311.708,0" RadiusY="4" RadiusX="4" Stroke="Black" VerticalAlignment="Top" StrokeThickness="2" Fill="White" Visibility="{Binding Converter={StaticResource CardsToVisibility}, Path=Hand}" />
 		<Label x:Name="CountLabel" Content="{Binding Count}" Padding="0,0,0,2" Margin="312,114,312,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="76" Visibility="{Binding Converter={StaticResource CardsToVisibility}, Path=Hand}" Height="24" VerticalAlignment="Top" />
-		<ItemsControl x:Name="CardsItemsControl" HorizontalAlignment="Left" Width="700" Height="96" Margin="0,8,0,33.667" ItemsSource="{Binding Path=Hand}">
+		<ItemsControl x:Name="CardsItemsControl" HorizontalAlignment="Left" Width="700" Height="96" Margin="0,8,0,33.667" ItemsSource="{Binding Path=VisibleHand}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<Canvas IsItemsHost="True" />

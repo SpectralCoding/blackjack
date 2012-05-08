@@ -23,8 +23,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BlackJack.ViewModel;
 using BlackJack.Utilities;
+using BlackJack.ViewModel;
 
 namespace BlackJack.Controls {
 	/// <summary>
@@ -86,5 +86,4 @@ namespace BlackJack.Controls {
 			throw new Exception("The method or operation is not implemented.");
 		}
 	}
-
 }

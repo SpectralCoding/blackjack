@@ -23,7 +23,7 @@ namespace BlackJack.Utilities {
 		private const int m_M = 397;
 		private const uint m_K = 0x9908B0DFU;
 		private const uint m_DefaultSeed = 4357;
-        
+		
 		private ulong[] m_State = new ulong[m_N + 1];
 		private int m_Next = 0;
 		private ulong m_SeedValue;
